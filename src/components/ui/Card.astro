@@ -1,0 +1,50 @@
+---
+interface Props {
+  title: string;
+  href: string;
+  excerpt?: string;
+  date?: Date;
+  category?: string;
+  image?: string;
+}
+
+const { title, href, excerpt, date, category, image } = Astro.props;
+
+const formattedDate = date ? date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+---
+
+<article class="group bg-white rounded-xl border border-gray-medium overflow-hidden hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
+  {image && (
+    <div class="aspect-video overflow-hidden bg-gray-light">
+      <img src={image} alt={title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+    </div>
+  )}
+  <div class="p-5 lg:p-6">
+    <div class="flex items-center gap-3 mb-3">
+      {category && (
+        <span class="text-xs font-semibold text-red-primary bg-red-primary/10 px-2.5 py-1 rounded-full uppercase tracking-wide">
+          {category}
+        </span>
+      )}
+      {date && (
+        <time datetime={date.toISOString()} class="text-xs text-text-muted">
+          {formattedDate}
+        </time>
+      )}
+    </div>
+    <h3 class="text-lg font-bold text-text-primary group-hover:text-navy transition-colors mb-2 leading-snug">
+      <a href={href} class="after:absolute after:inset-0 relative">
+        {title}
+      </a>
+    </h3>
+    {excerpt && (
+      <p class="text-sm text-text-secondary line-clamp-3 mb-4">{excerpt}</p>
+    )}
+    <span class="text-sm font-medium text-navy group-hover:text-red-primary transition-colors inline-flex items-center gap-1">
+      Read More
+      <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </span>
+  </div>
+</article>

@@ -1,0 +1,76 @@
+---
+const pathname = Astro.url.pathname;
+const segments = pathname.split('/').filter(Boolean);
+
+interface Crumb {
+  label: string;
+  href: string;
+}
+
+const labelMap: Record<string, string> = {
+  about: 'About',
+  news: 'News',
+  events: 'Events',
+  resources: 'Resources',
+  'county-chair': 'County Chair',
+  leadership: 'Leadership Team',
+  'precinct-chairs': 'Precinct Chairs',
+  'precinct-chair-faqs': 'Precinct Chair FAQs',
+  bylaws: 'Bylaws',
+  'state-gop-leadership': 'State GOP Leadership',
+  'commenting-policy': 'Commenting Policy',
+  'monthly-meetings': 'Monthly Meetings',
+  'golf-classic': 'Golf Classic',
+  'elected-officials': 'Elected Officials',
+  'precinct-maps': 'Precinct Maps',
+  category: 'Category',
+};
+
+const crumbs: Crumb[] = [{ label: 'Home', href: '/' }];
+let builtPath = '';
+for (const segment of segments) {
+  builtPath += `/${segment}`;
+  crumbs.push({
+    label: labelMap[segment] || segment.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+    href: `${builtPath}/`,
+  });
+}
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": crumbs.map((crumb, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": crumb.label,
+    "item": new URL(crumb.href, Astro.site).href,
+  })),
+};
+---
+
+{segments.length > 0 && (
+  <nav aria-label="Breadcrumb" class="bg-gray-light border-b border-gray-medium">
+    <div class="container py-3">
+      <ol class="flex flex-wrap items-center gap-1.5 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        {crumbs.map((crumb, index) => (
+          <li class="flex items-center gap-1.5" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            {index > 0 && (
+              <svg class="w-4 h-4 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            )}
+            {index === crumbs.length - 1 ? (
+              <span class="text-text-secondary font-medium" itemprop="name">{crumb.label}</span>
+            ) : (
+              <a href={crumb.href} class="text-navy hover:text-red-primary transition-colors" itemprop="item">
+                <span itemprop="name">{crumb.label}</span>
+              </a>
+            )}
+            <meta itemprop="position" content={String(index + 1)} />
+          </li>
+        ))}
+      </ol>
+    </div>
+  </nav>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+)}

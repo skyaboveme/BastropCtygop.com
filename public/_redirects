@@ -1,0 +1,23 @@
+# WordPress to Astro URL redirects
+/county-chair-justin-bezner/ /about/county-chair/ 301
+/leadership-team/ /about/leadership/ 301
+/precinct-chairs/ /about/precinct-chairs/ 301
+/precinct-chair-faqs/ /about/precinct-chair-faqs/ 301
+/bylaws-of-the-bastrop-county-gop/ /about/bylaws/ 301
+/state-gop-leadership-2/ /about/state-gop-leadership/ 301
+/commenting-policy-2/ /about/commenting-policy/ 301
+/calendar/ /events/ 301
+/4th-annual-golf-classic-returns/ /events/golf-classic/ 301
+/2026-precinct-and-county-conventions/ /events/2026-precinct-conventions/ 301
+/bcrps-2026-county-convention/ /events/2026-county-convention/ 301
+/march-monthly-informational-meeting/ /events/monthly-meetings/ 301
+/march-calendar-of-events/ /news/march-calendar-of-events/ 301
+/category/legislative-review/ /news/category/legislative-review/ 301
+/category/election/ /news/category/election/ 301
+/category/convention/ /news/category/convention/ 301
+/category/info-mtgs/ /news/category/informational-meetings/ 301
+/category/calendar-of-events/ /news/category/calendar-of-events/ 301
+/events/category/monthly-informational-meetings/ /events/monthly-meetings/ 301
+/events/category/fundraisers/golfclassic/ /events/golf-classic/ 301
+/events/category/fundraisers/bbbq/ /events/boots-and-barbecue/ 301
+/feed/ /rss.xml 301

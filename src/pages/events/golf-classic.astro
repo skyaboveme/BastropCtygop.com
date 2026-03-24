@@ -1,0 +1,96 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const eventSchema = {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "BCRP 4th Annual Golf Classic",
+  "startDate": "2026-04-10T08:00:00-05:00",
+  "location": {
+    "@type": "Place",
+    "name": "ColoVista Golf Club",
+    "address": "100 Country Club Drive, Bastrop, TX",
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Bastrop County Republican Party",
+    "url": "https://bastropctygop.com",
+  },
+  "description": "4th Annual Golf Classic fundraiser for the Bastrop County Republican Party",
+};
+---
+
+<PageLayout
+  title="Annual Golf Classic"
+  description="BCRP's 4th Annual Golf Classic at ColoVista Golf Club, Bastrop, TX. April 10th, 2026. Registration now open."
+  jsonLd={eventSchema}
+>
+  <section class="py-10 lg:py-16">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <!-- Main Content -->
+        <div class="lg:col-span-2">
+          <h1 class="text-3xl lg:text-4xl font-extrabold text-text-primary mb-6">4th Annual Golf Classic</h1>
+
+          <div class="prose prose-lg max-w-none">
+            <p class="text-xl text-text-secondary">Show us what you got! Registration for BCRP's 4th Annual Golf Classic is now <strong>OPEN</strong>.</p>
+
+            <p>Printed and Online REGISTRATION options are available.</p>
+
+            <p>Join us at ColoVista Golf Club for a premier day of golf, camaraderie, and support for the Bastrop County Republican Party. This flagship fundraising event brings together Republicans from across the county for competitive play, great food, prizes, and networking with fellow conservatives.</p>
+
+            <h2>Event Details</h2>
+            <ul>
+              <li><strong>Format:</strong> 4-person scramble</li>
+              <li><strong>Check-in:</strong> 7:00 AM</li>
+              <li><strong>Shotgun Start:</strong> 8:00 AM</li>
+              <li><strong>Awards &amp; Lunch:</strong> Following play</li>
+            </ul>
+
+            <h2>Registration Options</h2>
+            <ul>
+              <li><strong>Individual Player:</strong> Register online or download the printed registration form</li>
+              <li><strong>Team Registration:</strong> Form a foursome and save</li>
+              <li><strong>Sponsorship Opportunities:</strong> Multiple levels available to showcase your business</li>
+            </ul>
+
+            <h2>Sponsorship Opportunities</h2>
+            <p>Support the BCRP while gaining visibility for your business. Multiple sponsorship levels are available, from hole sponsorships to title sponsor packages. Contact BCRP for details.</p>
+          </div>
+        </div>
+
+        <!-- Event Sidebar -->
+        <aside class="lg:col-span-1">
+          <div class="bg-gray-light rounded-xl p-6 sticky top-24 space-y-5">
+            <h2 class="text-lg font-bold text-navy">Event Details</h2>
+
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-red-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <div>
+                <p class="font-semibold text-text-primary">Friday, April 10, 2026</p>
+                <p class="text-sm text-text-secondary">8:00 AM Shotgun Start</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-red-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <div>
+                <p class="font-semibold text-text-primary">ColoVista Golf Club</p>
+                <p class="text-sm text-text-secondary">100 Country Club Drive, Bastrop, TX</p>
+              </div>
+            </div>
+
+            <a href="/events/" class="block w-full text-center border-2 border-navy text-navy hover:bg-navy hover:text-white font-semibold py-3 px-5 rounded-lg transition-colors">
+              View All Events
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</PageLayout>

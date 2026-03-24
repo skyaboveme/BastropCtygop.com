@@ -1,0 +1,57 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LeaderCard from '../../components/ui/LeaderCard.astro';
+import { getCollection } from 'astro:content';
+
+const allLeaders = await getCollection('leadership');
+const countyLeaders = allLeaders
+  .filter((l) => l.data.type === 'county_leadership')
+  .sort((a, b) => a.data.order - b.data.order);
+
+// Include vacant positions
+const fullRoster = [
+  ...countyLeaders.map((l) => ({ name: l.data.name, title: l.data.title, email: l.data.email, phone: l.data.phone, photo: l.data.photo })),
+];
+
+// Add vacant positions
+const vacantPositions = [
+  { name: 'TBD', title: 'Vice Chair' },
+  { name: 'TBD', title: 'Parliamentarian' },
+  { name: 'TBD', title: 'Sergeant at Arms' },
+];
+---
+
+<PageLayout
+  title="Leadership Team"
+  description="Meet the leadership team of the Bastrop County Republican Party, selected and appointed by the County Chair."
+>
+  <section class="py-10 lg:py-16">
+    <div class="container max-w-5xl">
+      <h1 class="text-3xl lg:text-4xl font-extrabold text-text-primary mb-4">Leadership Team</h1>
+      <p class="text-lg text-text-secondary mb-10 max-w-3xl">
+        The Leadership Team are selected and appointed by the County Chair. Their main job is to support the Party operations and provide leadership to the Executive Committee.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {fullRoster.map((leader) => (
+          <LeaderCard
+            name={leader.name}
+            title={leader.title}
+            email={leader.email}
+            phone={leader.phone}
+            photo={leader.photo}
+          />
+        ))}
+        {vacantPositions.map((pos) => (
+          <div class="bg-gray-light/50 rounded-xl border border-dashed border-gray-medium p-5 text-center">
+            <div class="w-20 h-20 rounded-full mx-auto mb-4 bg-gray-medium flex items-center justify-center">
+              <span class="text-xl text-text-muted">?</span>
+            </div>
+            <h3 class="text-base font-bold text-text-muted">TBD</h3>
+            <p class="text-sm text-text-muted mt-1">{pos.title}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</PageLayout>

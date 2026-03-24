@@ -1,0 +1,65 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Justin Bezner",
+  "jobTitle": "Chairman, Bastrop County Republican Party",
+  "telephone": "(512) 825-2707",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Bastrop County Republican Party",
+  },
+};
+---
+
+<PageLayout
+  title="County Chair"
+  description="Justin Bezner serves as Chairman of the Bastrop County Republican Party, leading efforts to strengthen conservative values and promote civic engagement."
+  jsonLd={personSchema}
+>
+  <section class="py-10 lg:py-16">
+    <div class="container max-w-5xl">
+      <h1 class="text-3xl lg:text-4xl font-extrabold text-text-primary mb-8">County Chair</h1>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        <!-- Photo Column -->
+        <div class="lg:col-span-1">
+          <div class="bg-gray-light rounded-xl aspect-[3/4] flex items-center justify-center">
+            <div class="text-center">
+              <div class="w-24 h-24 rounded-full bg-navy/10 flex items-center justify-center mx-auto mb-3">
+                <span class="text-4xl font-bold text-navy">JB</span>
+              </div>
+              <p class="text-lg font-bold text-text-primary">Justin Bezner</p>
+              <p class="text-sm text-red-primary font-medium">Chairman</p>
+            </div>
+          </div>
+          <div class="mt-4 space-y-2">
+            <a href="tel:5128252707" class="flex items-center gap-2 text-sm text-navy hover:text-red-primary transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              (512) 825-2707
+            </a>
+          </div>
+        </div>
+
+        <!-- Bio Column -->
+        <div class="lg:col-span-2 prose prose-lg max-w-none">
+          <p>Justin Bezner serves as Chairman of the Bastrop County Republican Party, where he leads efforts to strengthen conservative values, promote civic engagement, and advance good governance across Bastrop County. A seasoned executive with over two decades of leadership in risk management and strategic operations, Bezner brings both business acumen and public service dedication to his role.</p>
+
+          <p>Professionally, Justin has built a distinguished career as a Risk Management Executive, having served in senior leadership roles across the healthcare, nonprofit, and insurance industries. His expertise has guided organizations nationwide in strengthening operational resilience. Over the course of his career, he has held various key leadership roles and spearheaded the development of commercial real estate holdings designed to build an enduring endowment that sustains nonprofit missions for generations to come.</p>
+
+          <p>As President of the Risk and Insurance Management Society's Central Texas Chapter, Justin led the organization to achieve significant growth in membership under his leadership, a reflection of his ability to inspire professionals and strengthen the industry network.</p>
+
+          <p>Beyond his professional achievements, Justin is deeply committed to public service and local leadership. He currently serves on the Bastrop Central Appraisal District Board of Directors and has previously served as Vice President and Secretary/Treasurer of the La Reata Ranch Property Owners Association, where he led community initiatives interfacing with county officials. He also contributes to the Smithville ISD Safety &amp; Security Committee, and has served on the Texas A&amp;M School of Public Health Industry Advisory Board and the International Field Studies Board of Directors. In addition, he previously served as a Citizens Advisory Committee Member for the Bastrop County Comprehensive Transportation Plan, reflecting his hands-on engagement in local affairs.</p>
+
+          <p>Justin is known for his pragmatic leadership style and his commitment to building bridges between business, government, and community stakeholders. His vision as Chairman is clear: to foster unity, transparency, and principled leadership that ensures Bastrop County remains a stronghold for conservative values and responsible governance.</p>
+
+          <p>After moving to Bastrop County from the Houston Medical Center in the early 2000s, Justin knew this community was where he wanted to build his life and give back.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

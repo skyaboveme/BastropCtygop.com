@@ -1,0 +1,54 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: FAQItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="space-y-3" id="faq-accordion">
+  {items.map((item, index) => (
+    <div class="border border-gray-medium rounded-lg overflow-hidden" data-faq-item>
+      <button
+        type="button"
+        class="w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-text-primary hover:bg-gray-light transition-colors"
+        aria-expanded="false"
+        aria-controls={`faq-answer-${index}`}
+        data-faq-toggle
+      >
+        <span>{item.question}</span>
+        <svg class="w-5 h-5 shrink-0 text-text-muted transition-transform duration-200" data-faq-icon fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div
+        id={`faq-answer-${index}`}
+        class="hidden px-5 pb-4"
+        role="region"
+        data-faq-content
+      >
+        <p class="text-text-secondary leading-relaxed">{item.answer}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  document.querySelectorAll('[data-faq-toggle]').forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      const item = toggle.closest('[data-faq-item]');
+      const content = item?.querySelector('[data-faq-content]') as HTMLElement;
+      const icon = item?.querySelector('[data-faq-icon]') as HTMLElement;
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      content?.classList.toggle('hidden');
+      icon?.classList.toggle('rotate-180');
+    });
+  });
+</script>

@@ -1,0 +1,81 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Card from '../../components/ui/Card.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts');
+const sortedPosts = allPosts.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const categories = [...new Set(allPosts.map((post) => post.data.category))].sort();
+---
+
+<PageLayout
+  title="News"
+  description="Latest news, updates, and announcements from the Bastrop County Republican Party."
+>
+  <section class="py-10 lg:py-16">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+        <!-- Main Content -->
+        <div class="lg:col-span-3">
+          <h1 class="text-3xl lg:text-4xl font-extrabold text-text-primary mb-8">Latest News</h1>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="news-grid">
+            {sortedPosts.map((post) => (
+              <div data-category={post.data.category}>
+                <Card
+                  title={post.data.title}
+                  href={`/news/${post.id}/`}
+                  excerpt={post.data.excerpt}
+                  date={new Date(post.data.date)}
+                  category={post.data.category}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-1">
+          <div class="sticky top-24 space-y-8">
+            <!-- Categories -->
+            <div class="bg-gray-light rounded-xl p-5">
+              <h2 class="text-sm font-bold text-text-primary uppercase tracking-wider mb-4">Categories</h2>
+              <ul class="space-y-2">
+                {categories.map((cat) => (
+                  <li>
+                    <a
+                      href={`/news/category/${cat.toLowerCase().replace(/\s+/g, '-')}/`}
+                      class="text-sm text-navy hover:text-red-primary transition-colors flex items-center justify-between"
+                    >
+                      {cat}
+                      <span class="text-xs text-text-muted bg-white px-2 py-0.5 rounded-full">
+                        {allPosts.filter((p) => p.data.category === cat).length}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Donate CTA -->
+            <div class="bg-red-primary rounded-xl p-5 text-center">
+              <h3 class="text-white font-bold mb-2">Support BCRP</h3>
+              <p class="text-white/80 text-sm mb-4">Your donation helps us promote conservative values.</p>
+              <a
+                href="https://bastropctygop.wufoo.com/forms/zwcqdgs1ydkjyo/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block bg-white text-red-primary font-semibold text-sm px-4 py-2.5 rounded-lg hover:bg-gray-light transition-colors"
+              >
+                Donate Today
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</PageLayout>

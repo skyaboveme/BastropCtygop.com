@@ -1,0 +1,63 @@
+---
+interface Props {
+  precinct: string;
+  name: string;
+  email?: string;
+  phone?: string;
+  vacant?: boolean;
+}
+
+const { precinct, name, email, phone, vacant = false } = Astro.props;
+---
+
+<div class={`rounded-xl border p-4 transition-all duration-300 ${
+  vacant
+    ? 'border-dashed border-gray-medium bg-gray-light/50'
+    : 'border-gray-medium bg-white hover:shadow-[var(--shadow-card-hover)]'
+}`}>
+  <div class="flex items-center gap-3">
+    <!-- Precinct Badge -->
+    <div class={`shrink-0 w-12 h-12 rounded-lg flex items-center justify-center ${
+      vacant ? 'bg-gray-medium text-text-muted' : 'bg-navy text-white'
+    }`}>
+      <span class="text-sm font-bold">{precinct}</span>
+    </div>
+
+    <div class="min-w-0 flex-1">
+      <h3 class={`font-bold text-sm ${vacant ? 'text-text-muted' : 'text-text-primary'}`}>
+        {vacant ? 'Vacant' : name}
+      </h3>
+      {!vacant && (
+        <div class="flex flex-wrap items-center gap-2 mt-1">
+          {email && (
+            <a
+              href={`mailto:${email}`}
+              class="inline-flex items-center gap-1 text-xs text-navy hover:text-red-primary transition-colors"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Email
+            </a>
+          )}
+          {phone && (
+            <a
+              href={`tel:${phone.replace(/\D/g, '')}`}
+              class="inline-flex items-center gap-1 text-xs text-navy hover:text-red-primary transition-colors"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21" />
+              </svg>
+              {phone}
+            </a>
+          )}
+        </div>
+      )}
+      {vacant && (
+        <a href="/about/county-chair/" class="text-xs text-red-primary hover:underline mt-1 inline-block">
+          Interested? Contact the County Chair
+        </a>
+      )}
+    </div>
+  </div>
+</div>

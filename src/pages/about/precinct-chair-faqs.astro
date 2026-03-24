@@ -1,0 +1,74 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import FAQAccordion from '../../components/ui/FAQAccordion.astro';
+
+const faqItems = [
+  {
+    question: 'What is a Precinct Chair?',
+    answer: 'Precinct Chairs are the basic building blocks to any successful political party. A Precinct Chair is the primary political agent of the Republican Party in that precinct. Organizing and campaigning are important duties of a precinct chair and entails knocking on doors in your area, phoning into homes in your area and hosting events to get to know the people in your area. Precinct chairs are essential for building the Republican Party. In addition to organizing and campaigning, Republican Precinct Chairs represent their home precincts on the Bastrop County Executive Committee.',
+  },
+  {
+    question: 'What is the CEC (County Executive Committee)?',
+    answer: 'While the County Chair is the senior elected party official in Bastrop County, the Executive Committee of precinct chairs is the governing body of the Bastrop County Republican Party and conducts all official party business. The Executive Committee meets at least four times per year.',
+  },
+  {
+    question: 'How do you get to be a Precinct Chair?',
+    answer: 'Precinct chairs are elected by primary election voters in their precinct every two years to serve a two-year term. Qualifications are set by the Texas Election Code. Between Republican Primary elections, vacant precinct chair positions are filled by a majority vote of the County Executive Committee.',
+  },
+  {
+    question: 'What are the qualifications needed to be a Precinct Chair?',
+    answer: 'To be precinct chair, a person must reside in that precinct and vote in the Republican Primary. A Precinct Chair cannot be a candidate for, or holder of, elected office of the federal, state, or county government.',
+  },
+  {
+    question: 'What are the duties and responsibilities of the Precinct Chair?',
+    answer: 'While the County Chair is the senior elected party official in Bastrop County, the County Executive Committee, made up of all the Republican precinct chairs, is the governing body of the Bastrop County Republican Party and conducts all official party business. The County Executive Committee meets at least four times per year. Read the Precinct Chair Handbook for details.',
+  },
+  {
+    question: 'Is Precinct Chair a paid position?',
+    answer: 'Precinct Chairs are political positions. They are not paid nor reimbursed for incidental expenses.',
+  },
+  {
+    question: 'What is a vacancy appointment?',
+    answer: 'A precinct that has no Chair is considered vacant. Between Primary elections, a qualified person may contact the Republican County Chair for an application form to fill the vacancy. The Bastrop County Republican Executive Committee\'s Vacancy Committee will review the application, usually interview the applicant, and make a recommendation to the full Executive Committee for a vote.',
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map((item) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer,
+    },
+  })),
+};
+---
+
+<PageLayout
+  title="Precinct Chair FAQs"
+  description="Frequently asked questions about serving as a Precinct Chair for the Bastrop County Republican Party."
+  jsonLd={faqSchema}
+>
+  <section class="py-10 lg:py-16">
+    <div class="container max-w-3xl">
+      <h1 class="text-3xl lg:text-4xl font-extrabold text-text-primary mb-4">Precinct Chair FAQs</h1>
+      <p class="text-lg text-text-secondary mb-10">
+        Learn about what it means to serve as a Precinct Chair for the Bastrop County Republican Party.
+      </p>
+
+      <FAQAccordion items={faqItems} />
+
+      <!-- CTA -->
+      <div class="mt-12 p-6 bg-gray-light rounded-xl border border-gray-medium text-center">
+        <h3 class="text-lg font-bold text-text-primary mb-2">Interested in Becoming a Precinct Chair?</h3>
+        <p class="text-sm text-text-secondary mb-4">Contact County Chair Justin Bezner to learn more about open positions and the application process.</p>
+        <a href="/about/county-chair/" class="inline-flex items-center gap-2 bg-red-primary hover:bg-red-dark text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors">
+          Contact County Chair
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

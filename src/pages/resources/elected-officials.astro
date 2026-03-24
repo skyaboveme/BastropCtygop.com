@@ -1,0 +1,74 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="Elected Officials"
+  description="Find your elected officials at the local, state, and federal level. Resources for Bastrop County voters."
+>
+  <section class="py-10 lg:py-16">
+    <div class="container max-w-3xl">
+      <h1 class="text-3xl lg:text-4xl font-extrabold text-text-primary mb-4">Elected Officials</h1>
+      <p class="text-lg text-text-secondary mb-10">
+        Find and contact your elected officials at every level of government.
+      </p>
+
+      <div class="space-y-6">
+        <!-- Local Officials -->
+        <a href="https://www.bastropvotes.org/elected-officials/" target="_blank" rel="noopener noreferrer" class="block bg-white rounded-xl border border-gray-medium p-6 hover:shadow-[var(--shadow-card-hover)] transition-all group">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="text-lg font-bold text-text-primary group-hover:text-navy transition-colors">Local Elected Officials</h2>
+              <p class="text-sm text-text-secondary mt-1">County Judge, Commissioners, Constables, and more</p>
+              <p class="text-xs text-navy mt-2">bastropvotes.org</p>
+            </div>
+            <svg class="w-5 h-5 text-text-muted group-hover:text-navy transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </div>
+        </a>
+
+        <!-- State Officials -->
+        <a href="https://www.sos.state.tx.us/elections/voter/elected.shtml" target="_blank" rel="noopener noreferrer" class="block bg-white rounded-xl border border-gray-medium p-6 hover:shadow-[var(--shadow-card-hover)] transition-all group">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="text-lg font-bold text-text-primary group-hover:text-navy transition-colors">Texas State Officials</h2>
+              <p class="text-sm text-text-secondary mt-1">Governor, Lt. Governor, State Representatives, and Senators</p>
+              <p class="text-xs text-navy mt-2">Texas Secretary of State</p>
+            </div>
+            <svg class="w-5 h-5 text-text-muted group-hover:text-navy transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </div>
+        </a>
+
+        <!-- Federal Officials -->
+        <a href="https://www.usa.gov/elected-officials" target="_blank" rel="noopener noreferrer" class="block bg-white rounded-xl border border-gray-medium p-6 hover:shadow-[var(--shadow-card-hover)] transition-all group">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="text-lg font-bold text-text-primary group-hover:text-navy transition-colors">Contact Elected Officials</h2>
+              <p class="text-sm text-text-secondary mt-1">U.S. Senators, Representatives, and Federal Officials</p>
+              <p class="text-xs text-navy mt-2">usa.gov</p>
+            </div>
+            <svg class="w-5 h-5 text-text-muted group-hover:text-navy transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </div>
+        </a>
+
+        <!-- Bastrop Votes -->
+        <a href="https://www.bastropvotes.org/" target="_blank" rel="noopener noreferrer" class="block bg-navy rounded-xl p-6 hover:bg-navy-dark transition-colors group">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="text-lg font-bold text-white">BastropVotes.org</h2>
+              <p class="text-sm text-white/70 mt-1">Voter registration, polling locations, sample ballots, and election results</p>
+            </div>
+            <svg class="w-5 h-5 text-white/50 group-hover:text-white transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

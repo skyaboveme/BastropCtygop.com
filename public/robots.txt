@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bastropctygop.com/sitemap-index.xml

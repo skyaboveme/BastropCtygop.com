@@ -1,0 +1,36 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LeaderCard from '../../components/ui/LeaderCard.astro';
+
+const stateLeaders = [
+  { name: 'Abraham George', title: 'Chairman', order: 1 },
+  { name: "D'rinda Randall", title: 'Vice Chair', order: 2 },
+  { name: 'Susan Lucas', title: 'State Executive Committee, SD-5', order: 3 },
+  { name: 'Jeremy Story', title: 'State Executive Committee, SD-5', order: 4 },
+  { name: 'Debbie Georgatos', title: 'RNC National Committeewoman', order: 5 },
+  { name: 'Dr. Robin Armstrong', title: 'RNC National Committeeman', order: 6 },
+];
+---
+
+<PageLayout
+  title="State GOP Leadership"
+  description="Elected officers of the Republican Party of Texas for the 2024-2026 Session."
+>
+  <section class="py-10 lg:py-16">
+    <div class="container max-w-5xl">
+      <h1 class="text-3xl lg:text-4xl font-extrabold text-text-primary mb-4">State GOP Leadership</h1>
+      <p class="text-lg text-text-secondary mb-10">
+        Elected officers of the Republican Party of Texas for the 2024-2026 Session.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {stateLeaders.map((leader) => (
+          <LeaderCard
+            name={leader.name}
+            title={leader.title}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</PageLayout>

@@ -1,0 +1,62 @@
+---
+interface Props {
+  headline: string;
+  subheadline?: string;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+}
+
+const {
+  headline,
+  subheadline,
+  primaryCta,
+  secondaryCta,
+} = Astro.props;
+---
+
+<section class="relative bg-navy overflow-hidden">
+  <!-- Subtle pattern overlay -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.15&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+  </div>
+  <!-- Red accent bar at top -->
+  <div class="absolute top-0 left-0 right-0 h-1 bg-red-primary"></div>
+
+  <div class="container relative z-10 py-16 lg:py-24 text-center">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 lg:mb-6">
+      {headline}
+    </h1>
+    {subheadline && (
+      <p class="text-lg lg:text-xl text-white/80 max-w-3xl mx-auto mb-8 lg:mb-10">
+        {subheadline}
+      </p>
+    )}
+    {(primaryCta || secondaryCta) && (
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        {primaryCta && (
+          <a
+            href={primaryCta.href}
+            class="inline-flex items-center gap-2 bg-red-primary hover:bg-red-dark text-white font-semibold text-lg px-8 py-3.5 rounded-lg transition-colors shadow-lg"
+          >
+            {primaryCta.label}
+          </a>
+        )}
+        {secondaryCta && (
+          <a
+            href={secondaryCta.href}
+            class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg px-8 py-3.5 rounded-lg transition-colors border border-white/20"
+          >
+            {secondaryCta.label}
+          </a>
+        )}
+      </div>
+    )}
+  </div>
+
+  <!-- Bottom wave -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+      <path d="M0 48h1440V16C1200 0 960 32 720 32S240 0 0 16v32z" fill="white" />
+    </svg>
+  </div>
+</section>

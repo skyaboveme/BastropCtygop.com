@@ -1,0 +1,66 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="Monthly Meetings"
+  description="Join the Bastrop County Republican Party for monthly informational meetings. Doors open at 6 PM, discussion begins at 6:30 PM."
+>
+  <section class="py-10 lg:py-16">
+    <div class="container max-w-3xl">
+      <h1 class="text-3xl lg:text-4xl font-extrabold text-text-primary mb-6">Monthly Informational Meetings</h1>
+
+      <div class="bg-gray-light rounded-xl p-6 lg:p-8 mb-8">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-lg bg-navy flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-lg font-bold text-text-primary mb-1">Recurring Monthly Meeting</h2>
+            <p class="text-text-secondary">Usually held the fourth Monday of each month</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prose prose-lg max-w-none">
+        <h2>Meeting Details</h2>
+        <ul>
+          <li><strong>Location:</strong> Bastrop County Republican Party Meeting Space</li>
+          <li><strong>Address:</strong> 443 Highway 71 West, Bastrop, TX 78602</li>
+          <li><strong>Doors Open:</strong> 6:00 PM</li>
+          <li><strong>Discussion Begins:</strong> 6:30 PM</li>
+        </ul>
+
+        <h2>What to Expect</h2>
+        <p>Our monthly informational meetings provide an opportunity to:</p>
+        <ul>
+          <li>Hear updates on local and state political developments</li>
+          <li>Listen to guest speakers on important topics</li>
+          <li>Connect with fellow Bastrop County Republicans</li>
+          <li>Learn about volunteer opportunities</li>
+          <li>Stay informed on upcoming elections and events</li>
+        </ul>
+
+        <p>All registered Republicans and interested community members are welcome to attend. Come early for fellowship and refreshments before the program begins.</p>
+
+        <h2>Upcoming Meetings</h2>
+        <p><strong>March 2026 Meeting:</strong> Monday, March 23, 2026</p>
+      </div>
+
+      <div class="mt-10 p-6 bg-navy rounded-xl text-center">
+        <h3 class="text-lg font-bold text-white mb-2">Can't Attend In Person?</h3>
+        <p class="text-white/70 text-sm mb-4">Follow us on social media for updates and meeting recaps.</p>
+        <div class="flex items-center justify-center gap-3">
+          <a href="https://www.facebook.com/BCRPBastropTX" target="_blank" rel="noopener noreferrer" class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+            Facebook
+          </a>
+          <a href="https://twitter.com/BastropCtyGOP" target="_blank" rel="noopener noreferrer" class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+            Twitter / X
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

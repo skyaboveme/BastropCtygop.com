@@ -1,0 +1,171 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import Card from '../components/ui/Card.astro';
+import EventCard from '../components/ui/EventCard.astro';
+import NewsletterSignup from '../components/ui/NewsletterSignup.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts');
+const latestPosts = allPosts
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
+
+const allEvents = await getCollection('events');
+const upcomingEvents = allEvents
+  .filter((e) => new Date(e.data.date) >= new Date('2026-03-22'))
+  .sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime())
+  .slice(0, 3);
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Bastrop County Republican Party",
+  "alternateName": "BCRP",
+  "url": "https://bastropctygop.com",
+  "telephone": "512-409-1415",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "443 Highway 71 West",
+    "addressLocality": "Bastrop",
+    "addressRegion": "TX",
+    "postalCode": "78602",
+    "addressCountry": "US",
+  },
+  "sameAs": [
+    "https://www.facebook.com/BCRPBastropTX",
+    "https://twitter.com/BastropCtyGOP",
+  ],
+};
+---
+
+<PageLayout
+  title="Home"
+  description="The Official Representatives for the Republican Party of Texas in Bastrop County. Get involved, find your precinct chair, and stay informed."
+  jsonLd={orgSchema}
+  showBreadcrumbs={false}
+>
+  <!-- Hero Section -->
+  <Hero
+    headline="Bastrop County Republican Party"
+    subheadline="The Official Representatives for the Republican Party of Texas in Bastrop County"
+    primaryCta={{ label: 'Upcoming Events', href: '/events/' }}
+    secondaryCta={{ label: 'Get Involved', href: '/about/precinct-chairs/' }}
+  />
+
+  <!-- Upcoming Events -->
+  {upcomingEvents.length > 0 && (
+    <section class="py-12 lg:py-16 bg-gray-light">
+      <div class="container">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-2xl lg:text-3xl font-extrabold text-text-primary">Upcoming Events</h2>
+          <a href="/events/" class="text-sm font-medium text-navy hover:text-red-primary transition-colors inline-flex items-center gap-1">
+            View All
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {upcomingEvents.map((event) => (
+            <EventCard
+              title={event.data.title}
+              date={new Date(event.data.date)}
+              time={event.data.time}
+              location={event.data.location}
+              href={`/events/${event.id}/`}
+              category={event.data.category}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Latest News -->
+  <section class="py-12 lg:py-16">
+    <div class="container">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl lg:text-3xl font-extrabold text-text-primary">Latest News</h2>
+        <a href="/news/" class="text-sm font-medium text-navy hover:text-red-primary transition-colors inline-flex items-center gap-1">
+          View All News
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {latestPosts.map((post) => (
+          <Card
+            title={post.data.title}
+            href={`/news/${post.id}/`}
+            excerpt={post.data.excerpt}
+            date={new Date(post.data.date)}
+            category={post.data.category}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Links / CTA Section -->
+  <section class="py-12 lg:py-16 bg-gray-light">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Find Precinct Chair -->
+        <div class="bg-white rounded-xl p-6 lg:p-8 border border-gray-medium text-center hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
+          <div class="w-14 h-14 rounded-full bg-navy/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-text-primary mb-2">Find Your Precinct Chair</h3>
+          <p class="text-sm text-text-secondary mb-4">Connect with your local Republican representative and get involved in your precinct.</p>
+          <a href="/about/precinct-chairs/" class="inline-flex items-center gap-1 text-sm font-semibold text-navy hover:text-red-primary transition-colors">
+            Find Your Chair
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Donate -->
+        <div class="bg-white rounded-xl p-6 lg:p-8 border border-gray-medium text-center hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
+          <div class="w-14 h-14 rounded-full bg-red-primary/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-red-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-text-primary mb-2">Donate to BCRP</h3>
+          <p class="text-sm text-text-secondary mb-4">Your generous contribution helps us promote conservative values across Bastrop County.</p>
+          <a href="https://bastropctygop.wufoo.com/forms/zwcqdgs1ydkjyo/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-sm font-semibold text-red-primary hover:text-red-dark transition-colors">
+            Donate Today
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Attend a Meeting -->
+        <div class="bg-white rounded-xl p-6 lg:p-8 border border-gray-medium text-center hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
+          <div class="w-14 h-14 rounded-full bg-navy/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-text-primary mb-2">Attend a Meeting</h3>
+          <p class="text-sm text-text-secondary mb-4">Join us for our monthly informational meetings held at the BCRP office in Bastrop.</p>
+          <a href="/events/monthly-meetings/" class="inline-flex items-center gap-1 text-sm font-semibold text-navy hover:text-red-primary transition-colors">
+            Meeting Details
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup -->
+  <NewsletterSignup />
+</PageLayout>

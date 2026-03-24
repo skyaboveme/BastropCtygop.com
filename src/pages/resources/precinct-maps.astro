@@ -1,0 +1,45 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="Precinct Maps"
+  description="Find your Bastrop County election precinct. View precinct maps and boundary information."
+>
+  <section class="py-10 lg:py-16">
+    <div class="container max-w-3xl">
+      <h1 class="text-3xl lg:text-4xl font-extrabold text-text-primary mb-4">Precinct Maps</h1>
+      <p class="text-lg text-text-secondary mb-10">
+        Find your Bastrop County precinct number to identify your precinct chair and polling location.
+      </p>
+
+      <div class="space-y-6">
+        <div class="bg-gray-light rounded-xl p-6 lg:p-8">
+          <h2 class="text-lg font-bold text-text-primary mb-3">County &amp; Election Precinct Maps</h2>
+          <p class="text-text-secondary mb-4">
+            Bastrop County is divided into 26 election precincts. Use the resources below to find which precinct you reside in.
+          </p>
+          <a
+            href="https://www.bastropvotes.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-navy hover:bg-navy-dark text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors"
+          >
+            Visit BastropVotes.org
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="bg-white rounded-xl border border-gray-medium p-6 lg:p-8 text-center">
+          <h3 class="text-lg font-bold text-text-primary mb-2">Know Your Precinct?</h3>
+          <p class="text-text-secondary mb-4">Find your Precinct Chair and get involved in your local Republican Party.</p>
+          <a href="/about/precinct-chairs/" class="inline-flex items-center gap-2 bg-red-primary hover:bg-red-dark text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors">
+            Find Your Precinct Chair
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

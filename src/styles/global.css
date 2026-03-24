@@ -1,0 +1,114 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Brand Colors */
+  --color-red-primary: #A80A0A;
+  --color-red-dark: #8B0808;
+  --color-red-light: #D42A2A;
+  --color-navy: #38428E;
+  --color-navy-dark: #2A3270;
+  --color-navy-light: #4A56A8;
+  --color-white: #FFFFFF;
+  --color-gray-light: #F5F5F5;
+  --color-gray-medium: #E5E5E5;
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #4A4A4A;
+  --color-text-muted: #6B7280;
+
+  /* Font Families */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Merriweather', Georgia, serif;
+
+  /* Font Sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+
+  /* Spacing */
+  --spacing-section: 5rem;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-card-hover: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  --shadow-header: 0 2px 4px rgba(0,0,0,0.08);
+
+  /* Transitions */
+  --transition-base: 150ms ease-in-out;
+  --transition-slow: 300ms ease-in-out;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background-color: var(--color-white);
+  line-height: 1.6;
+}
+
+::selection {
+  background-color: var(--color-red-primary);
+  color: var(--color-white);
+}
+
+/* Skip to content */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: var(--color-navy);
+  color: var(--color-white);
+  font-weight: 600;
+}
+.skip-to-content:focus {
+  left: 0;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Prose customization for blog content */
+.prose h2 {
+  color: var(--color-navy);
+  border-bottom: 2px solid var(--color-gray-medium);
+  padding-bottom: 0.5rem;
+}
+
+.prose a {
+  color: var(--color-navy);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  color: var(--color-red-primary);
+}
+
+.prose blockquote {
+  border-left-color: var(--color-red-primary);
+}

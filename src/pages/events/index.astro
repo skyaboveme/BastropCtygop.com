@@ -1,0 +1,94 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import EventCard from '../../components/ui/EventCard.astro';
+import { getCollection } from 'astro:content';
+
+const allEvents = await getCollection('events');
+const sortedEvents = allEvents.sort(
+  (a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime()
+);
+
+const upcomingEvents = sortedEvents.filter((e) => new Date(e.data.date) >= new Date('2026-03-01'));
+const pastEvents = sortedEvents.filter((e) => new Date(e.data.date) < new Date('2026-03-01'));
+---
+
+<PageLayout
+  title="Events"
+  description="Upcoming events, meetings, and activities of the Bastrop County Republican Party."
+>
+  <section class="py-10 lg:py-16">
+    <div class="container max-w-4xl">
+      <h1 class="text-3xl lg:text-4xl font-extrabold text-text-primary mb-4">Events Calendar</h1>
+      <p class="text-lg text-text-secondary mb-10">
+        Stay connected with the Bastrop County Republican Party. Join us at our meetings, fundraisers, conventions, and community events.
+      </p>
+
+      <!-- Upcoming Events -->
+      {upcomingEvents.length > 0 && (
+        <div class="mb-12">
+          <h2 class="text-xl font-bold text-navy mb-6 flex items-center gap-2">
+            <span class="w-2 h-2 bg-red-primary rounded-full"></span>
+            Upcoming Events
+          </h2>
+          <div class="space-y-4">
+            {upcomingEvents.map((event) => (
+              <EventCard
+                title={event.data.title}
+                date={new Date(event.data.date)}
+                time={event.data.time}
+                location={event.data.location}
+                href={`/events/${event.id}/`}
+                category={event.data.category}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Past Events -->
+      {pastEvents.length > 0 && (
+        <div>
+          <h2 class="text-xl font-bold text-text-muted mb-6">Past Events</h2>
+          <div class="space-y-4 opacity-60">
+            {pastEvents.map((event) => (
+              <EventCard
+                title={event.data.title}
+                date={new Date(event.data.date)}
+                time={event.data.time}
+                location={event.data.location}
+                href={`/events/${event.id}/`}
+                category={event.data.category}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Quick Links -->
+      <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <a href="/events/monthly-meetings/" class="flex items-center gap-3 bg-gray-light rounded-xl p-5 hover:shadow-[var(--shadow-card-hover)] transition-all">
+          <div class="w-10 h-10 rounded-lg bg-navy flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-text-primary text-sm">Monthly Meetings</h3>
+            <p class="text-xs text-text-secondary">Info about recurring monthly meetings</p>
+          </div>
+        </a>
+        <a href="/events/golf-classic/" class="flex items-center gap-3 bg-gray-light rounded-xl p-5 hover:shadow-[var(--shadow-card-hover)] transition-all">
+          <div class="w-10 h-10 rounded-lg bg-red-primary flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-text-primary text-sm">Annual Golf Classic</h3>
+            <p class="text-xs text-text-secondary">Our premier annual fundraiser</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

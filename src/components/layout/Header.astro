@@ -1,0 +1,218 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  {
+    label: 'News',
+    href: '/news/',
+    children: [
+      { label: 'Latest News', href: '/news/' },
+      { label: 'Legislative Updates', href: '/news/category/legislative-review/' },
+      { label: 'Election News', href: '/news/category/election/' },
+      { label: 'Convention News', href: '/news/category/convention/' },
+    ],
+  },
+  {
+    label: 'Events',
+    href: '/events/',
+    children: [
+      { label: 'Calendar', href: '/events/' },
+      { label: 'Monthly Meetings', href: '/events/monthly-meetings/' },
+      { label: 'Annual Golf Classic', href: '/events/golf-classic/' },
+    ],
+  },
+  {
+    label: 'About',
+    href: '/about/county-chair/',
+    children: [
+      { label: 'County Chair', href: '/about/county-chair/' },
+      { label: 'Leadership Team', href: '/about/leadership/' },
+      { label: 'Precinct Chairs', href: '/about/precinct-chairs/' },
+      { label: 'Precinct Chair FAQs', href: '/about/precinct-chair-faqs/' },
+      { label: 'Bylaws', href: '/about/bylaws/' },
+      { label: 'State GOP Leadership', href: '/about/state-gop-leadership/' },
+    ],
+  },
+  {
+    label: 'Resources',
+    href: '/resources/elected-officials/',
+    children: [
+      { label: 'Elected Officials', href: '/resources/elected-officials/' },
+      { label: 'Bastrop Votes', href: 'https://bastropvotes.org', external: true },
+      { label: 'Precinct Maps', href: '/resources/precinct-maps/' },
+      { label: 'Commenting Policy', href: '/about/commenting-policy/' },
+    ],
+  },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="sticky top-0 z-50 bg-white shadow-[var(--shadow-header)] transition-all duration-300" id="site-header">
+  <div class="container">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 shrink-0" aria-label="Bastrop County Republican Party Home">
+        <div class="flex flex-col">
+          <span class="text-lg lg:text-xl font-extrabold text-navy leading-tight">Bastrop County</span>
+          <span class="text-sm lg:text-base font-semibold text-red-primary leading-tight">Republican Party</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-1" aria-label="Primary navigation">
+        {navItems.map((item) => (
+          <div class="relative group">
+            <a
+              href={item.href}
+              class={`px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 inline-flex items-center gap-1 ${
+                isActive(item.href)
+                  ? 'text-red-primary bg-red-primary/5'
+                  : 'text-text-primary hover:text-red-primary hover:bg-gray-light'
+              }`}
+            >
+              {item.label}
+              {item.children && (
+                <svg class="w-4 h-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              )}
+            </a>
+            {item.children && (
+              <div class="absolute left-0 top-full pt-1 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-50">
+                <div class="bg-white rounded-lg shadow-lg border border-gray-medium py-2 min-w-[220px]">
+                  {item.children.map((child) => (
+                    <a
+                      href={child.href}
+                      class={`block px-4 py-2 text-sm transition-colors duration-150 ${
+                        currentPath === child.href
+                          ? 'text-red-primary bg-red-primary/5 font-medium'
+                          : 'text-text-primary hover:text-red-primary hover:bg-gray-light'
+                      }`}
+                      {...(child.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    >
+                      {child.label}
+                      {child.external && (
+                        <svg class="w-3 h-3 inline ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      )}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </nav>
+
+      <!-- Right Side: Donate + Mobile Menu -->
+      <div class="flex items-center gap-3">
+        <a
+          href="https://bastropctygop.wufoo.com/forms/zwcqdgs1ydkjyo/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden sm:inline-flex items-center gap-2 bg-red-primary hover:bg-red-dark text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors duration-200 shadow-sm"
+          id="donate-button-header"
+        >
+          Donate
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button
+          type="button"
+          class="lg:hidden p-2 rounded-md text-text-primary hover:bg-gray-light transition-colors"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          id="mobile-menu-toggle"
+        >
+          <svg class="w-6 h-6" id="menu-icon-open" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg class="w-6 h-6 hidden" id="menu-icon-close" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="lg:hidden hidden border-t border-gray-medium bg-white" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <div class="container py-4 space-y-1">
+      {navItems.map((item) => (
+        <div>
+          <a
+            href={item.href}
+            class={`block px-4 py-3 text-base font-medium rounded-md transition-colors ${
+              isActive(item.href)
+                ? 'text-red-primary bg-red-primary/5'
+                : 'text-text-primary hover:text-red-primary hover:bg-gray-light'
+            }`}
+          >
+            {item.label}
+          </a>
+          {item.children && (
+            <div class="pl-4 space-y-0.5">
+              {item.children.map((child) => (
+                <a
+                  href={child.href}
+                  class={`block px-4 py-2 text-sm rounded-md transition-colors ${
+                    currentPath === child.href
+                      ? 'text-red-primary font-medium'
+                      : 'text-text-secondary hover:text-red-primary hover:bg-gray-light'
+                  }`}
+                  {...(child.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  {child.label}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+      <div class="pt-3 border-t border-gray-medium">
+        <a
+          href="https://bastropctygop.wufoo.com/forms/zwcqdgs1ydkjyo/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block text-center bg-red-primary hover:bg-red-dark text-white font-semibold text-base px-5 py-3 rounded-lg transition-colors"
+        >
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden');
+    iconClose?.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Sticky header shrink on scroll
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('site-header');
+    if (!header) return;
+    if (window.scrollY > 50) {
+      header.classList.add('shadow-lg');
+    } else {
+      header.classList.remove('shadow-lg');
+    }
+    lastScroll = window.scrollY;
+  });
+</script>
