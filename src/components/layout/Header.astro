@@ -54,15 +54,15 @@ function isActive(href: string): boolean {
 
 <header class="sticky top-0 z-50 bg-white shadow-[var(--shadow-header)] transition-all duration-300" id="site-header">
   <div class="container">
-    <div class="flex items-center justify-between h-16 lg:h-20">
+    <div class="flex items-center justify-between h-20 lg:h-28">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-3 shrink-0" aria-label="Bastrop County Republican Party Home">
         <img
           src="/BCRP-Logo.webp"
           alt="Bastrop County Republican Party Logo"
-          class="h-10 lg:h-12 w-auto object-contain"
-          width="180"
-          height="60"
+          class="h-14 lg:h-20 w-auto object-contain"
+          width="240"
+          height="80"
         />
       </a>
 
@@ -72,7 +72,7 @@ function isActive(href: string): boolean {
           <div class="relative group">
             <a
               href={item.href}
-              class={`px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 inline-flex items-center gap-1 ${
+              class={`px-4 py-3 text-base lg:text-lg font-semibold rounded-md transition-colors duration-200 inline-flex items-center gap-1 ${
                 isActive(item.href)
                   ? 'text-red-primary bg-red-primary/5'
                   : 'text-text-primary hover:text-red-primary hover:bg-gray-light'
