@@ -4,6 +4,7 @@ import Hero from '../components/sections/Hero.astro';
 import MissionSection from '../components/sections/MissionSection.astro';
 import GetInvolvedSection from '../components/sections/GetInvolvedSection.astro';
 import Card from '../components/ui/Card.astro';
+import GolfPopup from '../components/ui/GolfPopup.astro';
 import EventCard from '../components/ui/EventCard.astro';
 import NewsletterSignup from '../components/ui/NewsletterSignup.astro';
 import { getCollection } from 'astro:content';
@@ -55,6 +56,8 @@ const orgSchema = {
     secondaryCta={{ label: 'Upcoming Events', href: '/events/' }}
     backgroundImage="/scenic_view_of_colorado_river_in_bastrop_texas.png"
   />
+
+  <GolfPopup />
 
   <MissionSection />
 
