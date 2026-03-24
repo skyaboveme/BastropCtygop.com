@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import Hero from '../components/sections/Hero.astro';
+import MissionSection from '../components/sections/MissionSection.astro';
 import Card from '../components/ui/Card.astro';
 import EventCard from '../components/ui/EventCard.astro';
 import NewsletterSignup from '../components/ui/NewsletterSignup.astro';
@@ -53,6 +54,8 @@ const orgSchema = {
     secondaryCta={{ label: 'Upcoming Events', href: '/events/' }}
     backgroundImage="/scenic_view_of_colorado_river_in_bastrop_texas.png"
   />
+
+  <MissionSection />
 
   <!-- Promo Banner -->
   <section class="pt-12 bg-gray-light">

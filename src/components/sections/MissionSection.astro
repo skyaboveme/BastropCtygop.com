@@ -1,0 +1,71 @@
+---
+---
+
+<section class="py-16 lg:py-24 bg-white overflow-hidden">
+  <div class="container mx-auto px-4">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      
+      <!-- Left side: Image with Offset Background -->
+      <div class="relative w-full max-w-xl mx-auto lg:max-w-none">
+        <!-- Offset Tan Background -->
+        <div class="absolute -top-4 -left-4 w-[calc(100%+8px)] h-[calc(100%+8px)] bg-[#fdf3e1] rounded-xl -z-10"></div>
+        
+        <!-- Main Image -->
+        <img 
+          src="/20251203_125007_1764988139353.jpg" 
+          alt="Bastrop County Courthouse" 
+          class="w-full h-auto aspect-[4/3] object-cover rounded-xl border-4 border-white shadow-md relative z-0"
+        />
+        
+        <!-- Blue Quote Overlay Card -->
+        <div class="absolute -bottom-8 right-8 lg:right-0 z-10 bg-navy text-white p-6 md:p-8 rounded-lg shadow-xl w-[90%] sm:w-[80%] max-w-sm border border-navy-light/30 translate-x-[5%]">
+          <p class="font-serif text-lg md:text-xl leading-relaxed mb-4 font-medium">
+            "The price of liberty is<br/>eternal vigilance."
+          </p>
+          <p class="text-gold font-bold text-sm tracking-wide">
+            - Thomas Jefferson
+          </p>
+        </div>
+      </div>
+
+      <!-- Right side: Content -->
+      <div class="mt-16 lg:mt-0 flex flex-col justify-center max-w-lg lg:max-w-none mx-auto w-full">
+        <h2 class="text-sm font-bold tracking-[0.15em] text-red-primary uppercase mb-3">Our Mission</h2>
+        <h3 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-navy leading-tight mb-6">
+          Championing Faith, Family, and Freedom
+        </h3>
+        
+        <p class="text-text-secondary text-base md:text-lg leading-relaxed mb-8">
+          The Bastrop County Republican Party is committed to advancing the principles of individual liberty, limited government, and personal responsibility. We believe in the strength of our community and the power of conservative leadership to create a prosperous future for all residents.
+        </p>
+
+        <ul class="space-y-4 mb-10">
+          {[
+            'Recruiting and electing principled Republican candidates',
+            'Promoting election integrity and transparency',
+            'Engaging voters through education and outreach',
+            'Supporting local businesses and economic growth'
+          ].map((item) => (
+            <li class="flex items-start gap-3">
+              <!-- Custom Checkmark Icon -->
+              <svg class="w-6 h-6 text-red-primary shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="text-text-primary font-medium">{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div>
+          <a href="/about/bylaws/" class="inline-flex items-center gap-2 text-navy font-bold text-lg hover:text-red-primary transition-colors">
+            Read Our Full Platform
+            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
