@@ -16,7 +16,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="relative bg-navy overflow-hidden min-h-[70vh] flex flex-col justify-center">
+<section class="relative bg-navy overflow-hidden min-h-[55vh] flex flex-col justify-center">
   {backgroundImage && (
     <div class="absolute inset-0 bg-navy">
       <img src={backgroundImage} alt="" class="w-full h-full object-cover object-center opacity-50 mix-blend-luminosity" />
@@ -32,12 +32,12 @@ const {
   <!-- Red accent bar at top -->
   <div class="absolute top-0 left-0 right-0 h-1 bg-red-primary"></div>
 
-  <div class="container relative z-10 py-16 lg:py-24 text-center">
-    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 lg:mb-6">
+  <div class="container relative z-10 py-12 lg:py-16 text-center">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-3 lg:mb-4">
       {headline}
     </h1>
     {subheadline && (
-      <p class="text-lg lg:text-xl text-white/80 max-w-3xl mx-auto mb-8 lg:mb-10">
+      <p class="text-lg lg:text-xl text-white/80 max-w-3xl mx-auto mb-6 lg:mb-8">
         {subheadline}
       </p>
     )}
