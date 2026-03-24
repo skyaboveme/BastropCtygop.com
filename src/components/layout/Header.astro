@@ -53,30 +53,34 @@ function isActive(href: string): boolean {
 }
 ---
 
-<header class="sticky top-0 z-50 bg-white shadow-[var(--shadow-header)] transition-all duration-300" id="site-header">
-  <div class="container">
-    <div class="flex items-center justify-between h-20 lg:h-28">
-      <!-- Logo -->
-      <a href="/" class="flex items-center gap-3 shrink-0" aria-label="Bastrop County Republican Party Home">
+<header class="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 transition-all duration-300" id="site-header">
+  <div class="container mx-auto">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo & Brand Lockup -->
+      <a href="/" class="flex items-center gap-3 shrink-0 transition-opacity hover:opacity-90" aria-label="Bastrop County Republican Party Home">
         <img
           src="/BCRP-Logo.webp"
           alt="Bastrop County Republican Party Logo"
-          class="h-14 lg:h-20 w-auto object-contain"
-          width="240"
-          height="80"
+          class="h-12 w-12 object-contain"
+          width="48"
+          height="48"
         />
+        <div class="hidden sm:block">
+          <h1 class="text-xl font-serif font-bold text-navy leading-none uppercase">Bastrop County</h1>
+          <p class="text-[0.65rem] font-bold tracking-[0.2em] text-red-primary uppercase mt-1">Republican Party</p>
+        </div>
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex items-center gap-1" aria-label="Primary navigation">
+      <nav class="hidden lg:flex items-center gap-2" aria-label="Primary navigation">
         {navItems.map((item) => (
           <div class="relative group">
             <a
               href={item.href}
-              class={`px-4 py-3 text-base lg:text-lg font-semibold rounded-md transition-colors duration-200 inline-flex items-center gap-1 ${
+              class={`px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 inline-flex items-center gap-1 ${
                 isActive(item.href)
-                  ? 'text-red-primary bg-red-primary/5'
-                  : 'text-text-primary hover:text-red-primary hover:bg-gray-light'
+                  ? 'text-navy font-bold'
+                  : 'text-text-muted hover:text-navy hover:bg-gray-50'
               }`}
             >
               {item.label}
@@ -87,15 +91,15 @@ function isActive(href: string): boolean {
               )}
             </a>
             {item.children && (
-              <div class="absolute left-0 top-full pt-1 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-50">
-                <div class="bg-white rounded-lg shadow-lg border border-gray-medium py-2 min-w-[220px]">
+              <div class="absolute left-0 top-full pt-2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-50">
+                <div class="bg-white rounded-lg shadow-xl border border-gray-100 py-2 min-w-[220px]">
                   {item.children.map((child) => (
                     <a
                       href={child.href}
                       class={`block px-4 py-2 text-sm transition-colors duration-150 ${
                         currentPath === child.href
-                          ? 'text-red-primary bg-red-primary/5 font-medium'
-                          : 'text-text-primary hover:text-red-primary hover:bg-gray-light'
+                          ? 'text-navy font-bold bg-gray-50'
+                          : 'text-text-muted hover:text-navy hover:bg-gray-50'
                       }`}
                       {...(child.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                     >
@@ -120,7 +124,7 @@ function isActive(href: string): boolean {
           href="https://bastropctygop.wufoo.com/forms/zwcqdgs1ydkjyo/"
           target="_blank"
           rel="noopener noreferrer"
-          class="hidden sm:inline-flex items-center gap-2 bg-red-primary hover:bg-red-dark text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors duration-200 shadow-sm"
+          class="hidden sm:inline-flex items-center justify-center bg-red-primary hover:bg-red-dark text-white font-bold text-sm h-9 px-5 rounded-md transition-colors shadow-sm"
           id="donate-button-header"
         >
           Donate
@@ -129,7 +133,7 @@ function isActive(href: string): boolean {
         <!-- Mobile Menu Button -->
         <button
           type="button"
-          class="lg:hidden p-2 rounded-md text-text-primary hover:bg-gray-light transition-colors"
+          class="lg:hidden p-2 rounded-md text-text-primary hover:bg-gray-100 transition-colors"
           aria-label="Open navigation menu"
           aria-expanded="false"
           id="mobile-menu-toggle"
@@ -146,29 +150,29 @@ function isActive(href: string): boolean {
   </div>
 
   <!-- Mobile Menu -->
-  <div class="lg:hidden hidden border-t border-gray-medium bg-white" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+  <div class="lg:hidden hidden border-t border-gray-200 bg-white" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
     <div class="container py-4 space-y-1">
       {navItems.map((item) => (
         <div>
           <a
             href={item.href}
-            class={`block px-4 py-3 text-base font-medium rounded-md transition-colors ${
+            class={`block px-4 py-3 text-sm font-medium rounded-md transition-colors ${
               isActive(item.href)
-                ? 'text-red-primary bg-red-primary/5'
-                : 'text-text-primary hover:text-red-primary hover:bg-gray-light'
+                ? 'text-navy font-bold bg-gray-50'
+                : 'text-text-muted hover:text-navy hover:bg-gray-50'
             }`}
           >
             {item.label}
           </a>
           {item.children && (
-            <div class="pl-4 space-y-0.5">
+            <div class="pl-4 space-y-0.5 mt-1 border-l-2 border-gray-100 ml-4">
               {item.children.map((child) => (
                 <a
                   href={child.href}
                   class={`block px-4 py-2 text-sm rounded-md transition-colors ${
                     currentPath === child.href
-                      ? 'text-red-primary font-medium'
-                      : 'text-text-secondary hover:text-red-primary hover:bg-gray-light'
+                      ? 'text-navy font-bold'
+                      : 'text-text-muted hover:text-navy hover:bg-gray-50'
                   }`}
                   {...(child.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 >
@@ -179,12 +183,12 @@ function isActive(href: string): boolean {
           )}
         </div>
       ))}
-      <div class="pt-3 border-t border-gray-medium">
+      <div class="pt-4 mt-4 border-t border-gray-200">
         <a
           href="https://bastropctygop.wufoo.com/forms/zwcqdgs1ydkjyo/"
           target="_blank"
           rel="noopener noreferrer"
-          class="block text-center bg-red-primary hover:bg-red-dark text-white font-semibold text-base px-5 py-3 rounded-lg transition-colors"
+          class="flex items-center justify-center bg-red-primary hover:bg-red-dark text-white font-bold text-sm h-10 px-5 rounded-md transition-colors"
         >
           Donate
         </a>
@@ -212,10 +216,10 @@ function isActive(href: string): boolean {
   window.addEventListener('scroll', () => {
     const header = document.getElementById('site-header');
     if (!header) return;
-    if (window.scrollY > 50) {
-      header.classList.add('shadow-lg');
+    if (window.scrollY > 20) {
+      header.classList.add('shadow-sm');
     } else {
-      header.classList.remove('shadow-lg');
+      header.classList.remove('shadow-sm');
     }
     lastScroll = window.scrollY;
   });

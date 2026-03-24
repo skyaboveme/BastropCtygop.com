@@ -3,12 +3,13 @@
 
 @theme {
   /* Brand Colors */
-  --color-red-primary: #A80A0A;
-  --color-red-dark: #8B0808;
-  --color-red-light: #D42A2A;
-  --color-navy: #38428E;
-  --color-navy-dark: #2A3270;
-  --color-navy-light: #4A56A8;
+  --color-red-primary: #B72436;
+  --color-red-dark: #9A1C2C;
+  --color-red-light: #D43A4B;
+  --color-navy: #0D3B66;
+  --color-navy-dark: #082A4A;
+  --color-navy-light: #1A548C;
+  --color-gold: #F2B705;
   --color-white: #FFFFFF;
   --color-gray-light: #F5F5F5;
   --color-gray-medium: #E5E5E5;
@@ -18,7 +19,7 @@
 
   /* Font Families */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-serif: 'Merriweather', Georgia, serif;
+  --font-serif: 'Libre Baskerville', Georgia, serif;
 
   /* Font Sizes */
   --text-xs: 0.75rem;

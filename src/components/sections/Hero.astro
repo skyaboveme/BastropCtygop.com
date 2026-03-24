@@ -16,16 +16,17 @@ const {
 } = Astro.props;
 ---
 
-<section class="relative bg-navy overflow-hidden min-h-[55vh] flex flex-col justify-center">
+<section class="relative bg-navy overflow-hidden min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
   {backgroundImage && (
     <div class="absolute inset-0 bg-navy">
       <img 
         src={backgroundImage} 
         alt="" 
-        class="w-full h-full object-cover object-center opacity-50 mix-blend-luminosity animate-subtle-zoom" 
+        class="w-full h-full object-cover object-center opacity-70 mix-blend-luminosity animate-subtle-zoom" 
         style="filter: url(#wave-filter);"
       />
-      <div class="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/50 to-navy/90"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-navy/95 to-navy/30 mix-blend-multiply"></div>
+      <div class="absolute inset-0 bg-black/20"></div>
     </div>
     <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
       <filter id="wave-filter">
@@ -47,35 +48,39 @@ const {
   <!-- Red accent bar at top -->
   <div class="absolute top-0 left-0 right-0 h-1 bg-red-primary"></div>
 
-  <div class="container relative z-10 py-12 lg:py-16 text-center">
-    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-3 lg:mb-4">
-      {headline}
-    </h1>
-    {subheadline && (
-      <p class="text-lg lg:text-xl text-white/80 max-w-3xl mx-auto mb-6 lg:mb-8">
-        {subheadline}
-      </p>
-    )}
-    {(primaryCta || secondaryCta) && (
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        {primaryCta && (
-          <a
-            href={primaryCta.href}
-            class="inline-flex items-center gap-2 bg-red-primary hover:bg-red-dark text-white font-semibold text-lg px-8 py-3.5 rounded-lg transition-colors shadow-lg"
-          >
-            {primaryCta.label}
-          </a>
-        )}
-        {secondaryCta && (
-          <a
-            href={secondaryCta.href}
-            class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg px-8 py-3.5 rounded-lg transition-colors border border-white/20"
-          >
-            {secondaryCta.label}
-          </a>
-        )}
+  <div class="container relative z-10 py-16 lg:py-24 text-center md:text-left">
+    <div class="max-w-3xl">
+      <div class="inline-block mb-6 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white text-sm font-bold uppercase tracking-[0.15em] shadow-sm">
+        Welcome to Bastrop County
       </div>
-    )}
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-[1.1] mb-6 drop-shadow-xl" set:html={headline}>
+      </h1>
+      {subheadline && (
+        <p class="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 lg:mb-10 leading-relaxed font-medium drop-shadow-md">
+          {subheadline}
+        </p>
+      )}
+      {(primaryCta || secondaryCta) && (
+        <div class="flex flex-col sm:flex-row items-center md:justify-start justify-center gap-4">
+          {primaryCta && (
+            <a
+              href={primaryCta.href}
+              class="inline-flex items-center justify-center bg-red-primary hover:bg-red-dark text-white font-bold text-lg h-14 px-8 rounded-md transition-transform hover:scale-105 shadow-xl w-full sm:w-auto"
+            >
+              {primaryCta.label}
+            </a>
+          )}
+          {secondaryCta && (
+            <a
+              href={secondaryCta.href}
+              class="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white border border-white/40 font-bold text-lg h-14 px-8 rounded-md backdrop-blur transition-colors w-full sm:w-auto"
+            >
+              {secondaryCta.label}
+            </a>
+          )}
+        </div>
+      )}
+    </div>
   </div>
 
   <!-- Bottom wave -->
