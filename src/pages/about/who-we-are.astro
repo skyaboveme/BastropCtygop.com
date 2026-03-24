@@ -1,0 +1,89 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const principles = [
+  {
+    title: 'Fiscal Responsibility',
+    description: 'We believe in limited government spending, lower taxes, and a balanced budget at all levels of government.'
+  },
+  {
+    title: 'Family Values',
+    description: 'We support the traditional family unit as the foundation of our society and protecting the rights of parents.'
+  },
+  {
+    title: 'Right to Life',
+    description: 'We believe in the sanctity of innocent human life from conception to natural death.'
+  },
+  {
+    title: 'Second Amendment',
+    description: 'We staunchly defend the individual right to keep and bear arms as guaranteed by the Constitution.'
+  },
+  {
+    title: 'Election Integrity',
+    description: 'We support transparent, secure, and verifiable elections where every legal vote counts.'
+  },
+  {
+    title: 'Border Security',
+    description: 'We advocate for a secure border and the enforcement of immigration laws to protect our sovereignty.'
+  }
+];
+---
+
+<PageLayout 
+  title="Who We Are" 
+  description="Learn about the Bastrop County Republican Party, our mission, and our core platform principles."
+>
+  <div class="bg-gray-50/50 py-16 lg:py-24 min-h-screen">
+    <div class="container mx-auto max-w-5xl px-4">
+      
+      <!-- Top Section -->
+      <div class="mb-16 md:mb-24">
+        <h1 class="text-4xl md:text-5xl font-serif font-bold text-navy inline-block relative mb-8">
+          Who We Are
+          <div class="absolute -bottom-3 left-0 w-full h-1.5 bg-red-primary rounded-full"></div>
+        </h1>
+        
+        <div class="text-text-secondary text-lg leading-relaxed max-w-3xl space-y-6">
+          <p>
+            The County Executive Committee (CEC) is the governing body of the local party, comprised of the County Chairman and Precinct Chairs from across Bastrop County.
+          </p>
+          <p>
+            Our mission is to recruit and elect principled candidates, educate voters on critical issues, and hold our elected officials accountable to the Republican Platform. We are responsible for registering voters, overseeing primary elections, organizing the local party, and hosting informational meetings.
+          </p>
+        </div>
+      </div>
+
+      <!-- Platform Principles Section -->
+      <div class="mb-12 text-center">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy mb-4">Our Platform Principles</h2>
+        <p class="text-text-secondary text-lg">Core beliefs that guide our actions and policy positions.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+        {principles.map((principle) => (
+          <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 overflow-hidden relative p-8">
+            <!-- Red left accent border -->
+            <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-red-primary"></div>
+            
+            <div class="flex items-start gap-4">
+              <!-- Checkmark badge -->
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center mt-0.5">
+                <svg class="w-5 h-5 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              
+              <div>
+                <h3 class="text-xl font-bold text-navy mb-2">{principle.title}</h3>
+                <p class="text-text-secondary leading-relaxed">
+                  {principle.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</PageLayout>

@@ -18,15 +18,15 @@ const {
 
 <section class="relative bg-navy overflow-hidden min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
   {backgroundImage && (
-    <div class="absolute inset-0 bg-navy">
+    <div class="absolute inset-0 bg-black">
       <img 
         src={backgroundImage} 
         alt="" 
-        class="w-full h-full object-cover object-center opacity-70 mix-blend-luminosity animate-subtle-zoom" 
+        class="w-full h-full object-cover object-center animate-subtle-zoom" 
         style="filter: url(#wave-filter);"
       />
-      <div class="absolute inset-0 bg-gradient-to-r from-navy/95 to-navy/30 mix-blend-multiply"></div>
-      <div class="absolute inset-0 bg-black/20"></div>
+      <!-- Neutral dark overlay for text readability -->
+      <div class="absolute inset-0 bg-black/40"></div>
     </div>
     <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
       <filter id="wave-filter">
