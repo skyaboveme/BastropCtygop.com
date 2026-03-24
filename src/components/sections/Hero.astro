@@ -18,7 +18,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="relative bg-navy overflow-hidden min-h-[85vh] lg:min-h-[70vh] flex flex-col justify-center">
+<section class="relative bg-navy overflow-hidden min-h-[100vh] lg:min-h-[85vh] flex flex-col justify-center">
   {backgroundImage && (
     <div class="absolute inset-0 bg-black">
       {mobileBackgroundImage ? (
@@ -63,7 +63,7 @@ const {
   <div class="absolute top-0 left-0 right-0 h-1 bg-red-primary"></div>
 
   <!-- Bottom padding increased so buttons clear the background wave overlay -->
-  <div class="container relative z-10 pt-16 pb-48 lg:pt-24 lg:pb-36 text-center md:text-left">
+  <div class="container relative z-10 pt-20 pb-64 lg:pt-32 lg:pb-56 text-center md:text-left">
     <div class="max-w-3xl">
       <div class="inline-block mb-6 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white text-sm font-bold uppercase tracking-[0.15em] shadow-sm">
         Welcome to Bastrop County
