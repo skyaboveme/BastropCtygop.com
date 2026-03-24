@@ -2,8 +2,17 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-navy text-white mt-16 lg:mt-24 border-t-[6px] border-red-primary relative z-10 w-full">
-  <div class="container py-16 lg:py-20">
+<footer class="bg-navy text-white mt-16 lg:mt-24 border-t-[6px] border-red-primary relative z-10 w-full overflow-hidden">
+  <!-- Background Texture -->
+  <div class="absolute inset-0 z-0 pointer-events-none opacity-15 mix-blend-color-burn">
+    <img 
+      src="/waving_texas_flag_texture.png" 
+      alt="" 
+      class="w-full h-full object-cover object-center grayscale"
+    />
+  </div>
+  
+  <div class="container py-16 lg:py-20 relative z-10">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
       
       <!-- Brand & Mission (Col span 4) -->
