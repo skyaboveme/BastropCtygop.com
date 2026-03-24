@@ -19,9 +19,24 @@ const {
 <section class="relative bg-navy overflow-hidden min-h-[55vh] flex flex-col justify-center">
   {backgroundImage && (
     <div class="absolute inset-0 bg-navy">
-      <img src={backgroundImage} alt="" class="w-full h-full object-cover object-center opacity-50 mix-blend-luminosity" />
+      <img 
+        src={backgroundImage} 
+        alt="" 
+        class="w-full h-full object-cover object-center opacity-50 mix-blend-luminosity animate-subtle-zoom" 
+        style="filter: url(#wave-filter);"
+      />
       <div class="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/50 to-navy/90"></div>
     </div>
+    <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
+      <filter id="wave-filter">
+        <feTurbulence x="0" y="0" baseFrequency="0.005" numOctaves="3" seed="2" result="turbulence">
+          <animate attributeName="baseFrequency" values="0.005;0.01;0.005" dur="15s" repeatCount="indefinite" />
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="12" xChannelSelector="R" yChannelSelector="G">
+          <animate attributeName="scale" values="5;15;5" dur="10s" repeatCount="indefinite" />
+        </feDisplacementMap>
+      </filter>
+    </svg>
   )}
   <!-- Subtle pattern overlay -->
   {!backgroundImage && (
