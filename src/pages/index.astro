@@ -54,6 +54,44 @@ const orgSchema = {
     backgroundImage="/texas-hero.png"
   />
 
+  <!-- Promo Banner -->
+  <section class="pt-12 bg-gray-light">
+    <div class="container relative z-10 -mb-6 lg:-mb-10">
+      <a href="/events/golf-classic/" class="block max-w-[1000px] mx-auto overflow-hidden shadow-2xl rounded-sm hover:-translate-y-1 transition-transform duration-300">
+        <!-- Top Title Bar -->
+        <div class="border-t-4 border-red-primary bg-gray-200 py-3 text-center">
+          <h2 class="text-2xl md:text-4xl font-extrabold text-black tracking-tight" style="font-family: Arial, sans-serif;">BCRP 4th Annual Golf Classic</h2>
+        </div>
+        <!-- Banner Body -->
+        <div class="relative bg-green-200 bg-cover bg-center min-h-[220px] md:min-h-[280px]" style="background-image: url('/golf_banner_bg.png');">
+          <!-- Light overlay for text legibility -->
+          <div class="absolute inset-0 bg-white/40"></div>
+          
+          <div class="relative z-10 flex flex-col md:flex-row items-center justify-between p-6 md:p-8 h-full gap-6">
+            
+            <!-- Left: Logo & Title Area -->
+            <div class="flex items-center gap-4 md:gap-8">
+              <img src="/BCRP-Logo.webp" alt="BCRP Logo" class="w-28 h-28 md:w-44 md:h-44 object-contain drop-shadow-xl shrink-0" />
+              <div class="flex flex-col text-left">
+                <span class="text-gray-900 font-extrabold text-xl md:text-3xl drop-shadow-md mb-[-0.2rem]">4th Annual</span>
+                <span class="text-[#3b5926] font-black text-5xl md:text-7xl leading-none tracking-tight shadow-black drop-shadow-sm" style="-webkit-text-stroke: 1px #111;">Golf</span>
+                <span class="text-[#3b5926] font-black text-5xl md:text-7xl leading-none tracking-tight shadow-black drop-shadow-sm" style="-webkit-text-stroke: 1px #111;">Classic</span>
+              </div>
+            </div>
+
+            <!-- Right: Details Area -->
+            <div class="flex flex-col text-left md:text-left mt-4 md:mt-0 lg:pr-8">
+              <h3 class="text-[#4b6b33] font-black text-2xl md:text-3xl lg:text-4xl drop-shadow-md mb-2 pb-1">Four Man Scramble</h3>
+              <p class="text-black font-bold text-lg md:text-xl leading-snug drop-shadow-sm">Friday, April 10, 2026</p>
+              <p class="text-black font-medium text-base md:text-lg leading-snug drop-shadow-sm">Check in: 11:00 Am</p>
+              <p class="text-black font-medium text-base md:text-lg leading-snug drop-shadow-sm">Shotgun Start 12:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
   <!-- Upcoming Events -->
   {upcomingEvents.length > 0 && (
     <section class="py-12 lg:py-16 bg-gray-light">
