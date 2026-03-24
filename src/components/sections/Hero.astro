@@ -27,31 +27,19 @@ const {
           <img 
             src={mobileBackgroundImage} 
             alt="" 
-            class="w-full h-full object-cover object-center animate-subtle-zoom" 
-            style="filter: url(#wave-filter);"
+            class="w-full h-full object-cover object-center" 
           />
         </picture>
       ) : (
         <img 
           src={backgroundImage} 
           alt="" 
-          class="w-full h-full object-cover object-center animate-subtle-zoom" 
-          style="filter: url(#wave-filter);"
+          class="w-full h-full object-cover object-center" 
         />
       )}
       <!-- Neutral dark overlay for text readability -->
       <div class="absolute inset-0 bg-black/40"></div>
     </div>
-    <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
-      <filter id="wave-filter">
-        <feTurbulence x="0" y="0" baseFrequency="0.005" numOctaves="3" seed="2" result="turbulence">
-          <animate attributeName="baseFrequency" values="0.005;0.01;0.005" dur="15s" repeatCount="indefinite" />
-        </feTurbulence>
-        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="12" xChannelSelector="R" yChannelSelector="G">
-          <animate attributeName="scale" values="5;15;5" dur="10s" repeatCount="indefinite" />
-        </feDisplacementMap>
-      </filter>
-    </svg>
   )}
   <!-- Subtle pattern overlay -->
   {!backgroundImage && (
