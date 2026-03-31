@@ -10,8 +10,9 @@ interface Props {
 
 const { title, date, time, location, href, category } = Astro.props;
 
-const month = date.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
-const day = date.getDate();
+const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+const month = months[date.getUTCMonth()];
+const day = date.getUTCDate();
 ---
 
 <article class="group flex gap-4 bg-white rounded-xl border border-gray-medium p-4 lg:p-5 hover:shadow-[var(--shadow-card-hover)] transition-all duration-300 relative">

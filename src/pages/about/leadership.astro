@@ -13,12 +13,7 @@ const fullRoster = [
   ...countyLeaders.map((l) => ({ name: l.data.name, title: l.data.title, email: l.data.email, phone: l.data.phone, photo: l.data.photo })),
 ];
 
-// Add vacant positions
-const vacantPositions = [
-  { name: 'TBD', title: 'Vice Chair' },
-  { name: 'TBD', title: 'Parliamentarian' },
-  { name: 'TBD', title: 'Sergeant at Arms' },
-];
+
 ---
 
 <PageLayout
@@ -42,15 +37,7 @@ const vacantPositions = [
             photo={leader.photo}
           />
         ))}
-        {vacantPositions.map((pos) => (
-          <div class="bg-gray-light/50 rounded-xl border border-dashed border-gray-medium p-5 text-center">
-            <div class="w-20 h-20 rounded-full mx-auto mb-4 bg-gray-medium flex items-center justify-center">
-              <span class="text-xl text-text-muted">?</span>
-            </div>
-            <h3 class="text-base font-bold text-text-muted">TBD</h3>
-            <p class="text-sm text-text-muted mt-1">{pos.title}</p>
-          </div>
-        ))}
+
       </div>
     </div>
   </section>

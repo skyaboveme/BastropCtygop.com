@@ -3,11 +3,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import PrecinctCard from '../../components/ui/PrecinctCard.astro';
 
 const precinctChairs = [
-  { precinct: '1001', name: 'Vacant', vacant: true },
-  { precinct: '1002', name: 'Vacant', vacant: true },
   { precinct: '1003', name: 'Cathy Martinez', email: 'precinctchair1003@bastropctygop.com' },
-  { precinct: '1004', name: 'Vacant', vacant: true },
-  { precinct: '1005', name: 'Vacant', vacant: true },
   { precinct: '1006', name: 'Michael Dickson', email: 'precinctchair1006@bastropctygop.com' },
   { precinct: '1007', name: 'Monica Carson', email: 'precinctchair1007@bastropctygop.com', phone: '512-426-5950' },
   { precinct: '1008', name: 'Deborah Layland', email: 'precinctchair1008@bastropctygop.com' },
@@ -17,17 +13,14 @@ const precinctChairs = [
   { precinct: '2012', name: 'Brian Thornton', email: 'precinctchair2012@bastropctygop.com' },
   { precinct: '2013', name: 'Doug Kelsay', email: 'precinctchair2013@bastropctygop.com' },
   { precinct: '2014', name: 'Shari Wyatt', email: 'precinctchair2014@bastropctygop.com' },
-  { precinct: '2015', name: 'Vacant', vacant: true },
   { precinct: '2016', name: 'James Page', email: 'precinctchair2016@bastropctygop.com' },
   { precinct: '3017', name: 'Mark L. Torrey', email: 'precinctchair3017@bastropctygop.com' },
   { precinct: '3018', name: 'Sue Beck', email: 'precinctchair3018@bastropctygop.com' },
   { precinct: '3019', name: 'Debra Carter', email: 'precinctchair3019@bastropctygop.com' },
-  { precinct: '3020', name: 'Vacant', vacant: true },
   { precinct: '4021', name: 'Amber Wilson', email: 'precinctchair4021@bastropctygop.com' },
   { precinct: '4022', name: 'Terry Pickering', email: 'precinctchair4022@bastropctygop.com' },
   { precinct: '4023', name: 'Amber Sparks', email: 'precinctchair4023@bastropctygop.com' },
   { precinct: '4024', name: 'Jerry Able', email: 'precinctchair4024@bastropctygop.com' },
-  { precinct: '4025', name: 'Vacant', vacant: true },
   { precinct: '4026', name: 'W.C. Estes', email: 'precinctchair4026@bastropctygop.com' },
 ];
 ---
@@ -70,7 +63,6 @@ const precinctChairs = [
               name={chair.name}
               email={chair.email}
               phone={chair.phone}
-              vacant={chair.vacant}
             />
           </div>
         ))}

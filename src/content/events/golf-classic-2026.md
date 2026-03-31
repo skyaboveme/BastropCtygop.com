@@ -1,7 +1,7 @@
 ---
 title: "4th Annual Golf Classic"
 date: 2026-04-10
-time: "8:00 AM Shotgun Start"
+time: "11:00 AM Check-in, 12:00 PM Shotgun Start"
 location: "ColoVista Golf Club"
 address: "100 Country Club Drive, Bastrop, TX"
 category: "Fundraiser"
@@ -19,8 +19,8 @@ Join us at ColoVista Golf Club for a day of golf, camaraderie, and support for t
 ### Event Details
 
 - **Format:** 4-person scramble
-- **Check-in:** 7:00 AM
-- **Shotgun Start:** 8:00 AM
+- **Check-in:** 11:00 AM
+- **Shotgun Start:** 12:00 PM
 - **Awards & Lunch:** Following play
 
 ### Sponsorship Opportunities

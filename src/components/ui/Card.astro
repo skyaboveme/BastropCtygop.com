@@ -10,7 +10,7 @@ interface Props {
 
 const { title, href, excerpt, date, category, image } = Astro.props;
 
-const formattedDate = date ? date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+const formattedDate = date ? date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }) : '';
 ---
 
 <article class="group bg-white rounded-xl border border-gray-medium overflow-hidden hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">

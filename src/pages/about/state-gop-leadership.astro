@@ -3,12 +3,12 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import LeaderCard from '../../components/ui/LeaderCard.astro';
 
 const stateLeaders = [
-  { name: 'Abraham George', title: 'Chairman', order: 1 },
-  { name: "D'rinda Randall", title: 'Vice Chair', order: 2 },
-  { name: 'Susan Lucas', title: 'State Executive Committee, SD-5', order: 3 },
-  { name: 'Jeremy Story', title: 'State Executive Committee, SD-5', order: 4 },
-  { name: 'Debbie Georgatos', title: 'RNC National Committeewoman', order: 5 },
-  { name: 'Dr. Robin Armstrong', title: 'RNC National Committeeman', order: 6 },
+  { name: 'Abraham George', title: 'Chairman', photo: '/Assets/abrahamGeorge.webp', order: 1 },
+  { name: "D'rinda Randall", title: 'Vice Chair', photo: "/Assets/Drinda-Randall.webp", order: 2 },
+  { name: 'Susan Lucas', title: 'State Executive Committee, SD-5', photo: '/Assets/Susan Lucas.webp', order: 3 },
+  { name: 'Jeremy Story', title: 'State Executive Committee, SD-5', photo: '/Assets/Jeremy Story.webp', order: 4 },
+  { name: 'Debbie Georgatos', title: 'RNC National Committeewoman', photo: '/Assets/Debbie Georgatos.webp', order: 5 },
+  { name: 'Dr. Robin Armstrong', title: 'RNC National Committeeman', photo: '/Assets/Dr. Robin Armstrong.webp', order: 6 },
 ];
 ---
 
@@ -28,6 +28,7 @@ const stateLeaders = [
           <LeaderCard
             name={leader.name}
             title={leader.title}
+            photo={leader.photo}
           />
         ))}
       </div>
