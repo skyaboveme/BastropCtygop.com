@@ -12,39 +12,148 @@
       </svg>
     </button>
     
-    <!-- Exact Promo Banner Design -->
-    <a href="/events/golf-classic/" class="block overflow-hidden rounded-lg group">
-      <!-- Top Title Bar -->
-      <div class="border-t-4 border-red-primary bg-gray-200 py-3 text-center transition-colors group-hover:bg-gray-300">
-        <h2 class="text-2xl md:text-4xl font-extrabold text-black tracking-tight" style="font-family: Arial, sans-serif;">BCRP 4th Annual Golf Classic</h2>
-      </div>
+    <!-- Full Flyer Design -->
+    <div class="block overflow-y-auto overflow-x-hidden max-h-[90vh] rounded-lg bg-white relative pb-8 md:pb-0">
+      
       <!-- Banner Body -->
-      <div class="relative bg-green-200 bg-cover bg-center min-h-[220px] md:min-h-[280px]" style="background-image: url('/golf_banner_bg.png');">
-        <!-- Light overlay for text legibility -->
-        <div class="absolute inset-0 bg-white/40 group-hover:bg-white/30 transition-colors duration-300"></div>
-        
-        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between p-6 md:p-8 h-full gap-6">
-          
+      <div class="relative bg-green-200 bg-cover bg-center min-h-[200px]" style="background-image: url('/golf_banner_bg.png');">
+        <div class="absolute inset-0 bg-white/30 backdrop-blur-sm md:backdrop-blur-none transition-colors duration-300"></div>
+        <div class="relative z-10 p-4 md:p-6 lg:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <!-- Left: Logo & Title Area -->
-          <div class="flex items-center gap-4 md:gap-8">
-            <img src="/BCRP-Logo.webp" alt="BCRP Logo" class="w-28 h-28 md:w-44 md:h-44 object-contain drop-shadow-xl shrink-0" />
+          <div class="flex items-center gap-4 lg:gap-6">
+            <img src="/BCRP-Logo.webp" alt="BCRP Logo" class="w-24 h-24 md:w-36 md:h-36 object-contain drop-shadow-xl shrink-0" />
             <div class="flex flex-col text-left">
-              <span class="text-gray-900 font-extrabold text-xl md:text-3xl drop-shadow-md mb-[-0.2rem]">4th Annual</span>
-              <span class="text-[#3b5926] font-black text-5xl md:text-7xl leading-none tracking-tight shadow-black drop-shadow-sm" style="-webkit-text-stroke: 1px #111;">Golf</span>
-              <span class="text-[#3b5926] font-black text-5xl md:text-7xl leading-none tracking-tight shadow-black drop-shadow-sm" style="-webkit-text-stroke: 1px #111;">Classic</span>
+              <span class="text-[#3b5926] font-bold text-xl md:text-3xl drop-shadow-md mb-[-0.2rem]" style="-webkit-text-stroke: 1px #111;">4th Annual</span>
+              <span class="text-[#416a24] font-black text-5xl md:text-7xl uppercase leading-none tracking-tight" style="-webkit-text-stroke: 1px #111; text-shadow: 2px 2px 0px rgba(0,0,0,0.5);">Golf</span>
+              <span class="text-[#416a24] font-black text-5xl md:text-7xl uppercase leading-none tracking-tight" style="-webkit-text-stroke: 1px #111; text-shadow: 2px 2px 0px rgba(0,0,0,0.5);">Classic</span>
             </div>
           </div>
-
           <!-- Right: Details Area -->
-          <div class="flex flex-col text-left mt-4 md:mt-0 lg:pr-8">
-            <h3 class="text-[#4b6b33] font-black text-2xl md:text-3xl lg:text-4xl drop-shadow-md mb-2 pb-1">Four Man Scramble</h3>
-            <p class="text-black font-bold text-lg md:text-xl leading-snug drop-shadow-sm">Friday, April 10, 2026</p>
-            <p class="text-black font-medium text-base md:text-lg leading-snug drop-shadow-sm">Check in at 11 AM</p>
-            <p class="text-black font-medium text-base md:text-lg leading-snug drop-shadow-sm">Shotgun start at 11 AM</p>
+          <div class="flex flex-col text-left md:text-right mt-2 md:mt-0">
+            <h3 class="text-[#2b4c10] font-black text-2xl md:text-4xl drop-shadow-md mb-2 pb-1 bg-white/40 px-3 rounded-lg inline-block self-end md:bg-transparent">Four Man Scramble</h3>
+            <p class="text-black font-extrabold text-lg md:text-2xl drop-shadow-md bg-white/40 px-2 rounded md:bg-transparent">Friday, April 10, 2026</p>
+            <p class="text-black font-bold text-base md:text-xl drop-shadow-md bg-white/40 px-2 rounded md:bg-transparent">Check in: 11:00 AM</p>
+            <p class="text-black font-bold text-base md:text-xl drop-shadow-md bg-white/40 px-2 rounded md:bg-transparent">Shotgun Start: 12:00 PM</p>
           </div>
         </div>
       </div>
-    </a>
+      
+      <!-- Flyer Body Section -->
+      <div class="p-4 md:p-6 lg:p-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-black">
+        
+        <!-- Col 1: Sponsorships -->
+        <div class="flex flex-col">
+          <h3 class="text-[#f12110] font-extrabold text-2xl text-center mb-4 leading-none">Sponsorships</h3>
+          <div class="space-y-4 text-center">
+            <div>
+              <div class="flex items-center justify-center gap-2 font-black text-lg md:text-xl">
+                <div class="w-4 h-4 border-[3px] border-black shadow-sm shrink-0"></div>
+                Ace Sponsor $1000
+              </div>
+              <p class="text-xs font-semibold leading-tight mt-1">Recognized as Ace Sponsor on BCRP Website for 3 months and on event banner, 1 Hole Sponsor, 1-Foursome Team | 2 General Admission tickets to Boots and BBQ (September 2026)</p>
+            </div>
+            <div>
+              <div class="flex items-center justify-center gap-2 font-black text-lg md:text-xl">
+                <div class="w-4 h-4 border-[3px] border-black shadow-sm shrink-0"></div>
+                Eagle Sponsor $750
+              </div>
+              <p class="text-xs font-semibold leading-tight mt-1">Recognized as Eagle Sponsor on BCRP Website for 3 months and on event banner, 1-Hole Sponsor, 1-Foursome Team</p>
+            </div>
+            <div>
+              <div class="flex items-center justify-center gap-2 font-black text-lg md:text-xl">
+                <div class="w-4 h-4 border-[3px] border-black shadow-sm shrink-0"></div>
+                Birdie Sponsor $500
+              </div>
+              <p class="text-xs font-semibold leading-tight mt-1">Recognized as Birdie Sponsor on BCRP Website for 3 months and on event banner, 1-Hole Sponsor</p>
+            </div>
+            <div>
+              <div class="flex items-center justify-center gap-2 font-black text-lg md:text-xl">
+                <div class="w-4 h-4 border-[3px] border-black shadow-sm shrink-0"></div>
+                Meal Sponsor $250
+              </div>
+              <p class="text-xs font-semibold leading-tight mt-1">Recognized as Meal Sponsor on BCRP Website for 3 months and on event banner</p>
+            </div>
+            <div>
+              <div class="flex items-center justify-center gap-2 font-black text-lg md:text-xl">
+                <div class="w-4 h-4 border-[3px] border-black shadow-sm shrink-0"></div>
+                Hole Sponsor $150
+              </div>
+              <p class="text-xs font-semibold leading-tight mt-1">Recognized as Hole Sponsor on BCRP Website for 3 months and on event banner</p>
+            </div>
+            <p class="text-xs font-medium pt-2">See website for Sponsorship details</p>
+          </div>
+        </div>
+        
+        <!-- Col 2: Pricing & Details -->
+        <div class="flex flex-col items-center justify-center text-center gap-4">
+          <div class="w-full">
+            <div class="mb-1 leading-none tracking-tight">
+              <span class="text-[#2b8a2e] font-black text-3xl md:text-4xl lg:text-5xl">$85</span>
+              <span class="text-[#2b8a2e] font-black text-xl md:text-2xl lg:text-3xl"> - Per Player</span>
+            </div>
+            <div class="leading-none tracking-tight">
+              <span class="text-[#2b8a2e] font-black text-3xl md:text-4xl lg:text-5xl">$340</span>
+              <span class="text-[#2b8a2e] font-black text-xl md:text-2xl lg:text-3xl"> - Per Team</span>
+            </div>
+            <p class="text-[10px] md:text-xs font-semibold mt-2 text-gray-800">*Registration fees include: Green Fee, Ct Fee, Meal and Range Balls.</p>
+          </div>
+          
+          <div class="mt-4">
+             <h4 class="text-[#2b8a2e] font-black text-3xl mb-1">Friday</h4>
+             <p class="text-[#2b8a2e] font-medium text-2xl leading-none mb-1">ColoVista Golf Club</p>
+             <p class="text-black text-lg font-medium leading-tight">100 Country Club Dr.<br/>Bastrop, Texas 78602</p>
+             <p class="text-black text-lg font-medium leading-tight mt-2">Check-in: 11:00AM<br/>Shotgun Start: 12:00PM</p>
+             <p class="text-[#2b8a2e] font-black text-3xl mt-3 tracking-tight">Mulligans</p>
+          </div>
+          
+          <a href="/events/golf-classic/" class="mt-4 block w-full bg-[#f12110] hover:bg-red-700 text-white font-black text-2xl md:text-3xl rounded-3xl py-3 px-4 transition-transform hover:scale-[1.03] shadow-lg hover:shadow-xl text-center border-b-4 border-red-900 focus:outline-none focus:ring-4 focus:ring-red-400">
+             Register Now
+             <span class="block text-sm md:text-base font-bold mt-1 tracking-normal font-sans">Registration ends March 31st</span>
+          </a>
+        </div>
+        
+        <!-- Col 3: Contact & Graphic -->
+        <div class="flex flex-col items-center justify-start text-center">
+           <div class="mb-6 leading-none">
+             <span class="text-[#2b8a2e] font-black text-3xl md:text-4xl block">$10 each</span>
+             <span class="text-sm font-bold block mt-1">per player</span>
+           </div>
+           
+           <h3 class="text-[#f12110] font-black text-xl mb-1 tracking-tight">Registration / Questions</h3>
+           <p class="text-base font-semibold leading-snug">
+             Contact: Curtis Courtney<br/>
+             Phone: (512) 925-6034<br/>
+             Email: <a href="mailto:cdcourtney@yahoo.com" class="underline hover:text-red-600 transition-colors">cdcourtney@yahoo.com</a><br/>
+             <a href="/" class="underline hover:text-red-600 font-bold block mt-1 hover:underline">WWW.BASTROPCTYGOP.COM</a>
+           </p>
+           
+           <div class="mt-8 flex justify-center w-full relative h-32 md:h-40">
+             <!-- SVG golfer recreation -->
+             <svg class="h-full text-[#f12110] max-h-32 relative z-10" fill="currentColor" viewBox="0 0 100 100">
+               <!-- Head -->
+               <circle cx="50" cy="15" r="9"/>
+               <!-- Body & Swing Arm -->
+               <path d="M48,25 Q65,15 75,5 L80,10 Q65,22 55,25 L45,25 L55,50 L40,90 L25,90 L40,55 L30,40 Z"/>
+             </svg>
+             <!-- Outline of the flag -->
+             <svg class="h-16 text-gray-500 absolute right-4 top-10" fill="currentColor" viewBox="0 0 50 100">
+               <!-- Base hole -->
+               <ellipse cx="25" cy="95" rx="12" ry="3"/>
+               <!-- Flag pole -->
+               <rect x="23" y="10" width="3" height="85" fill="#666"/>
+               <!-- Flag -->
+               <path d="M23,10 Q45,15 45,25 Q35,30 23,35 Z" fill="#999"/>
+             </svg>
+           </div>
+        </div>
+      </div>
+      
+      <!-- Footer details -->
+      <div class="bg-gray-100 p-4 border-t-2 border-gray-300 flex flex-col items-center text-center text-[11px] md:text-xs font-bold text-gray-700">
+        <p>Please make Checks payable to: Bastrop County Republican Party<br/>Mail or bring completed form and check to: 443 Highway 71 West, Bastrop, Texas 78602</p>
+      </div>
+
+    </div>
   </div>
 </div>
 
