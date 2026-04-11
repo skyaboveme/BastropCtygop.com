@@ -1,0 +1,39 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+
+const imagesDir = path.join(process.cwd(), 'public/Assets/golfclassic2026');
+let images: string[] = [];
+
+try {
+  const files = fs.readdirSync(imagesDir);
+  images = files.filter(file => file.endsWith('.jpg') || file.endsWith('.png'));
+} catch (e) {
+  console.error("Could not read golf gallery directory", e);
+}
+---
+
+<section class="py-12 lg:py-16 bg-white">
+  <div class="container">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl lg:text-4xl font-extrabold text-navy mb-4">Thank you to everyone that supported and played in the 4th Annual Golf classic.</h2>
+    </div>
+    
+    {images.length > 0 ? (
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
+        {images.map((img) => (
+          <div class="aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+            <img 
+              src={`/Assets/golfclassic2026/${img}`} 
+              alt="4th Annual Golf Classic 2026" 
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    ) : (
+      <p class="text-center text-text-secondary">Images coming soon.</p>
+    )}
+  </div>
+</section>

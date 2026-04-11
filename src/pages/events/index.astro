@@ -8,8 +8,10 @@ const sortedEvents = allEvents.sort(
   (a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime()
 );
 
-const upcomingEvents = sortedEvents.filter((e) => new Date(e.data.date) >= new Date('2026-03-01'));
-const pastEvents = sortedEvents.filter((e) => new Date(e.data.date) < new Date('2026-03-01'));
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+const upcomingEvents = sortedEvents.filter((e) => new Date(e.data.date) >= today);
+const pastEvents = sortedEvents.filter((e) => new Date(e.data.date) < today);
 ---
 
 <PageLayout
@@ -19,9 +21,15 @@ const pastEvents = sortedEvents.filter((e) => new Date(e.data.date) < new Date('
   <section class="py-10 lg:py-16">
     <div class="container max-w-4xl">
       <h1 class="text-3xl lg:text-4xl font-extrabold text-text-primary mb-4">Events Calendar</h1>
-      <p class="text-lg text-text-secondary mb-10">
-        Stay connected with the Bastrop County Republican Party. Join us at our meetings, fundraisers, conventions, and community events.
-      </p>
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
+        <p class="text-lg text-text-secondary">
+          Stay connected with the Bastrop County Republican Party. Join us at our meetings, fundraisers, conventions, and community events.
+        </p>
+        <a href="/events/submit/" class="shrink-0 inline-flex items-center gap-2 bg-navy hover:bg-navy-dark text-white font-bold text-sm px-5 py-2.5 rounded-lg transition-all hover:-translate-y-0.5 shadow-md">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+          Submit Event
+        </a>
+      </div>
 
       <!-- Upcoming Events -->
       {upcomingEvents.length > 0 && (

@@ -1,0 +1,55 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="Event Submitted"
+  description="Your event has been submitted for review."
+  showBreadcrumbs={false}
+>
+  <section class="py-16 lg:py-24">
+    <div class="container max-w-xl text-center">
+      <!-- Success Icon -->
+      <div class="mx-auto w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mb-8 animate-pop">
+        <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+
+      <h1 class="text-3xl lg:text-4xl font-extrabold text-text-primary mb-4">Event Submitted!</h1>
+      <p class="text-lg text-text-secondary leading-relaxed mb-4">
+        Thank you for submitting your event. Our team will review the details and, if approved, add it to the Bastrop County Republican Party events calendar.
+      </p>
+      <p class="text-sm text-text-muted mb-10">
+        You should receive a confirmation email shortly. If you have questions, contact us at <a href="tel:5124091415" class="text-navy font-semibold hover:underline">512.409.1415</a>.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/events/"
+          class="inline-flex items-center justify-center gap-2 bg-navy hover:bg-navy-dark text-white font-bold text-sm px-8 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 shadow-lg"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+          View Events Calendar
+        </a>
+        <a
+          href="/events/submit/"
+          class="inline-flex items-center justify-center gap-2 bg-gray-light hover:bg-gray-medium text-text-primary font-bold text-sm px-8 py-3.5 rounded-xl transition-all hover:-translate-y-0.5"
+        >
+          Submit Another Event
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  @keyframes pop {
+    0% { transform: scale(0.6); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .animate-pop {
+    animation: pop 0.5s ease-out forwards;
+  }
+</style>
