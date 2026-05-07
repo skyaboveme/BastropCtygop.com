@@ -24,7 +24,7 @@ const events = defineCollection({
     time: z.string(),
     location: z.string(),
     address: z.string(),
-    category: z.enum(['Monthly Meeting', 'Fundraiser', 'Convention', 'Election', 'Community']),
+    category: z.enum(['Monthly Meeting', 'Fundraiser', 'Convention', 'Election', 'Community', 'Political']),
     description: z.string(),
     registration_url: z.string().optional(),
     featured_image: z.string().optional(),

@@ -1,0 +1,142 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const idRequirements = [
+  "Texas Driver License issued by the Texas Department of Public Safety (DPS)",
+  "Texas Election Identification Certificate issued by DPS",
+  "Texas Personal Identification Card issued by DPS",
+  "Texas Handgun License issued by DPS",
+  "United States Military Identification Card containing the person’s photograph",
+  "United States Citizenship Certificate containing the person’s photograph",
+  "United States Passport (book or card)"
+];
+
+const dates = [
+  { event: "Primary Election Day", date: "March 3, 2026" },
+  { event: "Primary Runoff Election (If Needed)", date: "May 26, 2026" },
+  { event: "General Election Voter Registration Deadline", date: "October 5, 2026" },
+  { event: "Early Voting for General Election", date: "Oct 19 - Oct 30, 2026" },
+  { event: "General Election Day", date: "November 3, 2026" }
+];
+---
+
+<PageLayout 
+  title="Voter Resources Hub" 
+  description="Everything you need to vote in Bastrop County: election dates, ID requirements, registration links, and ballot information."
+>
+  <div class="bg-gray-50/50 py-16 lg:py-24 min-h-screen">
+    <div class="container mx-auto max-w-5xl px-4">
+      
+      <!-- Top Section -->
+      <div class="mb-16 md:mb-20">
+        <h1 class="text-4xl md:text-5xl font-serif font-bold text-navy inline-block relative mb-8">
+          Voter Resources Hub
+          <div class="absolute -bottom-3 left-0 w-full h-1.5 bg-red-primary rounded-full"></div>
+        </h1>
+        
+        <p class="text-text-secondary text-lg leading-relaxed max-w-3xl">
+          Voting is your fundamental right and civic duty. This hub provides all the information you need to ensure your voice is heard in Bastrop County. Check your registration status, review ID requirements, and mark your calendar for upcoming elections.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-12 mb-16">
+        
+        <!-- Registration Status -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md transition-shadow relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-full h-1.5 bg-navy"></div>
+          <div class="w-12 h-12 rounded-lg bg-navy/10 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold text-navy mb-4">Are You Registered?</h2>
+          <p class="text-text-secondary mb-8">
+            Verify your voter registration status and see your polling location information on the official Texas Secretary of State website.
+          </p>
+          <a href="https://teamrv-mvp.sos.texas.gov/MVP/mvp.do" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-navy hover:bg-navy-light text-white font-bold py-3 px-6 rounded-lg transition-colors">
+            Check Registration Status
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Sample Ballots -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md transition-shadow relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-full h-1.5 bg-red-primary"></div>
+          <div class="w-12 h-12 rounded-lg bg-red-primary/10 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-red-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold text-navy mb-4">Sample Ballots</h2>
+          <p class="text-text-secondary mb-8">
+            Review your sample ballot before heading to the polls. Visit the official Bastrop County Elections website for the most current information.
+          </p>
+          <a href="https://bastropvotes.org/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-red-primary hover:bg-red-dark text-white font-bold py-3 px-6 rounded-lg transition-colors">
+            Visit BastropVotes.org
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Dates & ID Grid -->
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+        
+        <!-- Key Dates (Col span 5) -->
+        <div class="lg:col-span-5 space-y-6">
+          <h2 class="text-3xl font-serif font-bold text-navy mb-6">2026 Key Election Dates</h2>
+          
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+            <div class="divide-y divide-gray-100">
+              {dates.map((item) => (
+                <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-gray-50 transition-colors">
+                  <span class="font-medium text-navy">{item.event}</span>
+                  <span class="text-sm font-bold text-red-primary bg-red-primary/10 px-3 py-1 rounded-full whitespace-nowrap self-start sm:self-auto">
+                    {item.date}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- ID Requirements (Col span 7) -->
+        <div class="lg:col-span-7 space-y-6">
+          <h2 class="text-3xl font-serif font-bold text-navy mb-6">Voter ID Requirements</h2>
+          
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
+            <p class="text-text-secondary mb-6">
+              Texas law requires voters to present one of the seven acceptable forms of photo identification when voting in person:
+            </p>
+            
+            <ul class="space-y-4">
+              {idRequirements.map((req) => (
+                <li class="flex items-start gap-3">
+                  <div class="flex-shrink-0 w-6 h-6 rounded-full bg-navy/10 flex items-center justify-center mt-0.5">
+                    <svg class="w-4 h-4 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span class="text-text-secondary leading-relaxed">{req}</span>
+                </li>
+              ))}
+            </ul>
+            
+            <div class="mt-8 p-4 bg-gray-50 border-l-4 border-gold rounded-r-lg">
+              <h4 class="font-bold text-navy mb-2">Don't have one of these?</h4>
+              <p class="text-sm text-text-secondary">
+                Voters who do not possess and cannot reasonably obtain one of the seven forms of approved photo ID may fill out a Reasonable Impediment Declaration (RID) at the polls and present an alternative form of ID, such as a utility bill or bank statement.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</PageLayout>

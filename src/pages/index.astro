@@ -4,7 +4,7 @@ import Hero from '../components/sections/Hero.astro';
 import MissionSection from '../components/sections/MissionSection.astro';
 import GetInvolvedSection from '../components/sections/GetInvolvedSection.astro';
 import Card from '../components/ui/Card.astro';
-import GolfGallery from '../components/ui/GolfGallery.astro';
+
 
 import EventCard from '../components/ui/EventCard.astro';
 import NewsletterSignup from '../components/ui/NewsletterSignup.astro';
@@ -16,14 +16,16 @@ const latestPosts = allPosts
   .slice(0, 3);
 
 const allEvents = await getCollection('events');
+const today = new Date();
+today.setHours(0, 0, 0, 0);
 const upcomingEvents = allEvents
-  .filter((e) => new Date(e.data.date) >= new Date('2026-03-22'))
+  .filter((e) => new Date(e.data.date) >= today)
   .sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime())
   .slice(0, 3);
 
 const orgSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "PoliticalParty",
   "name": "Bastrop County Republican Party",
   "alternateName": "BCRP",
   "url": "https://bastropctygop.com",
@@ -53,7 +55,7 @@ const orgSchema = {
   <Hero
     headline="Keeping Bastrop<br/><span class='text-gold'>Strong, Conservative, & Free</span>"
     subheadline="We are the Bastrop County Republican Party. Dedicated to promoting conservative values, supporting our candidates, and serving our community."
-    primaryCta={{ label: 'Donate Now', href: 'https://bastropctygop.wufoo.com/forms/zwcqdgs1ydkjyo/' }}
+    primaryCta={{ label: 'Donate Now', href: 'https://square.link/u/p4rKmX9I' }}
     secondaryCta={{ label: 'Upcoming Events', href: '/events/' }}
     backgroundImage="/scenic_view_of_colorado_river_in_bastrop_texas.png"
     mobileBackgroundImage="/texas-hero.png"
@@ -65,8 +67,7 @@ const orgSchema = {
 
   <GetInvolvedSection />
 
-  <!-- Golf Classic Gallery -->
-  <GolfGallery />
+
 
   <!-- Upcoming Events -->
   {upcomingEvents.length > 0 && (
@@ -153,7 +154,7 @@ const orgSchema = {
           </div>
           <h3 class="text-lg font-bold text-text-primary mb-2">Donate to BCRP</h3>
           <p class="text-sm text-text-secondary mb-4">Your generous contribution helps us promote conservative values across Bastrop County.</p>
-          <a href="https://bastropctygop.wufoo.com/forms/zwcqdgs1ydkjyo/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-sm font-semibold text-red-primary hover:text-red-dark transition-colors">
+          <a href="https://square.link/u/p4rKmX9I" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-sm font-semibold text-red-primary hover:text-red-dark transition-colors">
             Donate Today
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
