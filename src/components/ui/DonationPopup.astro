@@ -7,38 +7,55 @@ import Button from './Button.astro';
   <div id="donation-popup-backdrop" class="absolute inset-0 bg-navy/80 backdrop-blur-sm transition-opacity"></div>
   
   <!-- Popup Content -->
-  <div class="relative bg-white rounded-xl shadow-2xl max-w-lg w-full overflow-hidden transform scale-95 transition-transform duration-300" id="donation-popup-content">
+  <div class="relative bg-white rounded-xl shadow-2xl max-w-2xl w-full overflow-hidden transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto" id="donation-popup-content">
     
     <!-- Close Button -->
-    <button id="donation-popup-close" class="absolute top-4 right-4 text-gray-500 hover:text-navy transition-colors z-10" aria-label="Close popup">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <button id="donation-popup-close" class="absolute top-3 right-3 bg-white/90 backdrop-blur rounded-full w-8 h-8 flex items-center justify-center text-gray-600 hover:text-navy hover:bg-white transition-all z-20 shadow-md" aria-label="Close popup">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
     </button>
     
-    <!-- Header Image / Banner -->
-    <div class="h-32 sm:h-40 bg-navy overflow-hidden relative flex items-center justify-center">
-      <!-- Fallback pattern if image is missing -->
-      <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 20px 20px;"></div>
+    <!-- Header Image -->
+    <div class="relative">
       <img 
-        src="https://items-images-production.s3.us-west-2.amazonaws.com/files/8ce3a38e5f24ea4fb4feb6f3f1cbb44fb2580da4/original.png" 
-        alt="Bastrop County GOP Support" 
-        class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-80"
+        src="/Assets/donation_post_image_v2.png" 
+        alt="Keep Bastrop County Red" 
+        class="w-full h-auto"
       />
-      <div class="relative z-10 text-center px-6">
-        <h3 class="text-2xl sm:text-3xl font-bold text-white font-serif tracking-wide drop-shadow-md">
-          Support Our Mission
-        </h3>
+      <!-- Red banner overlay -->
+      <div class="bg-red-primary text-white text-center py-2 px-4">
+        <p class="text-sm sm:text-base font-extrabold tracking-wide uppercase">
+          Stop the Liberal Takeover — Donate Today
+        </p>
       </div>
     </div>
     
     <!-- Body -->
-    <div class="p-6 sm:p-8 flex flex-col gap-5">
-      <h4 class="text-xl font-bold text-navy">Support the Bastrop County Republican Party</h4>
+    <div class="p-6 sm:p-8 flex flex-col gap-4">
+      <h3 class="text-xl sm:text-2xl font-extrabold text-navy leading-tight">
+        Keep Bastrop County Red — We Need Your Support!
+      </h3>
       
-      <p class="text-gray-700 leading-relaxed">
-        Your support helps defend conservative values, protect constitutional freedoms, and keep Bastrop County strong.
+      <p class="text-text-secondary leading-relaxed text-sm sm:text-base">
+        Bastrop County is a special place, rooted in strong conservative values, community, and freedom. But those values are under threat.
+      </p>
+
+      <p class="text-text-secondary leading-relaxed text-sm sm:text-base">
+        The Democrats have made it clear: <strong class="text-text-primary">they want Bastrop County.</strong> Their goal is to push their agenda, flip our local elections, and turn our beautiful county into another Austin. We've seen what happens when those policies take over — higher taxes, more regulations, and a departure from the principles that make our community great.
+      </p>
+
+      <p class="text-text-secondary leading-relaxed text-sm sm:text-base">
+        <strong class="text-text-primary">But we can stop them.</strong> The Bastrop County Republican Party is fighting every day to defend our values, support strong conservative candidates, and ensure our county remains a beacon of liberty in Texas. <strong class="text-text-primary">We cannot do this without you.</strong> Your contribution today directly funds our grassroots efforts to register voters, get out the vote, and push back against the liberal agenda. Every dollar counts in the fight to keep Bastrop County red.
+      </p>
+
+      <p class="text-text-secondary leading-relaxed text-sm sm:text-base">
+        Together, we can protect our home. Stand with us, make a donation, and let's keep Bastrop County true to its roots!
+      </p>
+
+      <p class="text-sm font-semibold text-navy italic">
+        Thank you for your unwavering support.
       </p>
       
       <div class="pt-2">
@@ -46,15 +63,24 @@ import Button from './Button.astro';
           href="https://checkout.square.site/merchant/MLH868AEB8MST/checkout/SXTLPYFLU43QAGJITPIA37SY" 
           variant="primary" 
           size="lg" 
-          class="w-full text-center justify-center text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all"
+          class="w-full text-center justify-center text-base sm:text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all"
           external
         >
-          Donate Now
+          ★ Donate Now – Keep Bastrop County Red ★
         </Button>
       </div>
       
+      <!-- Hashtags -->
+      <div class="flex flex-wrap gap-2 pt-1">
+        <span class="text-xs font-semibold text-red-primary">#BastropCounty</span>
+        <span class="text-xs font-semibold text-red-primary">#KeepBastropRed</span>
+        <span class="text-xs font-semibold text-red-primary">#Texas</span>
+        <span class="text-xs font-semibold text-red-primary">#BCRP</span>
+        <span class="text-xs font-semibold text-red-primary">#StopTheTakeover</span>
+      </div>
+
       <!-- Disclaimer -->
-      <div class="text-xs text-gray-500 mt-2 bg-gray-50 p-3 rounded-md border border-gray-100">
+      <div class="text-xs text-gray-500 mt-1 bg-gray-50 p-3 rounded-md border border-gray-100">
         <p class="mb-1">
           Texas Ethics Commission rules may require donor information including name, address, occupation, and employer for certain contributions.
         </p>
