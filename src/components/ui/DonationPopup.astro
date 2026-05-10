@@ -1,0 +1,121 @@
+---
+import Button from './Button.astro';
+---
+
+<div id="donation-popup" class="fixed inset-0 z-50 flex flex-col items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300 hidden">
+  <!-- Backdrop -->
+  <div id="donation-popup-backdrop" class="absolute inset-0 bg-navy/80 backdrop-blur-sm transition-opacity"></div>
+  
+  <!-- Popup Content -->
+  <div class="relative bg-white rounded-xl shadow-2xl max-w-lg w-full overflow-hidden transform scale-95 transition-transform duration-300" id="donation-popup-content">
+    
+    <!-- Close Button -->
+    <button id="donation-popup-close" class="absolute top-4 right-4 text-gray-500 hover:text-navy transition-colors z-10" aria-label="Close popup">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    
+    <!-- Header Image / Banner -->
+    <div class="h-32 sm:h-40 bg-navy overflow-hidden relative flex items-center justify-center">
+      <!-- Fallback pattern if image is missing -->
+      <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 20px 20px;"></div>
+      <img 
+        src="https://items-images-production.s3.us-west-2.amazonaws.com/files/8ce3a38e5f24ea4fb4feb6f3f1cbb44fb2580da4/original.png" 
+        alt="Bastrop County GOP Support" 
+        class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-80"
+      />
+      <div class="relative z-10 text-center px-6">
+        <h3 class="text-2xl sm:text-3xl font-bold text-white font-serif tracking-wide drop-shadow-md">
+          Support Our Mission
+        </h3>
+      </div>
+    </div>
+    
+    <!-- Body -->
+    <div class="p-6 sm:p-8 flex flex-col gap-5">
+      <h4 class="text-xl font-bold text-navy">Support the Bastrop County Republican Party</h4>
+      
+      <p class="text-gray-700 leading-relaxed">
+        Your support helps defend conservative values, protect constitutional freedoms, and keep Bastrop County strong.
+      </p>
+      
+      <div class="pt-2">
+        <Button 
+          href="https://checkout.square.site/merchant/MLH868AEB8MST/checkout/SXTLPYFLU43QAGJITPIA37SY" 
+          variant="primary" 
+          size="lg" 
+          class="w-full text-center justify-center text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all"
+          external
+        >
+          Donate Now
+        </Button>
+      </div>
+      
+      <!-- Disclaimer -->
+      <div class="text-xs text-gray-500 mt-2 bg-gray-50 p-3 rounded-md border border-gray-100">
+        <p class="mb-1">
+          Texas Ethics Commission rules may require donor information including name, address, occupation, and employer for certain contributions.
+        </p>
+        <p>
+          Donations are not tax deductible and must comply with federal and Texas election laws.
+        </p>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<script>
+  // Script runs on client side
+  document.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('donation-popup');
+    const backdrop = document.getElementById('donation-popup-backdrop');
+    const content = document.getElementById('donation-popup-content');
+    const closeBtn = document.getElementById('donation-popup-close');
+    
+    // Check if popup has been seen in this session
+    const hasSeenPopup = sessionStorage.getItem('bcrp_donation_popup_seen');
+    
+    if (!hasSeenPopup && popup && backdrop && content && closeBtn) {
+      // Show popup after 5 seconds of page load
+      setTimeout(() => {
+        popup.classList.remove('hidden');
+        
+        // Small delay to allow display:block to apply before animating opacity
+        requestAnimationFrame(() => {
+          popup.classList.remove('opacity-0', 'pointer-events-none');
+          content.classList.remove('scale-95');
+          content.classList.add('scale-100');
+        });
+      }, 5000);
+      
+      const closePopup = () => {
+        popup.classList.add('opacity-0', 'pointer-events-none');
+        content.classList.remove('scale-100');
+        content.classList.add('scale-95');
+        
+        // Mark as seen so it doesn't show again this session
+        sessionStorage.setItem('bcrp_donation_popup_seen', 'true');
+        
+        setTimeout(() => {
+          popup.classList.add('hidden');
+        }, 300); // Wait for transition to finish
+      };
+      
+      // Close on button click
+      closeBtn.addEventListener('click', closePopup);
+      
+      // Close on backdrop click
+      backdrop.addEventListener('click', closePopup);
+      
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !popup.classList.contains('hidden')) {
+          closePopup();
+        }
+      });
+    }
+  });
+</script>
