@@ -46,4 +46,18 @@ const leadership = defineCollection({
   }),
 });
 
-export const collections = { posts, events, leadership };
+const blogs = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blogs' }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    author: z.string().default('BCRP'),
+    category: z.string(),
+    tags: z.array(z.string()).optional(),
+    excerpt: z.string(),
+    featured_image: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { posts, events, leadership, blogs };
