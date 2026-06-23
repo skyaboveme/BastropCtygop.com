@@ -1,0 +1,259 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const candidates = [
+  // Federal
+  {
+    name: 'Ted Cruz',
+    office: 'U.S. Senator',
+    level: 'federal',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp', // fallback placeholder
+    bio: 'Fighting for Texas jobs, energy independence, border security, and our constitutional liberties in the U.S. Senate.',
+    website: 'https://www.tedcruz.org',
+    donate: 'https://www.tedcruz.org'
+  },
+  {
+    name: 'Michael McCaul',
+    office: 'U.S. Representative, District 10',
+    level: 'federal',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Chairman of the House Foreign Affairs Committee, working tirelessly for national security, local law enforcement, and economic growth.',
+    website: 'https://michaelmccaul.com',
+    donate: 'https://michaelmccaul.com'
+  },
+  {
+    name: 'Michael Cloud',
+    office: 'U.S. Representative, District 27',
+    level: 'federal',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Defending fiscal responsibility, individual liberty, and working to stop out-of-control federal spending in Congress.',
+    website: 'https://www.cloudforcongress.com',
+    donate: 'https://www.cloudforcongress.com'
+  },
+  // State
+  {
+    name: 'Lois Kolkhorst',
+    office: 'Texas State Senator, District 18',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'A lifelong conservative advocate fighting for Texas land and water rights, property tax relief, and securing our border.',
+    website: 'https://www.loiskolkhorst.com',
+    donate: 'https://www.loiskolkhorst.com'
+  },
+  {
+    name: 'Charles Schwertner',
+    office: 'Texas State Senator, District 5',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Championing tax reform, utility grid reliability, and support for rural Texas infrastructure in the State Senate.',
+    website: 'https://charlesschwertner.com',
+    donate: 'https://charlesschwertner.com'
+  },
+  {
+    name: 'Stan Gerdes',
+    office: 'Texas State Representative, District 17',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Proudly representing Bastrop County. Fighting for lower property taxes, support for first responders, and constitutional liberties.',
+    website: 'https://stangerdes.com',
+    donate: 'https://stangerdes.com'
+  },
+  // Local
+  {
+    name: 'Gregory Klaus',
+    office: 'Bastrop County Judge',
+    level: 'local',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Delivering transparent county government, infrastructure improvements, and working to lower county property tax rates for all families.',
+    website: 'https://electgregoryklaus.com',
+    donate: 'https://electgregoryklaus.com'
+  },
+  {
+    name: 'Maurice Cook',
+    office: 'Bastrop County Sheriff',
+    level: 'local',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Protecting Bastrop County families through professional, high-fidelity law enforcement, department accountability, and community safety programs.',
+    website: 'https://www.sheriffmauricecook.com',
+    donate: 'https://www.sheriffmauricecook.com'
+  },
+  {
+    name: 'Krista Bartsch',
+    office: 'Bastrop County Clerk',
+    level: 'local',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Serving the citizens of Bastrop County with secure records management, transparent election administration, and efficient customer service.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+  {
+    name: 'Sarah Loucks',
+    office: 'Bastrop County District Clerk',
+    level: 'local',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Committed to technological modernization of court records, accurate record-keeping, and serving our legal system with integrity.',
+    website: 'https://www.co.bastrop.tx.us/',
+  }
+];
+
+const voterGuideSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "2026 Republican Voter Guide - Bastrop County",
+  "description": "The official Republican Voter Guide for Bastrop County, Texas. View endorsed candidates for Federal, State, and Local offices.",
+  "publisher": {
+    "@type": "PoliticalParty",
+    "name": "Bastrop County Republican Party",
+    "url": "https://bastropctygop.com"
+  }
+};
+---
+
+<PageLayout 
+  title="2026 Voter Guide" 
+  description="Your comprehensive guide to Republican candidates on the ballot in Bastrop County. Educate yourself before heading to the polls."
+  jsonLd={voterGuideSchema}
+>
+  <div class="bg-gray-50/50 py-16 lg:py-24 min-h-screen">
+    <div class="container mx-auto max-w-6xl px-4">
+      
+      <!-- Page Header -->
+      <div class="mb-12 text-center md:text-left md:flex md:items-end md:justify-between border-b border-gray-200 pb-8">
+        <div class="max-w-2xl">
+          <h1 class="text-4xl md:text-5xl font-serif font-bold text-navy mb-4 inline-block relative">
+            2026 Voter Guide
+            <div class="absolute -bottom-2 left-0 w-1/3 h-1 bg-red-primary rounded-full"></div>
+          </h1>
+          <p class="text-text-secondary text-lg leading-relaxed mt-2">
+            The official listing of Republican candidates representing conservative principles on the ballot in Bastrop County.
+          </p>
+        </div>
+        
+        <!-- Quick links to Voter Hub -->
+        <div class="mt-6 md:mt-0">
+          <a href="/resources/voter-hub/" class="inline-flex items-center gap-2 bg-navy hover:bg-navy-light text-white font-bold text-sm px-5 py-3 rounded-lg transition-colors shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Voter Deadlines & ID Info
+          </a>
+        </div>
+      </div>
+
+      <!-- Categories Filter Tabs -->
+      <div class="flex flex-wrap gap-2 mb-10 justify-center md:justify-start" id="filters-container">
+        <button data-filter="all" class="px-5 py-2.5 rounded-lg text-sm font-bold transition-all shadow-sm bg-red-primary text-white border border-red-primary">
+          All Candidates
+        </button>
+        <button data-filter="federal" class="px-5 py-2.5 rounded-lg text-sm font-bold transition-all shadow-sm bg-white text-navy border border-gray-200 hover:bg-gray-50">
+          Federal (U.S.)
+        </button>
+        <button data-filter="state" class="px-5 py-2.5 rounded-lg text-sm font-bold transition-all shadow-sm bg-white text-navy border border-gray-200 hover:bg-gray-50">
+          State of Texas
+        </button>
+        <button data-filter="local" class="px-5 py-2.5 rounded-lg text-sm font-bold transition-all shadow-sm bg-white text-navy border border-gray-200 hover:bg-gray-50">
+          Local (Bastrop County)
+        </button>
+      </div>
+
+      <!-- Candidates Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" id="candidates-grid">
+        {candidates.map((cand) => (
+          <div 
+            class="bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 overflow-hidden flex flex-col justify-between transition-all duration-300 relative group"
+            data-level={cand.level}
+          >
+            <!-- Level Indicator Strip -->
+            <div class={`absolute top-0 left-0 w-full h-1.5 ${
+              cand.level === 'federal' ? 'bg-navy' : cand.level === 'state' ? 'bg-red-primary' : 'bg-gold'
+            }`}></div>
+
+            <div class="p-6 md:p-8 space-y-4">
+              <div class="flex items-center gap-4">
+                <div class="w-16 h-16 rounded-full border border-gray-200 bg-gray-50 flex items-center justify-center overflow-hidden shrink-0">
+                  <img src={cand.photo} alt={cand.name} class="w-12 h-12 object-contain opacity-80 group-hover:scale-105 transition-transform" />
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-navy leading-tight">{cand.name}</h3>
+                  <p class="text-xs font-semibold text-text-secondary mt-1">{cand.office}</p>
+                </div>
+              </div>
+
+              <p class="text-sm text-text-secondary leading-relaxed min-h-[72px]">
+                {cand.bio}
+              </p>
+            </div>
+
+            <div class="p-6 md:p-8 bg-gray-50 border-t border-gray-100 flex flex-wrap gap-2 justify-between items-center">
+              <span class="text-xs font-bold uppercase tracking-wider text-gray-400">
+                {cand.level} ballot
+              </span>
+              
+              <div class="flex items-center gap-2">
+                <a 
+                  href={cand.website} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="inline-flex items-center text-xs font-bold text-navy hover:text-red-primary transition-colors py-1.5 px-3 rounded-md hover:bg-navy/5"
+                >
+                  Campaign Site
+                  <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+                
+                {cand.donate && (
+                  <a 
+                    href={cand.donate} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="bg-red-primary hover:bg-red-dark text-white font-extrabold text-[10px] uppercase tracking-wider py-1.5 px-3 rounded-md transition-colors"
+                  >
+                    Donate
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</PageLayout>
+
+<script>
+  const filterButtons = document.getElementById('filters-container')?.querySelectorAll('button');
+  const candidatesGrid = document.getElementById('candidates-grid');
+  const cards = candidatesGrid?.querySelectorAll('[data-level]');
+
+  filterButtons?.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const activeFilter = btn.getAttribute('data-filter') || 'all';
+
+      // Update button styling
+      filterButtons.forEach((b) => {
+        b.classList.remove('bg-red-primary', 'text-white', 'border-red-primary');
+        b.classList.add('bg-white', 'text-navy', 'border-gray-200', 'hover:bg-gray-50');
+      });
+      btn.classList.remove('bg-white', 'text-navy', 'border-gray-200', 'hover:bg-gray-50');
+      btn.classList.add('bg-red-primary', 'text-white', 'border-red-primary');
+
+      // Filter cards
+      cards?.forEach((card) => {
+        const level = card.getAttribute('data-level');
+        const show = activeFilter === 'all' || level === activeFilter;
+        (card as HTMLElement).style.display = show ? '' : 'none';
+      });
+    });
+  });
+</script>

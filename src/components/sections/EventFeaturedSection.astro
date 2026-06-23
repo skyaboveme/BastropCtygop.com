@@ -1,0 +1,92 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section class="py-16 lg:py-24 bg-gray-light overflow-hidden border-b border-gray-medium/30">
+  <div class="container mx-auto px-4">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      
+      <!-- Left side: Clickable Event Cover Image -->
+      <div class="relative w-full max-w-xl mx-auto lg:max-w-none">
+        <a 
+          href="https://bastropctygop.wufoo.com/forms/m116bvtr08reo3b/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="block group relative overflow-hidden rounded-xl shadow-lg border border-gray-medium/50 hover:shadow-xl transition-all duration-300"
+        >
+          <img 
+            src="/Assets/fb_event_cover_v4.png" 
+            alt="9th Annual Boots & BBQ Fundraiser" 
+            class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.01]"
+          />
+          <div class="absolute inset-0 bg-navy/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+        </a>
+      </div>
+
+      <!-- Right side: Event Information -->
+      <div class="flex flex-col justify-center max-w-lg lg:max-w-none mx-auto w-full">
+        <span class="text-sm font-bold tracking-[0.15em] text-red-primary uppercase mb-3">Featured Event</span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-navy leading-tight mb-6">
+          9th Annual Boots & BBQ Fundraiser
+        </h2>
+        
+        <!-- Info Cards -->
+        <div class="space-y-4 mb-6">
+          <!-- Date and Time -->
+          <div class="flex items-start gap-3 bg-white p-4 rounded-lg border border-gray-medium/40 shadow-sm">
+            <svg class="w-6 h-6 text-red-primary shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <div>
+              <p class="font-bold text-text-primary text-sm sm:text-base uppercase tracking-wider">Date & Time</p>
+              <p class="text-text-secondary text-sm sm:text-base font-semibold">Saturday, September 19, 2026 | Check-in at 5:00 PM</p>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="flex items-start gap-3 bg-white p-4 rounded-lg border border-gray-medium/40 shadow-sm">
+            <svg class="w-6 h-6 text-red-primary shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <div>
+              <p class="font-bold text-text-primary text-sm sm:text-base uppercase tracking-wider">Location</p>
+              <p class="text-text-secondary text-sm sm:text-base font-semibold">Bastrop Convention & Exhibition Center</p>
+              <p class="text-text-muted text-xs sm:text-sm">1408 Chestnut Street, Bastrop, Texas 78602</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="text-text-secondary space-y-4 mb-8 text-sm sm:text-base leading-relaxed">
+          <p class="font-bold text-navy">
+            Save the Date! The Bastrop County Republican Party invites you to the 9th Annual Boots & BBQ Fundraiser!
+          </p>
+          <p>
+            Join us for an evening of delicious BBQ catered by Billy's BBQ, exciting live and silent auctions, a mystery keynote speaker, and great Republican grassroots fellowship.
+          </p>
+          <p>
+            General Tickets and VIP Tickets are available, along with Multi-Level Sponsorship opportunities.
+          </p>
+          <p class="text-red-primary font-bold">
+            ⚠️ Ticket sales end September 12th.
+          </p>
+        </div>
+
+        <!-- Call to Action -->
+        <div>
+          <Button 
+            href="https://bastropctygop.wufoo.com/forms/m116bvtr08reo3b/" 
+            variant="primary" 
+            size="lg" 
+            class="w-full sm:w-auto text-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+            external
+          >
+            ★ Buy Tickets Here ★
+          </Button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>

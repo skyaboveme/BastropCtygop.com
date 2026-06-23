@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import PrecinctFinder from '../../components/ui/PrecinctFinder.astro';
 ---
 
 <PageLayout
@@ -7,11 +8,13 @@ import PageLayout from '../../layouts/PageLayout.astro';
   description="Find your Bastrop County election precinct. View precinct maps and boundary information."
 >
   <section class="py-10 lg:py-16">
-    <div class="container max-w-3xl">
+    <div class="container max-w-4xl">
       <h1 class="text-3xl lg:text-4xl font-extrabold text-text-primary mb-4">Precinct Maps</h1>
       <p class="text-lg text-text-secondary mb-10">
         Find your Bastrop County precinct number to identify your precinct chair and polling location.
       </p>
+
+      <PrecinctFinder />
 
       <div class="space-y-6">
         <div class="bg-gray-light rounded-xl p-6 lg:p-8">

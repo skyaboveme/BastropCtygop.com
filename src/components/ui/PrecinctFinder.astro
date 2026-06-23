@@ -1,0 +1,430 @@
+---
+const precincts = [
+  {
+    number: '1003',
+    name: 'Cathy Martinez',
+    email: 'precinctchair1003@bastropctygop.com',
+    coverage: 'Elgin city limits, central Elgin residential zones.',
+    pollingPlace: 'Elgin Public Library, 404 N Hwy 95, Elgin, TX 78621',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1003.pdf',
+    keywords: 'elgin, highway 95, main street, downtown elgin'
+  },
+  {
+    number: '1006',
+    name: 'Michael Dickson',
+    email: 'precinctchair1006@bastropctygop.com',
+    coverage: 'Northern Elgin, county line borders, and rural northern areas.',
+    pollingPlace: 'Elgin Public Library, 404 N Hwy 95, Elgin, TX 78621',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1006.pdf',
+    keywords: 'north elgin, county line, elgin rural'
+  },
+  {
+    number: '1007',
+    name: 'Monica Carson',
+    email: 'precinctchair1007@bastropctygop.com',
+    phone: '512-426-5950',
+    coverage: 'Western Bastrop County, Cedar Creek rural corridors, FM 535.',
+    pollingPlace: 'Cedar Creek United Methodist Church, 5630 FM 535, Cedar Creek, TX 78612',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1007.pdf',
+    keywords: 'cedar creek, fm 535, highway 21 west'
+  },
+  {
+    number: '1008',
+    name: 'Deborah Layland',
+    email: 'precinctchair1008@bastropctygop.com',
+    coverage: 'North Bastrop, Camp Swift community, highway 95 north.',
+    pollingPlace: 'Bastrop County Emergency Services Dist. 2, 120 FM 1441, Bastrop, TX 78602',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1008.pdf',
+    keywords: 'camp swift, highway 95 north, fm 1441'
+  },
+  {
+    number: '1009',
+    name: 'Kim Casper',
+    email: 'precinctchair1009@bastropctygop.com',
+    coverage: 'Circle D, Pine Forest, Highway 1441 corridors.',
+    pollingPlace: 'Bastrop County Emergency Services Dist. 2, 120 FM 1441, Bastrop, TX 78602',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1009.pdf',
+    keywords: 'circle d, pine forest, fm 1441, lake bastrop'
+  },
+  {
+    number: '2010',
+    name: 'Chris Kirby',
+    email: 'precinctchair2010@bastropctygop.com',
+    coverage: 'Paige community, eastern rural limits, Highway 290 east.',
+    pollingPlace: 'Paige Community Center, 107 Main St, Paige, TX 78659',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-2010.pdf',
+    keywords: 'paige, highway 290, east bastrop, county line'
+  },
+  {
+    number: '2011',
+    name: 'Beverly Watts',
+    email: 'precinctchair2011@bastropctygop.com',
+    coverage: 'Tahitian Village, Pine Forest, southern Bastrop city zones.',
+    pollingPlace: 'Bastrop County Annex Building, 804 Pecan St, Bastrop, TX 78602',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-2011.pdf',
+    keywords: 'tahitian village, pecan street, riverside drive, southern bastrop'
+  },
+  {
+    number: '2012',
+    name: 'Brian Thornton',
+    email: 'precinctchair2012@bastropctygop.com',
+    coverage: 'The Colony, Pecan Hills, Highway 71 west corridors.',
+    pollingPlace: 'Bastrop County Annex Building, 804 Pecan St, Bastrop, TX 78602',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-2012.pdf',
+    keywords: 'the colony, pecan hills, highway 71 west'
+  },
+  {
+    number: '2013',
+    name: 'Doug Kelsay',
+    email: 'precinctchair2013@bastropctygop.com',
+    coverage: 'Wyldwood, Cedar Creek North, FM 969 corridors.',
+    pollingPlace: 'Wyldwood Baptist Church, 398 FM 969, Bastrop, TX 78602',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-2013.pdf',
+    keywords: 'wyldwood, fm 969, north cedar creek'
+  },
+  {
+    number: '2014',
+    name: 'Shari Wyatt',
+    email: 'precinctchair2014@bastropctygop.com',
+    coverage: 'Rockne, Red Rock north, FM 535 south.',
+    pollingPlace: 'Rockne Sacred Heart Parish Hall, 4045 FM 535, Bastrop, TX 78602',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-2014.pdf',
+    keywords: 'rockne, fm 535, sacred heart, red rock north'
+  },
+  {
+    number: '2016',
+    name: 'James Page',
+    email: 'precinctchair2016@bastropctygop.com',
+    coverage: 'Central Cedar Creek, residential rural subdivisions.',
+    pollingPlace: 'Cedar Creek United Methodist Church, 5630 FM 535, Cedar Creek, TX 78612',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-2016.pdf',
+    keywords: 'central cedar creek, cedar creek high school, highway 21'
+  },
+  {
+    number: '3017',
+    name: 'Mark L. Torrey',
+    email: 'precinctchair3017@bastropctygop.com',
+    coverage: 'Smithville City, North Smithville residential zones.',
+    pollingPlace: 'Smithville City Hall, 317 Main St, Smithville, TX 78957',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-3017.pdf',
+    keywords: 'smithville, main street, colorado river'
+  },
+  {
+    number: '3018',
+    name: 'Sue Beck',
+    email: 'precinctchair3018@bastropctygop.com',
+    coverage: 'South Smithville, Rosanky, rural southern boundaries.',
+    pollingPlace: 'Rosanky Community Center, 245 FM 535, Rosanky, TX 78953',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-3018.pdf',
+    keywords: 'south smithville, rosanky, fm 535'
+  },
+  {
+    number: '3019',
+    name: 'Debra Carter',
+    email: 'precinctchair3019@bastropctygop.com',
+    coverage: 'Rosanky central, Jeddo community, rural southeastern corner.',
+    pollingPlace: 'Rosanky Community Center, 245 FM 535, Rosanky, TX 78953',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-3019.pdf',
+    keywords: 'rosanky, jeddo, southeast county line'
+  },
+  {
+    number: '4021',
+    name: 'Amber Wilson',
+    email: 'precinctchair4021@bastropctygop.com',
+    coverage: 'Red Rock, Bateman, FM 20 southwest corridor.',
+    pollingPlace: 'Red Rock Community Center, 114 Red Rock Rd, Red Rock, TX 78662',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-4021.pdf',
+    keywords: 'red rock, bateman, fm 20, southwest bastrop'
+  },
+  {
+    number: '4022',
+    name: 'Terry Pickering',
+    email: 'precinctchair4022@bastropctygop.com',
+    coverage: 'Cedar Creek West, Mustang Ridge boundaries.',
+    pollingPlace: 'Cedar Creek United Methodist Church, 5630 FM 535, Cedar Creek, TX 78612',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-4022.pdf',
+    keywords: 'west cedar creek, mustang ridge, highway 21 west'
+  },
+  {
+    number: '4023',
+    name: 'Amber Sparks',
+    email: 'precinctchair4023@bastropctygop.com',
+    coverage: 'Creedmoor, Del Valle boundaries, northwestern county corner.',
+    pollingPlace: 'Wyldwood Baptist Church, 398 FM 969, Bastrop, TX 78602',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-4023.pdf',
+    keywords: 'creedmoor, del valle, highway 71 west, north west border'
+  },
+  {
+    number: '4024',
+    name: 'Jerry Able',
+    email: 'precinctchair4024@bastropctygop.com',
+    coverage: 'Utley, Sandy Hills, Highway 969 north of the river.',
+    pollingPlace: 'Bastrop County Emergency Services Dist. 2, 120 FM 1441, Bastrop, TX 78602',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-4024.pdf',
+    keywords: 'utley, sandy hills, highway 969, north river'
+  },
+  {
+    number: '4026',
+    name: 'W.C. Estes',
+    email: 'precinctchair4026@bastropctygop.com',
+    coverage: 'Bastrop Central, downtown historical district.',
+    pollingPlace: 'Bastrop County Annex Building, 804 Pecan St, Bastrop, TX 78602',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-4026.pdf',
+    keywords: 'downtown bastrop, historical district, pecan street'
+  },
+  {
+    number: '1002',
+    name: 'Vacant',
+    coverage: 'Elgin West, county line transitions.',
+    pollingPlace: 'Elgin Public Library, 404 N Hwy 95, Elgin, TX 78621',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1002.pdf',
+    keywords: 'elgin west, county line, vacant'
+  },
+  {
+    number: '1004',
+    name: 'Vacant',
+    coverage: 'Elgin East, rural farm roads.',
+    pollingPlace: 'Elgin Public Library, 404 N Hwy 95, Elgin, TX 78621',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1004.pdf',
+    keywords: 'elgin east, vacant'
+  },
+  {
+    number: '2015',
+    name: 'Vacant',
+    coverage: 'Cedar Creek Southeast, rural ranges.',
+    pollingPlace: 'Rockne Sacred Heart Parish Hall, 4045 FM 535, Bastrop, TX 78602',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-2015.pdf',
+    keywords: 'cedar creek southeast, vacant'
+  },
+  {
+    number: '3020',
+    name: 'Vacant',
+    coverage: 'Rosanky South, county borders.',
+    pollingPlace: 'Rosanky Community Center, 245 FM 535, Rosanky, TX 78953',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-3020.pdf',
+    keywords: 'rosanky south, county border, vacant'
+  }
+];
+---
+
+<div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden max-w-4xl mx-auto my-12">
+  <div class="bg-navy p-6 md:p-8 text-white">
+    <h3 class="text-2xl font-bold font-serif mb-2 text-white">Find Your Precinct & Chair</h3>
+    <p class="text-white/80 text-sm leading-relaxed">
+      Type your street name or subdivision (e.g. <strong>Tahitian Village</strong>, <strong>Circle D</strong>, <strong>Elgin</strong>) or select a precinct below to locate your Precinct Chair, map, and voting location.
+    </p>
+  </div>
+
+  <div class="p-6 md:p-8 space-y-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Search Input -->
+      <div>
+        <label for="address-lookup" class="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Search by Neighborhood or Street</label>
+        <div class="relative">
+          <input 
+            type="text" 
+            id="address-lookup" 
+            placeholder="e.g. Tahitian Village, Elgin, FM 535..."
+            class="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-primary focus:border-transparent bg-gray-50 text-sm text-text-primary"
+          />
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Dropdown Select -->
+      <div>
+        <label for="precinct-select" class="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Select Precinct Directly</label>
+        <select 
+          id="precinct-select"
+          class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-primary focus:border-transparent bg-gray-50 text-sm text-text-primary h-[46px]"
+        >
+          <option value="">-- Choose Precinct --</option>
+          {precincts.map((pct) => (
+            <option value={pct.number}>Precinct {pct.number} ({pct.name === 'Vacant' ? 'Vacant' : pct.name})</option>
+          ))}
+        </select>
+      </div>
+    </div>
+
+    <!-- Live Search Results -->
+    <div id="lookup-results" class="hidden space-y-6 pt-4 border-t border-gray-100">
+      <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+          <div>
+            <span class="inline-block bg-red-primary text-white font-extrabold text-sm px-4 py-1.5 rounded-full uppercase tracking-wider mb-2">
+              Precinct <span id="res-number">1003</span>
+            </span>
+            <h4 class="text-xl font-bold text-navy" id="res-coverage">Elgin City Limits</h4>
+          </div>
+          
+          <div id="res-map-container">
+            <a 
+              href="#" 
+              id="res-map-link" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="inline-flex items-center gap-1.5 bg-navy/10 hover:bg-navy/20 text-navy font-bold text-xs px-4 py-2 rounded-lg transition-colors"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+              </svg>
+              Download PDF Map
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Representative/Chair details -->
+          <div class="bg-white p-5 rounded-lg border border-gray-100 shadow-sm flex flex-col justify-between">
+            <div>
+              <span class="block text-[10px] uppercase tracking-wider font-extrabold text-gray-400 mb-1">Precinct Chair</span>
+              <h5 class="text-lg font-bold text-text-primary mb-1" id="res-chair-name">Cathy Martinez</h5>
+              <p class="text-xs text-text-secondary mb-4" id="res-chair-status">Official Republican Representative</p>
+            </div>
+            
+            <div id="res-chair-contact">
+              <a href="#" id="res-chair-email" class="inline-flex items-center gap-1.5 text-sm font-semibold text-red-primary hover:text-red-dark transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Email Precinct Chair
+              </a>
+              <p id="res-chair-phone" class="text-xs text-text-secondary mt-1 hidden"></p>
+            </div>
+            
+            <div id="res-chair-vacant" class="hidden">
+              <p class="text-sm text-text-secondary mb-4">This precinct is currently vacant. We need conservative leadership in your area!</p>
+              <a href="/resources/volunteer/" class="inline-flex items-center gap-1.5 bg-red-primary hover:bg-red-dark text-white font-bold text-xs px-4 py-2.5 rounded-lg transition-colors">
+                Apply to be Precinct Chair
+              </a>
+            </div>
+          </div>
+
+          <!-- Polling Location details -->
+          <div class="bg-white p-5 rounded-lg border border-gray-100 shadow-sm flex flex-col justify-between">
+            <div>
+              <span class="block text-[10px] uppercase tracking-wider font-extrabold text-gray-400 mb-1">Election Day Polling Place</span>
+              <h5 class="text-base font-bold text-navy mb-2" id="res-poll-place">Elgin Public Library</h5>
+              <p class="text-xs text-text-secondary leading-relaxed" id="res-poll-details">404 N Hwy 95, Elgin, TX 78621</p>
+            </div>
+            
+            <div class="pt-4">
+              <a 
+                href="#" 
+                id="res-poll-directions" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="inline-flex items-center gap-1.5 text-xs font-semibold text-navy hover:text-red-primary transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                </svg>
+                Get Directions (Google Maps)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ precincts }}>
+  const lookupInput = document.getElementById('address-lookup');
+  const selectElement = document.getElementById('precinct-select');
+  const resultsContainer = document.getElementById('lookup-results');
+
+  const resNumber = document.getElementById('res-number');
+  const resCoverage = document.getElementById('res-coverage');
+  const resMapLink = document.getElementById('res-map-link');
+  const resChairName = document.getElementById('res-chair-name');
+  const resChairStatus = document.getElementById('res-chair-status');
+  const resChairContact = document.getElementById('res-chair-contact');
+  const resChairEmail = document.getElementById('res-chair-email');
+  const resChairPhone = document.getElementById('res-chair-phone');
+  const resChairVacant = document.getElementById('res-chair-vacant');
+  const resPollPlace = document.getElementById('res-poll-place');
+  const resPollDetails = document.getElementById('res-poll-details');
+  const resPollDirections = document.getElementById('res-poll-directions');
+
+  function showPrecinct(pct) {
+    if (!pct) {
+      resultsContainer.classList.add('hidden');
+      return;
+    }
+
+    resNumber.textContent = pct.number;
+    resCoverage.textContent = pct.coverage;
+    
+    if (pct.mapUrl) {
+      resMapLink.href = pct.mapUrl;
+      document.getElementById('res-map-container').classList.remove('hidden');
+    } else {
+      document.getElementById('res-map-container').classList.add('hidden');
+    }
+
+    if (pct.name === 'Vacant') {
+      resChairName.textContent = 'Position Vacant';
+      resChairStatus.textContent = 'Help Organize Your Neighborhood';
+      resChairContact.classList.add('hidden');
+      resChairVacant.classList.remove('hidden');
+    } else {
+      resChairName.textContent = pct.name;
+      resChairStatus.textContent = 'Official BCRP Precinct Chair';
+      resChairContact.classList.remove('hidden');
+      resChairVacant.classList.add('hidden');
+      resChairEmail.href = `mailto:${pct.email}`;
+      
+      if (pct.phone) {
+        resChairPhone.textContent = `Phone: ${pct.phone}`;
+        resChairPhone.classList.remove('hidden');
+      } else {
+        resChairPhone.classList.add('hidden');
+      }
+    }
+
+    // Split polling place name and address
+    const pollParts = pct.pollingPlace.split(', ');
+    const pollName = pollParts[0];
+    const pollAddress = pollParts.slice(1).join(', ');
+    resPollPlace.textContent = pollName;
+    resPollDetails.textContent = pollAddress;
+    resPollDirections.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(pct.pollingPlace)}`;
+
+    resultsContainer.classList.remove('hidden');
+  }
+
+  // Handle dropdown selection
+  selectElement?.addEventListener('change', (e) => {
+    const value = e.target.value;
+    if (value) {
+      lookupInput.value = ''; // clear text input
+      const matched = precincts.find(p => p.number === value);
+      showPrecinct(matched);
+    } else {
+      resultsContainer.classList.add('hidden');
+    }
+  });
+
+  // Handle street/neighborhood search
+  lookupInput?.addEventListener('input', (e) => {
+    const value = e.target.value.toLowerCase().trim();
+    if (!value) {
+      resultsContainer.classList.add('hidden');
+      return;
+    }
+
+    selectElement.value = ''; // clear dropdown select
+
+    // Find first matching precinct based on keywords or number
+    const matched = precincts.find(p => 
+      p.number.includes(value) || 
+      p.keywords.includes(value) || 
+      p.coverage.toLowerCase().includes(value)
+    );
+
+    showPrecinct(matched);
+  });
+</script>
