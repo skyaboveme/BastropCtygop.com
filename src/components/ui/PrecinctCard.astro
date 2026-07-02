@@ -4,16 +4,18 @@ interface Props {
   name: string;
   email?: string;
   phone?: string;
+  address?: string;
+  note?: string;
   vacant?: boolean;
 }
 
-const { precinct, name, email, phone, vacant = false } = Astro.props;
+const { precinct, name, email, phone, address, note, vacant = false } = Astro.props;
 ---
 
 <div class={`rounded-xl border p-4 transition-all duration-300 ${
   vacant
     ? 'border-dashed border-gray-medium bg-gray-light/50'
-    : 'border-gray-medium bg-white hover:shadow-[var(--shadow-card-hover)]'
+    : note ? 'border-gray-medium bg-gray-light/60 opacity-70' : 'border-gray-medium bg-white hover:shadow-[var(--shadow-card-hover)]'
 }`}>
   <div class="flex items-center gap-3">
     <!-- Precinct Badge -->
@@ -27,6 +29,11 @@ const { precinct, name, email, phone, vacant = false } = Astro.props;
       <h3 class={`font-bold text-sm ${vacant ? 'text-text-muted' : 'text-text-primary'}`}>
         {vacant ? 'Vacant' : name}
       </h3>
+      {note && (
+        <span class="inline-block text-[10px] font-bold uppercase tracking-wider text-red-primary bg-red-primary/10 px-2 py-0.5 rounded mt-1">
+          {note}
+        </span>
+      )}
       {!vacant && (
         <div class="flex flex-wrap items-center gap-2 mt-1">
           {email && (
@@ -53,6 +60,9 @@ const { precinct, name, email, phone, vacant = false } = Astro.props;
           )}
         </div>
       )}
+      {address && !vacant && (
+        <p class="text-[11px] text-text-muted mt-1">{address}</p>
+      )}
       {vacant && (
         <a href="/about/county-chair/" class="text-xs text-red-primary hover:underline mt-1 inline-block">
           Interested? Contact the County Chair
@@ -61,3 +71,4 @@ const { precinct, name, email, phone, vacant = false } = Astro.props;
     </div>
   </div>
 </div>
+

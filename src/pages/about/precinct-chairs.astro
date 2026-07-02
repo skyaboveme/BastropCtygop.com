@@ -4,25 +4,27 @@ import PrecinctCard from '../../components/ui/PrecinctCard.astro';
 
 const precinctChairs = [
   { precinct: '1003', name: 'Cathy Martinez', email: 'precinctchair1003@bastropctygop.com' },
-  { precinct: '1006', name: 'Michael Dickson', email: 'precinctchair1006@bastropctygop.com' },
+  { precinct: '1006', name: 'Michael Dickson', email: 'mike@goofythat.com', phone: '512-718-4873', address: '261 Suzanna Dr., Bastrop, TX 78602' },
   { precinct: '1007', name: 'Monica Carson', email: 'precinctchair1007@bastropctygop.com', phone: '512-426-5950' },
   { precinct: '1008', name: 'Deborah Layland', email: 'precinctchair1008@bastropctygop.com' },
   { precinct: '1009', name: 'Kim Casper', email: 'precinctchair1009@bastropctygop.com' },
   { precinct: '2010', name: 'Chris Kirby', email: 'precinctchair2010@bastropctygop.com' },
   { precinct: '2011', name: 'Beverly Watts', email: 'precinctchair2011@bastropctygop.com' },
   { precinct: '2012', name: 'Brian Thornton', email: 'precinctchair2012@bastropctygop.com' },
-  { precinct: '2013', name: 'Doug Kelsay', email: 'precinctchair2013@bastropctygop.com' },
-  { precinct: '2014', name: 'Shari Wyatt', email: 'precinctchair2014@bastropctygop.com' },
-  { precinct: '2016', name: 'James Page', email: 'precinctchair2016@bastropctygop.com' },
-  { precinct: '3017', name: 'Mark L. Torrey', email: 'precinctchair3017@bastropctygop.com' },
-  { precinct: '3018', name: 'Sue Beck', email: 'precinctchair3018@bastropctygop.com' },
-  { precinct: '3019', name: 'Debra Carter', email: 'precinctchair3019@bastropctygop.com' },
-  { precinct: '4021', name: 'Amber Wilson', email: 'precinctchair4021@bastropctygop.com' },
-  { precinct: '4022', name: 'Terry Pickering', email: 'precinctchair4022@bastropctygop.com' },
-  { precinct: '4023', name: 'Amber Sparks', email: 'precinctchair4023@bastropctygop.com' },
+  { precinct: '2013', name: 'Doug Kelsay', email: 'dougk@keltecsystems.com', phone: '512-762-2567', address: '346 Hoffman Rd., Bastrop, TX 78602' },
+  { precinct: '2014', name: 'Shari Wyatt', email: 'shari.wyatt.mail@gmail.com', phone: '512-923-9000', address: '789 Antioch Rd., Paige, TX 78659' },
+  { precinct: '2015', name: 'Debra Wilson', email: 'villernc1@yahoo.com', phone: '512-695-1495', address: '905 Hudgins St., Smithville, TX 78957' },
+  { precinct: '2016', name: 'James Page', email: 'jamespageBCRP@gmail.com', phone: '512-332-1920', address: '375 Peach Creek Rd., Rosanky, TX 78953' },
+  { precinct: '3017', name: 'Mark L. Torrey', email: 'markltorreybcrp@gmail.com', phone: '512-964-1832', address: '362 Watterson School Rd., Red Rock, TX 78662' },
+  { precinct: '3018', name: 'Sue Beck', email: 'smbeck360@yahoo.com', phone: '512-913-7917', address: '181 High Grove Rd., Cedar Creek, TX 78612' },
+  { precinct: '3019', name: 'Debra Carter', email: 'carter512djwc@gmail.com', phone: '512-554-4841', address: '124 Deep Woods Dr., Cedar Creek, TX 78612' },
+  { precinct: '4021', name: 'Amber Wilson', email: 'desertrose2469@yahoo.com', phone: '512-297-6800', address: '253 Riverwood Dr., Bastrop, TX 78602' },
+  { precinct: '4022', name: 'Terry Pickering', email: 'terryp1003@gmail.com', phone: '512-308-7166', address: '164 Elm Wood Dr., Elgin, TX 78621', note: 'Resigned 06/2026' },
+  { precinct: '4023', name: 'Cliff Sparks', email: 'dewar9893@mypacks.net', phone: '512-581-1232', address: '431-C Stockade Ranch Road, Paige, TX 78659' },
   { precinct: '4024', name: 'Jerry Able', email: 'precinctchair4024@bastropctygop.com' },
   { precinct: '4026', name: 'W.C. Estes', email: 'precinctchair4026@bastropctygop.com' },
 ];
+
 ---
 
 <PageLayout
@@ -38,6 +40,58 @@ const precinctChairs = [
       <p class="text-base text-text-secondary mb-8">
         Click on a name to send email to your Precinct Chair.
       </p>
+
+      <!-- SREC Representatives -->
+      <div class="mb-10">
+        <h2 class="text-xl font-bold text-navy mb-4 flex items-center gap-2">
+          <span class="w-2 h-2 bg-red-primary rounded-full"></span>
+          State Republican Executive Committee (SREC)
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="rounded-xl border border-gray-medium bg-navy/5 p-4">
+            <div class="flex items-center gap-3">
+              <div class="shrink-0 w-12 h-12 rounded-lg bg-red-primary text-white flex items-center justify-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <p class="text-[10px] font-bold uppercase tracking-widest text-text-muted">SREC Committeewoman</p>
+                <h3 class="font-bold text-sm text-text-primary">Susan Lucus</h3>
+                <div class="flex flex-wrap items-center gap-2 mt-1">
+                  <a href="tel:2149238911" class="inline-flex items-center gap-1 text-xs text-navy hover:text-red-primary transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21" /></svg>
+                    214-923-8911
+                  </a>
+                  <a href="mailto:lucassel@att.net" class="inline-flex items-center gap-1 text-xs text-navy hover:text-red-primary transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    Email
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-xl border border-gray-medium bg-navy/5 p-4">
+            <div class="flex items-center gap-3">
+              <div class="shrink-0 w-12 h-12 rounded-lg bg-red-primary text-white flex items-center justify-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <p class="text-[10px] font-bold uppercase tracking-widest text-text-muted">SREC Committeeman</p>
+                <h3 class="font-bold text-sm text-text-primary">Justin Bezner</h3>
+                <div class="flex flex-wrap items-center gap-2 mt-1">
+                  <a href="tel:5128252707" class="inline-flex items-center gap-1 text-xs text-navy hover:text-red-primary transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21" /></svg>
+                    512-825-2707
+                  </a>
+                  <a href="mailto:justin.bcrp@yahoo.com" class="inline-flex items-center gap-1 text-xs text-navy hover:text-red-primary transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    Email
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Search -->
       <div class="mb-8">
@@ -63,6 +117,8 @@ const precinctChairs = [
               name={chair.name}
               email={chair.email}
               phone={chair.phone}
+              address={chair.address}
+              note={chair.note}
             />
           </div>
         ))}
