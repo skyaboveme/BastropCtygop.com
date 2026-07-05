@@ -1,15 +1,186 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 ---
 
-<BaseLayout title="Donate">
-  <meta slot="header" http-equiv="refresh" content="0;url=https://square.link/u/p4rKmX9I" />
-  <div class="container py-20 text-center">
-    <p class="text-text-secondary">Redirecting to donation form...</p>
-    <p class="mt-2">
-      <a href="https://square.link/u/p4rKmX9I" class="text-navy hover:text-red-primary font-medium">
-        Click here if not redirected
+<PageLayout
+  title="Donate"
+  description="Support the Bastrop County Republican Party with a tax-deductible contribution. Your donation funds voter registration drives, candidate support, community events, and grassroots conservative action in Bastrop County, Texas."
+  showBreadcrumbs={false}
+>
+  <!-- Hero Banner -->
+  <section class="relative py-16 lg:py-24 bg-navy overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none opacity-15 mix-blend-color-burn">
+      <img
+        src="/waving_texas_flag_texture.png"
+        alt=""
+        class="w-full h-full object-cover object-center grayscale"
+      />
+    </div>
+    <div class="container relative z-10 text-center max-w-3xl">
+      <div class="inline-flex items-center gap-2 bg-red-primary/20 text-red-light px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        Support Our Mission
+      </div>
+      <h1 class="text-3xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
+        Invest in <span class="text-gold">Conservative Values</span><br/>in Bastrop County
+      </h1>
+      <p class="text-lg text-white/70 mb-8 max-w-2xl mx-auto">
+        Your generous contribution directly supports voter registration, candidate recruitment, community outreach, and the fight to keep Bastrop County red.
+      </p>
+      <a
+        href="https://square.link/u/p4rKmX9I"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 bg-red-primary hover:bg-red-dark text-white font-bold text-lg px-10 py-4 rounded-xl transition-all hover:-translate-y-1 shadow-xl shadow-red-primary/30"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+        Donate Now via Square
       </a>
-    </p>
-  </div>
-</BaseLayout>
+      <p class="text-xs text-white/40 mt-4">Secure payment processed by Square</p>
+    </div>
+  </section>
+
+  <!-- Where Your Money Goes -->
+  <section class="py-12 lg:py-20 bg-gray-light">
+    <div class="container max-w-5xl">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl lg:text-3xl font-extrabold text-text-primary mb-3">Where Your Donation Goes</h2>
+        <p class="text-text-secondary max-w-2xl mx-auto">Every dollar you contribute stays right here in Bastrop County, powering the grassroots work that wins elections.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Voter Registration -->
+        <div class="bg-white rounded-xl p-6 border border-gray-medium text-center hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
+          <div class="w-14 h-14 rounded-full bg-navy/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-text-primary mb-2">Voter Registration</h3>
+          <p class="text-sm text-text-secondary">Registering new Republican voters and ensuring every conservative voice is counted at the polls.</p>
+        </div>
+
+        <!-- Candidate Support -->
+        <div class="bg-white rounded-xl p-6 border border-gray-medium text-center hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
+          <div class="w-14 h-14 rounded-full bg-red-primary/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-red-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-text-primary mb-2">Candidate Support</h3>
+          <p class="text-sm text-text-secondary">Recruiting and supporting principled Republican candidates who share our conservative values.</p>
+        </div>
+
+        <!-- Community Events -->
+        <div class="bg-white rounded-xl p-6 border border-gray-medium text-center hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
+          <div class="w-14 h-14 rounded-full bg-navy/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-text-primary mb-2">Community Events</h3>
+          <p class="text-sm text-text-secondary">Monthly meetings, parades, fundraisers, and events that bring conservatives together across the county.</p>
+        </div>
+
+        <!-- Party Operations -->
+        <div class="bg-white rounded-xl p-6 border border-gray-medium text-center hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
+          <div class="w-14 h-14 rounded-full bg-red-primary/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-red-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-text-primary mb-2">Party Operations</h3>
+          <p class="text-sm text-text-secondary">Maintaining our headquarters, communications, election oversight, and the daily work of a strong local party.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Statement -->
+  <section class="py-12 lg:py-16">
+    <div class="container max-w-4xl">
+      <div class="bg-white rounded-2xl border border-gray-medium p-8 lg:p-12 shadow-sm">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 class="text-2xl font-extrabold text-text-primary mb-4">Why Your Support Matters</h2>
+            <p class="text-text-secondary mb-4">
+              Bastrop County is one of the fastest-growing counties in Texas. With new residents moving in every day, it's critical that we stay organized, stay engaged, and keep building the conservative movement right here at home.
+            </p>
+            <p class="text-text-secondary mb-6">
+              Your contributions — no matter the size — fund the grassroots infrastructure that turns out voters, holds elected officials accountable, and keeps Bastrop County aligned with the values that make Texas great.
+            </p>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-red-primary shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                <span class="text-sm text-text-primary font-medium">100% of funds stay in Bastrop County</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-red-primary shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                <span class="text-sm text-text-primary font-medium">Transparent spending & accountability</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-red-primary shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                <span class="text-sm text-text-primary font-medium">Every contribution makes a difference</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Donate CTA Card -->
+          <div class="bg-navy rounded-xl p-6 lg:p-8 text-center">
+            <div class="w-16 h-16 rounded-full bg-red-primary/20 flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-red-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-extrabold text-white mb-2">Ready to Contribute?</h3>
+            <p class="text-white/60 text-sm mb-6">Every dollar strengthens the conservative movement in Bastrop County.</p>
+            <a
+              href="https://square.link/u/p4rKmX9I"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block w-full bg-red-primary hover:bg-red-dark text-white font-bold text-base px-6 py-4 rounded-lg transition-all hover:-translate-y-0.5 shadow-lg shadow-red-primary/30 mb-3"
+            >
+              Donate Now
+            </a>
+            <p class="text-[10px] text-white/40 leading-relaxed">
+              Secure payment via Square. Contributions to the Bastrop County Republican Party are not tax deductible as charitable contributions for Federal income tax purposes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Ways to Help -->
+  <section class="py-12 lg:py-16 bg-gray-light">
+    <div class="container max-w-4xl text-center">
+      <h2 class="text-2xl font-extrabold text-text-primary mb-3">Other Ways to Help</h2>
+      <p class="text-text-secondary mb-8 max-w-xl mx-auto">Can't donate right now? There are many ways to support the Republican Party in Bastrop County.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/resources/volunteer/" class="flex flex-col items-center bg-white rounded-xl p-6 border border-gray-medium hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
+          <svg class="w-8 h-8 text-navy mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+          </svg>
+          <h3 class="font-bold text-text-primary text-sm mb-1">Volunteer</h3>
+          <p class="text-xs text-text-secondary">Give your time to the cause</p>
+        </a>
+        <a href="/events/" class="flex flex-col items-center bg-white rounded-xl p-6 border border-gray-medium hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
+          <svg class="w-8 h-8 text-navy mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <h3 class="font-bold text-text-primary text-sm mb-1">Attend Events</h3>
+          <p class="text-xs text-text-secondary">Show up and be counted</p>
+        </a>
+        <a href="/newsletter/" class="flex flex-col items-center bg-white rounded-xl p-6 border border-gray-medium hover:shadow-[var(--shadow-card-hover)] transition-all duration-300">
+          <svg class="w-8 h-8 text-navy mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <h3 class="font-bold text-text-primary text-sm mb-1">Subscribe</h3>
+          <p class="text-xs text-text-secondary">Stay informed with our newsletter</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

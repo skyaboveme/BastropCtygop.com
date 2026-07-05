@@ -18,7 +18,7 @@ const fullRoster = [
 
 <PageLayout
   title="Leadership Team"
-  description="Meet the leadership team of the Bastrop County Republican Party, selected and appointed by the County Chair."
+  description="Meet the Bastrop County Republican Party leadership team. Our dedicated local GOP officials, precinct chairs, and appointed staff work to promote conservative values, integrity, and Republican principles in Bastrop, Texas."
 >
   <section class="py-10 lg:py-16">
     <div class="container max-w-5xl">
@@ -26,6 +26,13 @@ const fullRoster = [
       <p class="text-lg text-text-secondary mb-10 max-w-3xl">
         The Leadership Team are selected and appointed by the County Chair. Their main job is to support the Party operations and provide leadership to the Executive Committee.
       </p>
+
+      <div class="mt-8 text-center">
+        <a href="/about/state-gop-leadership/" class="inline-flex items-center gap-2 text-sm font-semibold text-navy hover:text-red-primary transition-colors">
+          View State GOP Leadership
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+      </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {fullRoster.map((leader) => (

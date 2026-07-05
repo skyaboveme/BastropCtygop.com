@@ -1,0 +1,107 @@
+---
+// Next major election: November 3, 2026 General Election
+const electionDate = '2026-11-03T07:00:00-06:00';
+const electionName = 'General Election';
+const earlyVotingStart = 'October 19, 2026';
+const registrationDeadline = 'October 3, 2026';
+---
+
+<section class="relative py-12 lg:py-16 bg-navy overflow-hidden" id="election-countdown">
+  <!-- Background Texture -->
+  <div class="absolute inset-0 z-0 pointer-events-none opacity-10">
+    <div class="absolute inset-0 bg-gradient-to-br from-navy-dark via-navy to-navy-light"></div>
+  </div>
+
+  <div class="container relative z-10 text-center">
+    <!-- Label -->
+    <div class="inline-flex items-center gap-2 bg-red-primary/20 text-red-light px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+      <span class="w-2 h-2 bg-red-primary rounded-full animate-pulse"></span>
+      Countdown to Election Day
+    </div>
+
+    <h2 class="text-2xl lg:text-4xl font-extrabold text-white mb-2">
+      2026 {electionName}
+    </h2>
+    <p class="text-white/60 text-sm mb-8">
+      Tuesday, November 3, 2026
+    </p>
+
+    <!-- Countdown Grid -->
+    <div class="grid grid-cols-4 gap-3 max-w-lg mx-auto mb-10">
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 lg:p-5 border border-white/10">
+        <span class="block text-3xl lg:text-5xl font-extrabold text-white tabular-nums" id="cd-days">---</span>
+        <span class="block text-[10px] lg:text-xs font-bold uppercase tracking-widest text-white/50 mt-1">Days</span>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 lg:p-5 border border-white/10">
+        <span class="block text-3xl lg:text-5xl font-extrabold text-white tabular-nums" id="cd-hours">--</span>
+        <span class="block text-[10px] lg:text-xs font-bold uppercase tracking-widest text-white/50 mt-1">Hours</span>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 lg:p-5 border border-white/10">
+        <span class="block text-3xl lg:text-5xl font-extrabold text-white tabular-nums" id="cd-mins">--</span>
+        <span class="block text-[10px] lg:text-xs font-bold uppercase tracking-widest text-white/50 mt-1">Minutes</span>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 lg:p-5 border border-white/10">
+        <span class="block text-3xl lg:text-5xl font-extrabold text-white tabular-nums" id="cd-secs">--</span>
+        <span class="block text-[10px] lg:text-xs font-bold uppercase tracking-widest text-white/50 mt-1">Seconds</span>
+      </div>
+    </div>
+
+    <!-- Key Dates -->
+    <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 mb-8">
+      <div class="flex items-center justify-center gap-2 text-sm">
+        <svg class="w-4 h-4 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span class="text-white/70">Registration Deadline: <strong class="text-gold">{registrationDeadline}</strong></span>
+      </div>
+      <div class="flex items-center justify-center gap-2 text-sm">
+        <svg class="w-4 h-4 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <span class="text-white/70">Early Voting Starts: <strong class="text-gold">{earlyVotingStart}</strong></span>
+      </div>
+    </div>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row justify-center gap-3">
+      <a href="/resources/voter-hub/" class="inline-flex items-center justify-center gap-2 bg-red-primary hover:bg-red-dark text-white font-bold text-sm px-6 py-3 rounded-lg transition-all hover:-translate-y-0.5 shadow-lg">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+        </svg>
+        Check Your Voter Registration
+      </a>
+      <a href="/resources/volunteer/" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold text-sm px-6 py-3 rounded-lg transition-all border border-white/20">
+        Volunteer for the Campaign
+      </a>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ electionDate }}>
+  function updateCountdown() {
+    const target = new Date(electionDate).getTime();
+    const now = Date.now();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '0';
+      document.getElementById('cd-hours').textContent = '0';
+      document.getElementById('cd-mins').textContent = '0';
+      document.getElementById('cd-secs').textContent = '0';
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('cd-days').textContent = days;
+    document.getElementById('cd-hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('cd-mins').textContent = mins.toString().padStart(2, '0');
+    document.getElementById('cd-secs').textContent = secs.toString().padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>

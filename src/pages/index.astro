@@ -2,6 +2,7 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import Hero from '../components/sections/Hero.astro';
 import EventFeaturedSection from '../components/sections/EventFeaturedSection.astro';
+import ElectionCountdown from '../components/sections/ElectionCountdown.astro';
 import MissionSection from '../components/sections/MissionSection.astro';
 import GetInvolvedSection from '../components/sections/GetInvolvedSection.astro';
 import Card from '../components/ui/Card.astro';
@@ -61,6 +62,9 @@ const orgSchema = {
     backgroundImage="/scenic_view_of_colorado_river_in_bastrop_texas.png"
     mobileBackgroundImage="/texas-hero.png"
   />
+
+  <!-- Election Countdown -->
+  <ElectionCountdown />
 
   <!-- Featured Event Section -->
   <EventFeaturedSection />
