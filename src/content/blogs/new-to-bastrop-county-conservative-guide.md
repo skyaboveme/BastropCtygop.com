@@ -33,7 +33,7 @@ Visit our [Voter Hub](https://www.bastropctygop.com/resources/voter-hub/) for th
 
 ### Step 3: Learn your precinct
 
-In Bastrop County, every voter belongs to a **precinct**, each with a designated **Precinct Chair** – your neighbor and your first point of contact for anything political happening on your streets. Use our [precinct map](https://www.bastropctygop.com/resources/precinct-maps/) to find yours, and look up [your Precinct Chair](https://www.bastropctygop.com/about/precinct-chairs/) so you know who they are when election season arrives.
+In Bastrop County, every voter belongs to a **precinct**, each with a designated **Precinct Chair** – your neighbor and your first point of contact for anything political happening on your streets. Look up [your Precinct Chair](https://www.bastropctygop.com/about/precinct-chairs/) so you know who they are when election season arrives.
 
 If your precinct doesn't have a chair? That's a conversation worth having. (See Step 5.)
 
