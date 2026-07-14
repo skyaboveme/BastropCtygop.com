@@ -261,13 +261,14 @@ const precinctChairs = [
     function style(feature) {
       const pNum = feature.properties.precinct;
       const chair = precinctChairs.find(c => c.precinct === pNum) || {};
-      const color = chair.vacant ? '#cbd5e1' : (precinctColors[pNum] || '#9CA3AF');
+      const isSelected = pNum === activePrecinct;
+      const color = chair.vacant ? '#9CA3AF' : (precinctColors[pNum] || '#9CA3AF');
       return {
         fillColor: color,
-        weight: 2,
+        weight: isSelected ? 3 : 2,
         opacity: 0.8,
-        color: '#ffffff', // white borders
-        fillOpacity: chair.vacant ? 0.15 : 0.35
+        color: isSelected ? '#B72436' : '#ffffff', // red border if selected, white if not
+        fillOpacity: isSelected ? 0.6 : 0.35
       };
     }
 
@@ -361,6 +362,28 @@ const precinctChairs = [
       if (!triggeredFromMap) {
         targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
+    }
+
+    // Reset styles on all layers so the new activePrecinct gets persistently highlighted
+    if (geoJsonLayer) {
+      geoJsonLayer.eachLayer(layer => {
+        geoJsonLayer.resetStyle(layer);
+        
+        let lookupPrecinct = precinctNum;
+        const chair = precinctChairs.find(c => c.precinct === precinctNum) || {};
+        if (chair.parent) {
+          lookupPrecinct = chair.parent; // Pan to parent polygon if recently split
+        }
+        
+        if (layer.feature.properties.precinct === lookupPrecinct) {
+          if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+            layer.bringToFront();
+          }
+          if (triggeredFromMap) {
+            layer.openPopup();
+          }
+        }
+      });
     }
 
     // Focus Map on polygon
