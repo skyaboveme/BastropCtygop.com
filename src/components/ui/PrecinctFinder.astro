@@ -1,22 +1,64 @@
 ---
 const precincts = [
   {
+    number: '1001',
+    name: 'Monica Carson',
+    email: 'precinctchair1007@bastropctygop.com',
+    phone: '512-426-5950',
+    coverage: 'Elgin north and central boundaries.',
+    pollingPlace: 'Elgin Public Library, 404 N Hwy 95, Elgin, TX 78621',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1001.pdf',
+    keywords: 'elgin, monica carson'
+  },
+  {
+    number: '1002',
+    name: 'Lesley Guthrie',
+    email: 'lesleygguthrie@gmail.com',
+    phone: '512-560-8793',
+    coverage: 'Elgin West, county line transitions.',
+    pollingPlace: 'Elgin Public Library, 404 N Hwy 95, Elgin, TX 78621',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1002.pdf',
+    keywords: 'elgin west, county line, lesley guthrie'
+  },
+  {
     number: '1003',
     name: 'Cathy Martinez',
-    email: 'precinctchair1003@bastropctygop.com',
+    email: 'cathymartinez141@gmail.com',
+    phone: '512-888-6387',
     coverage: 'Elgin city limits, central Elgin residential zones.',
     pollingPlace: 'Elgin Public Library, 404 N Hwy 95, Elgin, TX 78621',
     mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1003.pdf',
-    keywords: 'elgin, highway 95, main street, downtown elgin'
+    keywords: 'elgin, highway 95, main street, downtown elgin, cathy martinez'
+  },
+  {
+    number: '1004',
+    name: 'Debbie Denny',
+    email: 'ddenny001@gmail.com',
+    phone: '512-844-3930',
+    coverage: 'Elgin East, rural farm roads.',
+    pollingPlace: 'Elgin Public Library, 404 N Hwy 95, Elgin, TX 78621',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1004.pdf',
+    keywords: 'elgin east, debbie denny'
+  },
+  {
+    number: '1005',
+    name: 'Beverly Watts',
+    email: 'bevwatts2011@gmail.com',
+    phone: '512-574-7689',
+    coverage: 'Bastrop city zones, pecan street.',
+    pollingPlace: 'Bastrop County Annex Building, 804 Pecan St, Bastrop, TX 78602',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1005.pdf',
+    keywords: 'bastrop, pecan street, beverly watts'
   },
   {
     number: '1006',
     name: 'Michael Dickson',
-    email: 'precinctchair1006@bastropctygop.com',
+    email: 'mike@goofythat.com',
+    phone: '512-718-4873',
     coverage: 'Northern Elgin, county line borders, and rural northern areas.',
     pollingPlace: 'Elgin Public Library, 404 N Hwy 95, Elgin, TX 78621',
     mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1006.pdf',
-    keywords: 'north elgin, county line, elgin rural'
+    keywords: 'north elgin, county line, elgin rural, michael dickson'
   },
   {
     number: '1007',
@@ -26,175 +68,125 @@ const precincts = [
     coverage: 'Western Bastrop County, Cedar Creek rural corridors, FM 535.',
     pollingPlace: 'Cedar Creek United Methodist Church, 5630 FM 535, Cedar Creek, TX 78612',
     mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1007.pdf',
-    keywords: 'cedar creek, fm 535, highway 21 west'
+    keywords: 'cedar creek, fm 535, highway 21 west, monica carson'
   },
   {
     number: '1008',
-    name: 'Deborah Layland',
-    email: 'precinctchair1008@bastropctygop.com',
+    name: 'Lesley Guthrie',
+    email: 'lesleygguthrie@gmail.com',
+    phone: '512-560-8793',
     coverage: 'North Bastrop, Camp Swift community, highway 95 north.',
     pollingPlace: 'Bastrop County Emergency Services Dist. 2, 120 FM 1441, Bastrop, TX 78602',
     mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1008.pdf',
-    keywords: 'camp swift, highway 95 north, fm 1441'
+    keywords: 'camp swift, highway 95 north, fm 1441, lesley guthrie'
   },
   {
     number: '1009',
     name: 'Kim Casper',
-    email: 'precinctchair1009@bastropctygop.com',
+    email: 'kcaspro2@yahoo.com',
+    phone: '512-799-4994',
     coverage: 'Circle D, Pine Forest, Highway 1441 corridors.',
     pollingPlace: 'Bastrop County Emergency Services Dist. 2, 120 FM 1441, Bastrop, TX 78602',
     mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1009.pdf',
-    keywords: 'circle d, pine forest, fm 1441, lake bastrop'
+    keywords: 'circle d, pine forest, fm 1441, lake bastrop, kim casper'
   },
   {
     number: '2010',
     name: 'Chris Kirby',
-    email: 'precinctchair2010@bastropctygop.com',
+    email: 'chris@thebridgefieldgroup.com',
+    phone: '512-589-1777',
     coverage: 'Paige community, eastern rural limits, Highway 290 east.',
     pollingPlace: 'Paige Community Center, 107 Main St, Paige, TX 78659',
     mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-2010.pdf',
-    keywords: 'paige, highway 290, east bastrop, county line'
+    keywords: 'paige, highway 290, east bastrop, county line, chris kirby'
   },
   {
     number: '2011',
     name: 'Beverly Watts',
-    email: 'precinctchair2011@bastropctygop.com',
+    email: 'bevwatts2011@gmail.com',
+    phone: '512-574-7689',
     coverage: 'Tahitian Village, Pine Forest, southern Bastrop city zones.',
     pollingPlace: 'Bastrop County Annex Building, 804 Pecan St, Bastrop, TX 78602',
     mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-2011.pdf',
-    keywords: 'tahitian village, pecan street, riverside drive, southern bastrop'
+    keywords: 'tahitian village, pecan street, riverside drive, southern bastrop, beverly watts'
   },
   {
     number: '2012',
-    name: 'Brian Thornton',
-    email: 'precinctchair2012@bastropctygop.com',
+    name: 'Vacant',
     coverage: 'The Colony, Pecan Hills, Highway 71 west corridors.',
     pollingPlace: 'Bastrop County Annex Building, 804 Pecan St, Bastrop, TX 78602',
     mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-2012.pdf',
-    keywords: 'the colony, pecan hills, highway 71 west'
+    keywords: 'the colony, pecan hills, highway 71 west, vacant'
   },
   {
     number: '2013',
     name: 'Doug Kelsay',
-    email: 'precinctchair2013@bastropctygop.com',
+    email: 'dougk@keltecsystems.com',
+    phone: '512-762-2567',
     coverage: 'Wyldwood, Cedar Creek North, FM 969 corridors.',
     pollingPlace: 'Wyldwood Baptist Church, 398 FM 969, Bastrop, TX 78602',
     mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-2013.pdf',
-    keywords: 'wyldwood, fm 969, north cedar creek'
+    keywords: 'wyldwood, fm 969, north cedar creek, doug kelsay'
   },
   {
     number: '2014',
     name: 'Shari Wyatt',
-    email: 'precinctchair2014@bastropctygop.com',
+    email: 'shari.wyatt.mail@gmail.com',
+    phone: '512-923-9000',
     coverage: 'Rockne, Red Rock north, FM 535 south.',
     pollingPlace: 'Rockne Sacred Heart Parish Hall, 4045 FM 535, Bastrop, TX 78602',
     mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-2014.pdf',
-    keywords: 'rockne, fm 535, sacred heart, red rock north'
+    keywords: 'rockne, fm 535, sacred heart, red rock north, shari wyatt'
+  },
+  {
+    number: '2015',
+    name: 'Debra Wilson',
+    email: 'villernc1@yahoo.com',
+    phone: '512-695-1495',
+    coverage: 'Cedar Creek Southeast, rural ranges.',
+    pollingPlace: 'Rockne Sacred Heart Parish Hall, 4045 FM 535, Bastrop, TX 78602',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-2015.pdf',
+    keywords: 'cedar creek southeast, debra wilson'
   },
   {
     number: '2016',
     name: 'James Page',
-    email: 'precinctchair2016@bastropctygop.com',
+    email: 'jamespageBCRP@gmail.com',
+    phone: '512-332-1920',
     coverage: 'Central Cedar Creek, residential rural subdivisions.',
     pollingPlace: 'Cedar Creek United Methodist Church, 5630 FM 535, Cedar Creek, TX 78612',
     mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-2016.pdf',
-    keywords: 'central cedar creek, cedar creek high school, highway 21'
+    keywords: 'central cedar creek, cedar creek high school, highway 21, james page'
   },
   {
     number: '3017',
     name: 'Mark L. Torrey',
-    email: 'precinctchair3017@bastropctygop.com',
+    email: 'markltorreybcrp@gmail.com',
+    phone: '512-964-1832',
     coverage: 'Smithville City, North Smithville residential zones.',
     pollingPlace: 'Smithville City Hall, 317 Main St, Smithville, TX 78957',
     mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-3017.pdf',
-    keywords: 'smithville, main street, colorado river'
+    keywords: 'smithville, main street, colorado river, mark torrey'
   },
   {
     number: '3018',
     name: 'Sue Beck',
-    email: 'precinctchair3018@bastropctygop.com',
+    email: 'smbeck360@yahoo.com',
+    phone: '512-913-7917',
     coverage: 'South Smithville, Rosanky, rural southern boundaries.',
     pollingPlace: 'Rosanky Community Center, 245 FM 535, Rosanky, TX 78953',
     mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-3018.pdf',
-    keywords: 'south smithville, rosanky, fm 535'
+    keywords: 'south smithville, rosanky, fm 535, sue beck'
   },
   {
     number: '3019',
     name: 'Debra Carter',
-    email: 'precinctchair3019@bastropctygop.com',
+    email: 'carter512djwc@gmail.com',
+    phone: '512-554-4841',
     coverage: 'Rosanky central, Jeddo community, rural southeastern corner.',
     pollingPlace: 'Rosanky Community Center, 245 FM 535, Rosanky, TX 78953',
     mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-3019.pdf',
-    keywords: 'rosanky, jeddo, southeast county line'
-  },
-  {
-    number: '4021',
-    name: 'Amber Wilson',
-    email: 'precinctchair4021@bastropctygop.com',
-    coverage: 'Red Rock, Bateman, FM 20 southwest corridor.',
-    pollingPlace: 'Red Rock Community Center, 114 Red Rock Rd, Red Rock, TX 78662',
-    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-4021.pdf',
-    keywords: 'red rock, bateman, fm 20, southwest bastrop'
-  },
-  {
-    number: '4022',
-    name: 'Terry Pickering',
-    email: 'precinctchair4022@bastropctygop.com',
-    coverage: 'Cedar Creek West, Mustang Ridge boundaries.',
-    pollingPlace: 'Cedar Creek United Methodist Church, 5630 FM 535, Cedar Creek, TX 78612',
-    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-4022.pdf',
-    keywords: 'west cedar creek, mustang ridge, highway 21 west'
-  },
-  {
-    number: '4023',
-    name: 'Amber Sparks',
-    email: 'precinctchair4023@bastropctygop.com',
-    coverage: 'Creedmoor, Del Valle boundaries, northwestern county corner.',
-    pollingPlace: 'Wyldwood Baptist Church, 398 FM 969, Bastrop, TX 78602',
-    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-4023.pdf',
-    keywords: 'creedmoor, del valle, highway 71 west, north west border'
-  },
-  {
-    number: '4024',
-    name: 'Jerry Able',
-    email: 'precinctchair4024@bastropctygop.com',
-    coverage: 'Utley, Sandy Hills, Highway 969 north of the river.',
-    pollingPlace: 'Bastrop County Emergency Services Dist. 2, 120 FM 1441, Bastrop, TX 78602',
-    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-4024.pdf',
-    keywords: 'utley, sandy hills, highway 969, north river'
-  },
-  {
-    number: '4026',
-    name: 'W.C. Estes',
-    email: 'precinctchair4026@bastropctygop.com',
-    coverage: 'Bastrop Central, downtown historical district.',
-    pollingPlace: 'Bastrop County Annex Building, 804 Pecan St, Bastrop, TX 78602',
-    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-4026.pdf',
-    keywords: 'downtown bastrop, historical district, pecan street'
-  },
-  {
-    number: '1002',
-    name: 'Vacant',
-    coverage: 'Elgin West, county line transitions.',
-    pollingPlace: 'Elgin Public Library, 404 N Hwy 95, Elgin, TX 78621',
-    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1002.pdf',
-    keywords: 'elgin west, county line, vacant'
-  },
-  {
-    number: '1004',
-    name: 'Vacant',
-    coverage: 'Elgin East, rural farm roads.',
-    pollingPlace: 'Elgin Public Library, 404 N Hwy 95, Elgin, TX 78621',
-    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-1004.pdf',
-    keywords: 'elgin east, vacant'
-  },
-  {
-    number: '2015',
-    name: 'Vacant',
-    coverage: 'Cedar Creek Southeast, rural ranges.',
-    pollingPlace: 'Rockne Sacred Heart Parish Hall, 4045 FM 535, Bastrop, TX 78602',
-    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-2015.pdf',
-    keywords: 'cedar creek southeast, vacant'
+    keywords: 'rosanky, jeddo, southeast county line, debra carter'
   },
   {
     number: '3020',
@@ -203,6 +195,58 @@ const precincts = [
     pollingPlace: 'Rosanky Community Center, 245 FM 535, Rosanky, TX 78953',
     mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-3020.pdf',
     keywords: 'rosanky south, county border, vacant'
+  },
+  {
+    number: '4021',
+    name: 'Amber Wilson',
+    email: 'desertrose2469@yahoo.com',
+    phone: '512-297-6800',
+    coverage: 'Red Rock, Bateman, FM 20 southwest corridor.',
+    pollingPlace: 'Red Rock Community Center, 114 Red Rock Rd, Red Rock, TX 78662',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-4021.pdf',
+    keywords: 'red rock, bateman, fm 20, southwest bastrop, amber wilson'
+  },
+  {
+    number: '4022',
+    name: 'Vacant',
+    coverage: 'Cedar Creek West, Mustang Ridge boundaries.',
+    pollingPlace: 'Cedar Creek United Methodist Church, 5630 FM 535, Cedar Creek, TX 78612',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-4022.pdf',
+    keywords: 'west cedar creek, mustang ridge, highway 21 west, vacant'
+  },
+  {
+    number: '4023',
+    name: 'Cliff Sparks',
+    email: 'dewar9893@mypacks.net',
+    phone: '512-5811232',
+    coverage: 'Creedmoor, Del Valle boundaries, northwestern county corner.',
+    pollingPlace: 'Wyldwood Baptist Church, 398 FM 969, Bastrop, TX 78602',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-4023.pdf',
+    keywords: 'creedmoor, del valle, highway 71 west, north west border, cliff sparks'
+  },
+  {
+    number: '4024',
+    name: 'Vacant',
+    coverage: 'Utley, Sandy Hills, Highway 969 north of the river.',
+    pollingPlace: 'Bastrop County Emergency Services Dist. 2, 120 FM 1441, Bastrop, TX 78602',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-4024.pdf',
+    keywords: 'utley, sandy hills, highway 969, north river, vacant'
+  },
+  {
+    number: '4025',
+    name: 'Vacant',
+    coverage: 'Cedar Creek West boundaries.',
+    pollingPlace: 'Cedar Creek United Methodist Church, 5630 FM 535, Cedar Creek, TX 78612',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-4025.pdf',
+    keywords: 'cedar creek west, mustang ridge, vacant'
+  },
+  {
+    number: '4026',
+    name: 'Vacant',
+    coverage: 'Bastrop Central, downtown historical district.',
+    pollingPlace: 'Bastrop County Annex Building, 804 Pecan St, Bastrop, TX 78602',
+    mapUrl: 'https://www.bastropvotes.org/wp-content/uploads/2022/01/Pct-4026.pdf',
+    keywords: 'downtown bastrop, historical district, pecan street, vacant'
   }
 ];
 ---

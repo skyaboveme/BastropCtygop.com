@@ -1,0 +1,641 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import precinctsGeojson from '../../data/precincts-geojson.json';
+
+const precinctChairs = [
+  { precinct: '1001', name: 'Monica Carson', email: 'precinctchair1007@bastropctygop.com', district: '10' },
+  { precinct: '1002', name: 'Lesley Guthrie', email: 'lesleygguthrie@gmail.com', district: '10' },
+  { precinct: '1003', name: 'Cathy Martinez', email: 'cathymartinez141@gmail.com', district: '10' },
+  { precinct: '1004', name: 'Debbie Denny', email: 'ddenny001@gmail.com', district: '10' },
+  { precinct: '1005', name: 'Beverly Watts', email: 'bevwatts2011@gmail.com', district: '27' },
+  { precinct: '1006', name: 'Michael Dickson', email: 'mike@goofythat.com', district: '10' },
+  { precinct: '1007', name: 'Monica Carson', email: 'precinctchair1007@bastropctygop.com', district: '27' },
+  { precinct: '1008', name: 'Lesley Guthrie', email: 'lesleygguthrie@gmail.com', district: '27' },
+  { precinct: '1009', name: 'Kim Casper', email: 'kcaspro2@yahoo.com', district: '27' },
+  { precinct: '2010', name: 'Chris Kirby', email: 'chris@thebridgefieldgroup.com', district: '10' },
+  { precinct: '2011', name: 'Beverly Watts', email: 'bevwatts2011@gmail.com', district: '27' },
+  { precinct: '2012', name: 'Vacant', email: '', vacant: true, district: '10' },
+  { precinct: '2013', name: 'Doug Kelsay', email: 'dougk@keltecsystems.com', district: '10' },
+  { precinct: '2014', name: 'Shari Wyatt', email: 'shari.wyatt.mail@gmail.com', district: '10' },
+  { precinct: '2015', name: 'Debra Wilson', email: 'villernc1@yahoo.com', district: '10' },
+  { precinct: '2016', name: 'James Page', email: 'jamespageBCRP@gmail.com', district: '10' },
+  { precinct: '3017', name: 'Mark L. Torrey', email: 'markltorreybcrp@gmail.com', district: '27' },
+  { precinct: '3018', name: 'Sue Beck', email: 'smbeck360@yahoo.com', district: '27' },
+  { precinct: '3019', name: 'Debra Carter', email: 'carter512djwc@gmail.com', district: '27' },
+  { precinct: '3020', name: 'Vacant', email: '', vacant: true, district: '27' },
+  { precinct: '4021', name: 'Amber Wilson', email: 'desertrose2469@yahoo.com', district: '10', note: 'Split in 2023' },
+  { precinct: '4022', name: 'Vacant', email: '', vacant: true, note: 'Resigned 06/2026', district: '10' },
+  { precinct: '4023', name: 'Cliff Sparks', email: 'dewar9893@mypacks.net', district: '10', parent: '4022' },
+  { precinct: '4024', name: 'Vacant', email: '', vacant: true, district: '10', parent: '4022' },
+  { precinct: '4025', name: 'Vacant', email: '', vacant: true, district: '10', parent: '4022' },
+  { precinct: '4026', name: 'Vacant', email: '', vacant: true, district: '10', parent: '4021' }
+];
+
+---
+
+<PageLayout
+  title="Precincts Map"
+  description="Find your Bastrop County voting precinct, view boundaries, and locate contact details for your local Republican Precinct Chair."
+>
+  <!-- Load Leaflet from CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <section class="py-10 lg:py-16">
+    <div class="container max-w-7xl animate-fade-in">
+      <div class="mb-8">
+        <h1 class="text-3xl lg:text-4xl font-serif font-bold text-navy mb-4 uppercase tracking-tight">Election Precincts Map</h1>
+        <p class="text-lg text-text-secondary max-w-3xl">
+          Use our interactive map portal below to locate your precinct, search your address, and connect with your local Republican Precinct Chair.
+        </p>
+      </div>
+
+      <!-- Main Map Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+        
+        <!-- Sidebar: Lookup & List (4 cols) -->
+        <div class="lg:col-span-4 flex flex-col h-[600px]">
+          
+          <!-- Search & Filter Controls -->
+          <div class="bg-gray-light/60 p-4 rounded-xl border border-gray-medium mb-4 space-y-3 shadow-sm">
+            <div>
+              <label for="address-search" class="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-1">Find By Home Address</label>
+              <div class="flex gap-2">
+                <input
+                  type="text"
+                  id="address-search"
+                  placeholder="123 Main St, Bastrop, TX..."
+                  class="flex-1 px-3 py-2 text-sm rounded-lg border border-gray-medium bg-white focus:outline-none focus:ring-2 focus:ring-navy"
+                />
+                <button
+                  id="btn-search-address"
+                  class="bg-navy hover:bg-navy-light text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors flex items-center justify-center shrink-0 cursor-pointer shadow-sm"
+                >
+                  Find
+                </button>
+              </div>
+              <p id="search-feedback" class="text-xs text-red-primary mt-1.5 hidden font-medium"></p>
+            </div>
+            
+            <div class="border-t border-gray-medium pt-3">
+              <label for="precinct-filter" class="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-1">Filter by Precinct or Chair</label>
+              <div class="relative">
+                <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input
+                  type="text"
+                  id="precinct-filter"
+                  placeholder="e.g. 1003 Cathy..."
+                  class="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-gray-medium bg-white focus:outline-none focus:ring-2 focus:ring-navy"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Precinct Cards Scroll List -->
+          <div class="flex-1 overflow-y-auto pr-2 space-y-2 max-h-[460px] lg:max-h-none border border-gray-medium rounded-xl p-2 bg-white" id="sidebar-list">
+            {precinctChairs.filter(c => !c.vacant).map((chair) => (
+              <button
+                type="button"
+                data-precinct={chair.precinct}
+                data-search={ `${chair.precinct} ${chair.name.toLowerCase()} ${chair.vacant ? 'vacant' : ''}` }
+                class="w-full text-left rounded-xl border border-gray-medium p-3 hover:shadow-[var(--shadow-card-hover)] hover:border-navy transition-all duration-200 cursor-pointer bg-white group focus:outline-none focus:ring-2 focus:ring-navy flex items-center gap-3 active-precinct-card"
+              >
+                <!-- Badge -->
+                <div class={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 text-white font-bold text-sm bg-navy group-hover:bg-red-primary transition-colors ${chair.vacant ? 'opacity-60 bg-text-muted group-hover:bg-text-muted' : ''}`} data-badge-precinct={chair.precinct}>
+                  {chair.precinct}
+                </div>
+                <!-- Details -->
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between gap-1">
+                    <h3 class={`font-bold text-sm truncate ${chair.vacant ? 'text-text-muted font-medium' : 'text-text-primary group-hover:text-navy transition-colors'}`}>
+                      {chair.vacant ? 'Vacant Precinct' : chair.name}
+                    </h3>
+                    <span class="text-[9px] font-bold text-text-muted bg-gray-light px-1.5 py-0.5 rounded shrink-0 uppercase">CD {chair.district}</span>
+                  </div>
+                  <div class="flex justify-between items-center mt-1">
+                    <span class="text-xs text-text-secondary truncate">
+                      {chair.vacant ? 'Interested? Contact BCRP' : chair.email}
+                    </span>
+                    {chair.note && (
+                      <span class="text-[9px] font-bold uppercase tracking-wider text-red-primary bg-red-primary/10 px-1.5 py-0.5 rounded">
+                        {chair.note}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+
+        </div>
+
+        <!-- Right Side: Map Container (8 cols) -->
+        <div class="lg:col-span-8 flex flex-col">
+          <!-- Leaflet Map Div -->
+          <div id="map" class="w-full h-[500px] lg:h-[600px] rounded-xl border border-gray-medium shadow-md z-0"></div>
+          
+          <!-- Quick Legend/Tips -->
+          <div class="mt-3 bg-white p-3 rounded-lg border border-gray-medium text-xs text-text-secondary flex flex-wrap justify-between items-center gap-4 shadow-sm">
+            <div class="flex gap-4">
+              <span class="flex items-center gap-1.5 font-medium"><span class="w-3.5 h-3.5 rounded bg-red-primary opacity-60 border border-red-dark"></span> Congressional District 10</span>
+              <span class="flex items-center gap-1.5 font-medium"><span class="w-3.5 h-3.5 rounded bg-navy opacity-60 border border-navy-dark"></span> Congressional District 27</span>
+            </div>
+            <p class="text-text-muted text-[11px] italic">
+              Hover over precincts to highlight; click to view contact details or show them in the sidebar list.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Section: Official Map Viewer -->
+      <div class="border-t border-gray-medium pt-12 lg:pt-16">
+        <div class="max-w-3xl mb-8">
+          <h2 class="text-2xl lg:text-3xl font-serif font-bold text-navy mb-3 uppercase tracking-tight">Official Bastrop County Precinct Map</h2>
+          <p class="text-base text-text-secondary">
+            Below is the official 2023 Bastrop County Election Precinct Map. Use the control panel below to zoom, pan, and inspect exact boundary lines and roads down to the street level. This is particularly useful for verifying boundaries in recently split northern precincts (<strong>4023, 4024, 4025, and 4026</strong>).
+          </p>
+        </div>
+
+        <!-- Pan Zoom Window -->
+        <div class="relative w-full rounded-2xl border border-gray-medium shadow-lg bg-gray-50 overflow-hidden flex flex-col select-none mb-10 h-[500px] lg:h-[700px]">
+          
+          <!-- Image Zoom Area -->
+          <div class="flex-1 relative overflow-hidden cursor-grab active:cursor-grabbing" id="viewer-container">
+            <img
+              id="zoom-image"
+              src="/images/election-precincts-map.png"
+              alt="Official Bastrop County Election Precincts Map"
+              class="absolute origin-center max-w-none transition-transform duration-75 pointer-events-none select-none"
+              style="left: 50%; top: 50%; transform: translate(-50%, -50%) scale(1);"
+            />
+          </div>
+
+          <!-- Controls Toolbar Overlay -->
+          <div class="absolute bottom-4 right-4 flex flex-col gap-2 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl shadow-md border border-gray-medium">
+            <button id="zoom-in" class="w-10 h-10 rounded-lg bg-white border border-gray-medium hover:bg-gray-light flex items-center justify-center font-bold text-lg text-navy shadow-sm transition-colors cursor-pointer" aria-label="Zoom In">+</button>
+            <button id="zoom-out" class="w-10 h-10 rounded-lg bg-white border border-gray-medium hover:bg-gray-light flex items-center justify-center font-bold text-lg text-navy shadow-sm transition-colors cursor-pointer" aria-label="Zoom Out">-</button>
+            <button id="zoom-reset" class="w-10 h-10 rounded-lg bg-white border border-gray-medium hover:bg-gray-light flex items-center justify-center text-xs font-bold text-navy shadow-sm transition-colors cursor-pointer" aria-label="Reset Map">Reset</button>
+          </div>
+
+          <div class="absolute bottom-4 left-4 z-10 bg-navy/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg text-xs font-semibold shadow-md flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 animate-pulse text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+            </svg>
+            Click and drag to pan. Scroll or use buttons to zoom.
+          </div>
+        </div>
+
+        <div class="bg-gray-light p-6 rounded-xl border border-gray-medium text-sm text-text-secondary leading-relaxed">
+          <h3 class="font-bold text-navy mb-2 font-serif text-base uppercase">How to find your precinct number:</h3>
+          <ol class="list-decimal pl-5 space-y-1.5">
+            <li>Type your address in the search box in the interactive map above and click <strong>Find</strong>. If your address is matched, a marker will point to your precinct.</li>
+            <li>Look up your registration status and precinct details on the official county portal at <a href="https://bastropvotes.org" target="_blank" rel="noopener noreferrer" class="font-semibold text-navy hover:underline">BastropVotes.org</a>.</li>
+            <li>Locate your Voter Registration Card. Your precinct number is printed on it.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<script is:inline define:vars={{ precinctsGeojson, precinctChairs }}>
+  // Color configuration
+  const precinctColors = {
+    '1001': '#EC4899', // pink
+    '1002': '#6366F1', // indigo
+    '1003': '#EF4444', // red
+    '1004': '#10B981', // green
+    '1005': '#3B82F6', // blue
+    '1006': '#06B6D4', // cyan
+    '1007': '#6B7280', // grey
+    '1008': '#84CC16', // lime
+    '1009': '#A855F7', // purple
+    '2010': '#D97706', // amber
+    '2011': '#14B8A6', // teal
+    '2012': '#059669', // emerald
+    '2013': '#B45309', // brown/tan
+    '2014': '#D946EF', // fuchsia
+    '2015': '#F97316', // orange
+    '2016': '#F43F5E', // rose
+    '3017': '#0EA5E9', // sky blue
+    '3018': '#22C55E', // green
+    '3019': '#EC4899', // pink
+    '3020': '#EAB308', // yellow
+    '4021': '#9CA3AF', // light grey
+    '4022': '#7C3AED', // violet
+    '4023': '#FACC15', // yellow
+    '4024': '#2563EB', // blue
+    '4025': '#FDBA74', // peach
+    '4026': '#4ADE80'  // light green
+  };
+
+  // State management
+  let map;
+  let geoJsonLayer;
+  let activeMarker = null;
+  let activePrecinct = null;
+
+  // Initialize Leaflet Map
+  function initMap() {
+    const mapContainer = document.getElementById('map');
+    if (!mapContainer || typeof L === 'undefined') return;
+
+    // Bastrop County Centroid: ~30.1105, -97.3151
+    map = L.map('map', {
+      center: [30.1105, -97.3151],
+      zoom: 10,
+      zoomControl: true
+    });
+
+    // Elegant, clean base tiles (CartoDB Positron)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Style for the GeoJSON polygons
+    function style(feature) {
+      const pNum = feature.properties.precinct;
+      const chair = precinctChairs.find(c => c.precinct === pNum) || {};
+      const color = chair.vacant ? '#cbd5e1' : (precinctColors[pNum] || '#9CA3AF');
+      return {
+        fillColor: color,
+        weight: 2,
+        opacity: 0.8,
+        color: '#ffffff', // white borders
+        fillOpacity: chair.vacant ? 0.15 : 0.35
+      };
+    }
+
+    // Interactive highlights & click handling
+    function onEachFeature(feature, layer) {
+      const pNum = feature.properties.precinct;
+      const chair = precinctChairs.find(c => c.precinct === pNum) || {};
+
+      // Click to select
+      layer.on({
+        mouseover: function (e) {
+          const l = e.target;
+          l.setStyle({
+            fillOpacity: 0.6,
+            weight: 3,
+            color: '#B72436' // highlight with red-primary border
+          });
+          if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+            l.bringToFront();
+          }
+        },
+        mouseout: function (e) {
+          geoJsonLayer.resetStyle(e.target);
+        },
+        click: function (e) {
+          selectPrecinct(pNum, true);
+        }
+      });
+
+      // Bind simple popup
+      let popupContent = `
+        <div style="font-family: sans-serif; font-size: 13px; line-height: 1.4; color: #1a1a1a;">
+          <h4 style="margin: 0 0 5px; font-weight: bold; color: #0d3b66; font-size: 14px;">Precinct ${pNum}</h4>
+          ${chair.vacant ? '' : `<p style="margin: 0 0 4px;"><strong>Chair:</strong> ${chair.name}</p>`}
+          <p style="margin: 0 0 8px;"><strong>US Congress:</strong> District ${chair.district || 'N/A'}</p>
+      `;
+
+      if (pNum === '4021' || pNum === '4022') {
+        const children = pNum === '4021' ? '4026' : '4023, 4024, 4025';
+        popupContent += `
+          <div style="margin-top: 5px; padding-top: 5px; border-top: 1px dashed #ccc; font-size: 11px; color: #B72436; font-weight: 500;">
+            <strong>Note:</strong> Precincts ${children} were split from this area. Please consult the official map below to confirm your precinct.
+          </div>
+        `;
+      }
+
+      popupContent += `</div>`;
+      layer.bindPopup(popupContent);
+    }
+
+    // Add boundaries to map
+    geoJsonLayer = L.geoJSON(precinctsGeojson, {
+      style: style,
+      onEachFeature: onEachFeature
+    }).addTo(map);
+  }
+
+  // Select Precinct
+  function selectPrecinct(precinctNum, triggeredFromMap = false) {
+    activePrecinct = precinctNum;
+
+    // Remove custom visual highlight classes from all cards
+    const cards = document.querySelectorAll('.active-precinct-card');
+    cards.forEach(card => {
+      card.classList.remove('border-navy', 'shadow-md', 'bg-navy/5');
+      const p = card.getAttribute('data-precinct');
+      const badge = card.querySelector(`[data-badge-precinct="${p}"]`);
+      if (badge) {
+        const chair = precinctChairs.find(c => c.precinct === p);
+        if (chair && chair.vacant) {
+          badge.className = badge.className.replace('bg-red-primary', '').trim();
+          if (!badge.classList.contains('bg-text-muted')) badge.classList.add('bg-text-muted');
+        } else {
+          badge.className = badge.className.replace('bg-red-primary', '').trim();
+          if (!badge.classList.contains('bg-navy')) badge.classList.add('bg-navy');
+        }
+      }
+    });
+
+    // Find and highlight matching card
+    const targetCard = document.querySelector(`.active-precinct-card[data-precinct="${precinctNum}"]`);
+    if (targetCard) {
+      targetCard.classList.add('border-navy', 'shadow-md', 'bg-navy/5');
+      const badge = targetCard.querySelector(`[data-badge-precinct="${precinctNum}"]`);
+      if (badge) {
+        badge.classList.remove('bg-navy', 'bg-text-muted');
+        badge.classList.add('bg-red-primary');
+      }
+      
+      // Scroll sidebar card into view if not triggered from map
+      if (!triggeredFromMap) {
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    // Focus Map on polygon
+    if (!triggeredFromMap && geoJsonLayer) {
+      let matchedLayer = null;
+      geoJsonLayer.eachLayer(layer => {
+        // Handle split checks or map straight to precinct
+        let lookupPrecinct = precinctNum;
+        const chair = precinctChairs.find(c => c.precinct === precinctNum) || {};
+        if (chair.parent) {
+          lookupPrecinct = chair.parent; // Pan to parent polygon if recently split
+        }
+        if (layer.feature.properties.precinct === lookupPrecinct) {
+          matchedLayer = layer;
+        }
+      });
+
+      if (matchedLayer) {
+        const bounds = matchedLayer.getBounds();
+        map.fitBounds(bounds, { maxZoom: 13, animate: true });
+        
+        // Open popup
+        matchedLayer.openPopup();
+      }
+    }
+  }
+
+  // Point in Polygon algorithm for ray-casting checks
+  function isPointInPolygon(point, vs) {
+    const x = point[0], y = point[1];
+    let inside = false;
+    for (let i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+      const xi = vs[i][0], yi = vs[i][1];
+      const xj = vs[j][0], yj = vs[j][1];
+      const intersect = ((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+      if (intersect) inside = !inside;
+    }
+    return inside;
+  }
+
+  function findPrecinctForCoordinate(lon, lat) {
+    const point = [lon, lat];
+    let foundPrecinct = null;
+    
+    for (const f of precinctsGeojson.features) {
+      const geom = f.geometry;
+      if (geom.type === 'Polygon') {
+        if (isPointInPolygon(point, geom.coordinates[0])) {
+          foundPrecinct = f.properties.precinct;
+          break;
+        }
+      } else if (geom.type === 'MultiPolygon') {
+        let matched = false;
+        for (const poly of geom.coordinates) {
+          if (isPointInPolygon(point, poly[0])) {
+            matched = true;
+            break;
+          }
+        }
+        if (matched) {
+          foundPrecinct = f.properties.precinct;
+          break;
+        }
+      }
+    }
+    return foundPrecinct;
+  }
+
+  // Address Geocoding Lookups
+  async function searchAddress() {
+    const queryInput = document.getElementById('address-search');
+    const feedback = document.getElementById('search-feedback');
+    if (!queryInput || !feedback) return;
+
+    const address = queryInput.value.trim();
+    if (!address) {
+      feedback.textContent = 'Please enter an address first.';
+      feedback.classList.remove('hidden');
+      return;
+    }
+
+    feedback.classList.add('hidden');
+    feedback.textContent = '';
+
+    try {
+      // Append Bastrop County, Texas to focus result scope
+      const queryStr = encodeURIComponent(`${address}, Bastrop County, Texas`);
+      const geocodeUrl = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${queryStr}`;
+
+      const res = await fetch(geocodeUrl, {
+        headers: { 'Accept-Language': 'en' }
+      });
+      const results = await res.json();
+
+      if (!results || results.length === 0) {
+        feedback.textContent = 'Address not found. Please try adding city (e.g. Bastrop, Elgin, Smithville) or ZIP code.';
+        feedback.classList.remove('hidden');
+        return;
+      }
+
+      const match = results[0];
+      const lat = parseFloat(match.lat);
+      const lon = parseFloat(match.lon);
+
+      // Verify the coordinate lands inside Bastrop County
+      const matchedPrecinct = findPrecinctForCoordinate(lon, lat);
+
+      if (activeMarker) {
+        map.removeLayer(activeMarker);
+      }
+
+      // Add a custom marker to point out the location
+      activeMarker = L.marker([lat, lon]).addTo(map)
+        .bindPopup(`<b>Your Location</b><br/>${match.display_name.split(',')[0]}<br/>${matchedPrecinct ? 'Precinct ' + matchedPrecinct : 'Outside Bastrop County Boundaries'}`)
+        .openPopup();
+
+      if (matchedPrecinct) {
+        selectPrecinct(matchedPrecinct, false);
+        // Centering on marker
+        map.setView([lat, lon], 13);
+      } else {
+        map.setView([lat, lon], 12);
+        feedback.textContent = 'Address found, but it lies outside Bastrop County election precinct boundaries.';
+        feedback.classList.remove('hidden');
+      }
+
+    } catch (err) {
+      console.error(err);
+      feedback.textContent = 'Service unavailable. Please search by precinct number or try again later.';
+      feedback.classList.remove('hidden');
+    }
+  }
+
+  // Directory Search Filter
+  function filterDirectory() {
+    const input = document.getElementById('precinct-filter');
+    const items = document.querySelectorAll('.active-precinct-card');
+    if (!input) return;
+
+    const query = input.value.toLowerCase().trim();
+    items.forEach(item => {
+      const searchStr = item.getAttribute('data-search') || '';
+      const isMatch = searchStr.includes(query);
+      item.style.display = isMatch ? 'flex' : 'none';
+    });
+  }
+
+  // Wire event handlers
+  document.addEventListener('DOMContentLoaded', () => {
+    initMap();
+
+    // Cards list click listeners
+    const cards = document.querySelectorAll('.active-precinct-card');
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const pNum = card.getAttribute('data-precinct');
+        if (pNum) {
+          selectPrecinct(pNum, false);
+        }
+      });
+    });
+
+    // Search Controls
+    const btnSearch = document.getElementById('btn-search-address');
+    btnSearch?.addEventListener('click', searchAddress);
+
+    const inputAddress = document.getElementById('address-search');
+    inputAddress?.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        searchAddress();
+      }
+    });
+
+    const filterInput = document.getElementById('precinct-filter');
+    filterInput?.addEventListener('input', filterDirectory);
+
+    // Initial default select
+    selectPrecinct('1003', false);
+  });
+</script>
+
+<!-- Script for Custom High-Res Image Pan/Zoom Viewer -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('viewer-container');
+    const img = document.getElementById('zoom-image');
+    const btnIn = document.getElementById('zoom-in');
+    const btnOut = document.getElementById('zoom-out');
+    const btnReset = document.getElementById('zoom-reset');
+
+    if (!container || !img) return;
+
+    let scale = 1;
+    let panX = 0;
+    let panY = 0;
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+
+    // Apply Styles to image
+    function updateTransform() {
+      img.style.transform = `translate(calc(-50% + ${panX}px), calc(-50% + ${panY}px)) scale(${scale})`;
+    }
+
+    // Drag to Pan Handlers
+    container.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      isDragging = true;
+      startX = e.clientX - panX;
+      startY = e.clientY - panY;
+      container.classList.remove('cursor-grab');
+      container.classList.add('cursor-grabbing');
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      panX = e.clientX - startX;
+      panY = e.clientY - startY;
+      updateTransform();
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+      container.classList.remove('cursor-grabbing');
+      container.classList.add('cursor-grab');
+    });
+
+    // Touch Support for Mobile
+    container.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        startX = e.touches[0].clientX - panX;
+        startY = e.touches[0].clientY - panY;
+      }
+    }, { passive: true });
+
+    container.addEventListener('touchmove', (e) => {
+      if (!isDragging || e.touches.length !== 1) return;
+      panX = e.touches[0].clientX - startX;
+      panY = e.touches[0].clientY - startY;
+      updateTransform();
+    }, { passive: true });
+
+    container.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+
+    // Zoom Functions
+    btnIn.addEventListener('click', () => {
+      scale = Math.min(scale + 0.25, 4.0);
+      updateTransform();
+    });
+
+    btnOut.addEventListener('click', () => {
+      scale = Math.max(scale - 0.25, 0.5);
+      updateTransform();
+    });
+
+    btnReset.addEventListener('click', () => {
+      scale = 1;
+      panX = 0;
+      panY = 0;
+      updateTransform();
+    });
+
+    // Wheel to Zoom
+    container.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const zoomFactor = 0.1;
+      if (e.deltaY < 0) {
+        scale = Math.min(scale + zoomFactor, 4.0);
+      } else {
+        scale = Math.max(scale - zoomFactor, 0.5);
+      }
+      updateTransform();
+    }, { passive: false });
+  });
+</script>
