@@ -4,7 +4,8 @@
 /precinct-chairs/ /about/precinct-chairs/ 301
 /precinct-chair-faqs/ /about/precinct-chair-faqs/ 301
 /bylaws-of-the-bastrop-county-gop/ /about/bylaws/ 301
-/state-gop-leadership-2/ /about/state-gop-leadership/ 301
+/state-gop-leadership-2/ /about/leadership/ 301
+/about/state-gop-leadership/ /about/leadership/ 301
 /commenting-policy-2/ /about/commenting-policy/ 301
 /calendar/ /events/ 301
 /4th-annual-golf-classic-returns/ /events/golf-classic/ 301
@@ -19,5 +20,6 @@
 /category/calendar-of-events/ /news/category/calendar-of-events/ 301
 /events/category/monthly-informational-meetings/ /events/monthly-meetings/ 301
 /events/category/fundraisers/golfclassic/ /events/golf-classic/ 301
-/events/category/fundraisers/bbbq/ /events/boots-and-barbecue/ 301
+/events/category/fundraisers/bbbq/ /events/boots-and-bbq-2026/ 301
+/events/boots-and-barbecue/ /events/boots-and-bbq-2026/ 301
 /feed/ /rss.xml 301

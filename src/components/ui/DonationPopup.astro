@@ -20,8 +20,12 @@
     <!-- Image Link -->
     <a href="https://bastropctygop.wufoo.com/forms/m116bvtr08reo3b/" target="_blank" rel="noopener noreferrer" class="block group relative overflow-hidden">
       <img 
-        src="/Assets/fb_event_cover_v4.png" 
-        alt="Bastrop County Republican Party Event - Click to RSVP" 
+        src="/Assets/fb_event_cover_v4.webp" 
+        alt="9th Annual Boots & BBQ Fundraiser - Click to RSVP" 
+        width="1440"
+        height="810"
+        loading="eager"
+        decoding="async"
         class="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.01]"
       />
       <!-- Subtle hover overlay -->
@@ -33,6 +37,10 @@
 <script>
   // Script runs on client side
   document.addEventListener('DOMContentLoaded', () => {
+    // Eagerly preload image in browser cache as soon as page loads
+    const imgPreload = new Image();
+    imgPreload.src = '/Assets/fb_event_cover_v4.webp';
+
     const popup = document.getElementById('donation-popup');
     const backdrop = document.getElementById('donation-popup-backdrop');
     const content = document.getElementById('donation-popup-content');
