@@ -1,0 +1,242 @@
+---
+// LiveNewsFeed.astro — Client-side RSS feed aggregator
+// Pulls live headlines from conservative news sources on every page visit
+
+const sources = [
+  { id: 'fox-politics', name: 'Fox News', abbr: 'FOX', color: 'text-navy', feed: 'https://feeds.foxnews.com/foxnews/politics', url: 'https://www.foxnews.com/politics' },
+  { id: 'daily-wire', name: 'Daily Wire', abbr: 'DW', color: 'text-sky-700', feed: 'https://www.dailywire.com/feeds/rss.xml', url: 'https://www.dailywire.com/' },
+  { id: 'blaze', name: 'The Blaze', abbr: 'BLZ', color: 'text-orange-600', feed: 'https://www.theblaze.com/feeds/feed.rss', url: 'https://www.theblaze.com/' },
+  { id: 'breitbart', name: 'Breitbart', abbr: 'BB', color: 'text-orange-700', feed: 'https://feeds.feedburner.com/breitbart', url: 'https://www.breitbart.com/' },
+  { id: 'epoch', name: 'Epoch Times', abbr: 'ET', color: 'text-blue-800', feed: 'https://www.theepochtimes.com/c-us/feed', url: 'https://www.theepochtimes.com/' },
+  { id: 'newsmax', name: 'Newsmax', abbr: 'NM', color: 'text-blue-600', feed: 'https://www.newsmax.com/rss/Newsfront/1/', url: 'https://www.newsmax.com/' },
+  { id: 'federalist', name: 'The Federalist', abbr: 'FED', color: 'text-emerald-700', feed: 'https://thefederalist.com/feed/', url: 'https://thefederalist.com/' },
+  { id: 'tx-scorecard', name: 'Texas Scorecard', abbr: 'TXS', color: 'text-red-700', feed: 'https://texasscorecard.com/feed/', url: 'https://texasscorecard.com/' },
+  { id: 'babylon-bee', name: 'Babylon Bee', abbr: '🐝', color: 'text-amber-500', feed: 'https://babylonbee.com/feed', url: 'https://babylonbee.com/' },
+];
+---
+
+<div class="mb-10">
+  <div class="flex items-center justify-between mb-5">
+    <div class="flex items-center gap-2">
+      <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+      <h2 class="text-xl font-bold text-navy">Live Conservative News</h2>
+    </div>
+    <span class="text-xs text-text-muted" id="feed-status">Loading feeds...</span>
+  </div>
+
+  <!-- Source Tabs -->
+  <div class="flex flex-wrap gap-1.5 mb-5" id="source-tabs" role="tablist">
+    <button
+      class="feed-tab px-3 py-1.5 text-xs font-bold rounded-full transition-all bg-navy text-white shadow-sm"
+      data-source="all"
+      role="tab"
+      aria-selected="true"
+    >
+      All Sources
+    </button>
+    {sources.map((s) => (
+      <button
+        class="feed-tab px-3 py-1.5 text-xs font-bold rounded-full transition-all bg-gray-100 text-text-muted hover:bg-gray-200"
+        data-source={s.id}
+        role="tab"
+        aria-selected="false"
+      >
+        {s.name}
+      </button>
+    ))}
+  </div>
+
+  <!-- Feed Items Container -->
+  <div id="live-feed-items" class="space-y-3 max-h-[600px] overflow-y-auto pr-1" style="scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent;">
+    <!-- Skeleton loading -->
+    <div id="feed-skeleton">
+      {[1,2,3,4,5,6].map(() => (
+        <div class="animate-pulse flex items-start gap-3 bg-white rounded-lg border border-gray-100 p-4 mb-3">
+          <div class="w-10 h-10 bg-gray-200 rounded-lg shrink-0"></div>
+          <div class="flex-1 space-y-2">
+            <div class="h-3 bg-gray-200 rounded w-16"></div>
+            <div class="h-4 bg-gray-200 rounded w-full"></div>
+            <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Error state -->
+    <div id="feed-error" class="hidden text-center py-8">
+      <p class="text-text-muted text-sm mb-3">Unable to load live feeds at this time.</p>
+      <p class="text-xs text-text-muted">Visit our sources directly using the links in the sidebar.</p>
+    </div>
+
+    <!-- Loaded items go here -->
+    <div id="feed-loaded" class="hidden"></div>
+  </div>
+</div>
+
+<script define:vars={{ sources }}>
+  const PROXY = 'https://api.allorigins.win/raw?url=';
+  const MAX_ITEMS_PER_FEED = 5;
+  const MAX_TOTAL = 30;
+
+  function timeAgo(dateStr) {
+    const now = new Date();
+    const date = new Date(dateStr);
+    const diff = Math.floor((now - date) / 1000);
+    if (diff < 60) return 'just now';
+    if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+    if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+    if (diff < 604800) return `${Math.floor(diff / 86400)}d ago`;
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
+
+  function parseRSS(xml, source) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(xml, 'text/xml');
+    const items = doc.querySelectorAll('item');
+    const results = [];
+
+    items.forEach((item, i) => {
+      if (i >= MAX_ITEMS_PER_FEED) return;
+
+      const title = item.querySelector('title')?.textContent?.trim() || '';
+      const link = item.querySelector('link')?.textContent?.trim() || '';
+      const pubDate = item.querySelector('pubDate')?.textContent?.trim() || '';
+      const description = item.querySelector('description')?.textContent?.trim() || '';
+
+      // Strip HTML from description
+      const tmp = document.createElement('div');
+      tmp.innerHTML = description;
+      const cleanDesc = tmp.textContent?.substring(0, 120) || '';
+
+      if (title && link) {
+        results.push({
+          title,
+          link,
+          pubDate,
+          description: cleanDesc,
+          sourceId: source.id,
+          sourceName: source.name,
+          sourceAbbr: source.abbr,
+          sourceColor: source.color,
+          sourceUrl: source.url,
+          timestamp: pubDate ? new Date(pubDate).getTime() : 0,
+        });
+      }
+    });
+
+    return results;
+  }
+
+  function renderItem(item) {
+    return `
+      <a href="${item.link}" target="_blank" rel="noopener noreferrer"
+         class="feed-item flex items-start gap-3 bg-white rounded-lg border border-gray-100 p-4 hover:shadow-md hover:border-red-primary/20 transition-all duration-200 group"
+         data-source="${item.sourceId}">
+        <div class="w-10 h-10 rounded-lg bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:border-red-primary/30 transition-colors">
+          <span class="text-[10px] font-black ${item.sourceColor}">${item.sourceAbbr}</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-red-primary">${item.sourceName}</span>
+            ${item.pubDate ? `<span class="text-[10px] text-text-muted">· ${timeAgo(item.pubDate)}</span>` : ''}
+          </div>
+          <h3 class="text-sm font-semibold text-text-primary group-hover:text-navy transition-colors leading-snug line-clamp-2">${item.title}</h3>
+          ${item.description ? `<p class="text-xs text-text-muted mt-1 line-clamp-1">${item.description}</p>` : ''}
+        </div>
+        <svg class="w-4 h-4 text-gray-300 group-hover:text-red-primary shrink-0 mt-1 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+    `;
+  }
+
+  async function fetchFeed(source) {
+    try {
+      const res = await fetch(PROXY + encodeURIComponent(source.feed));
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const xml = await res.text();
+      return parseRSS(xml, source);
+    } catch (e) {
+      console.warn(`Failed to fetch ${source.name}:`, e.message);
+      return [];
+    }
+  }
+
+  async function loadFeeds() {
+    const skeleton = document.getElementById('feed-skeleton');
+    const errorEl = document.getElementById('feed-error');
+    const loadedEl = document.getElementById('feed-loaded');
+    const statusEl = document.getElementById('feed-status');
+
+    try {
+      const results = await Promise.allSettled(
+        sources.map((s) => fetchFeed(s))
+      );
+
+      let allItems = [];
+      let successCount = 0;
+
+      results.forEach((result) => {
+        if (result.status === 'fulfilled' && result.value.length > 0) {
+          allItems = allItems.concat(result.value);
+          successCount++;
+        }
+      });
+
+      // Sort by date, newest first
+      allItems.sort((a, b) => b.timestamp - a.timestamp);
+      allItems = allItems.slice(0, MAX_TOTAL);
+
+      if (allItems.length === 0) {
+        skeleton.classList.add('hidden');
+        errorEl.classList.remove('hidden');
+        statusEl.textContent = 'Feeds unavailable';
+        return;
+      }
+
+      loadedEl.innerHTML = allItems.map(renderItem).join('');
+      skeleton.classList.add('hidden');
+      loadedEl.classList.remove('hidden');
+      statusEl.textContent = `${allItems.length} stories from ${successCount} sources`;
+
+    } catch (e) {
+      skeleton.classList.add('hidden');
+      errorEl.classList.remove('hidden');
+      statusEl.textContent = 'Error loading feeds';
+    }
+  }
+
+  // Tab filtering
+  document.getElementById('source-tabs')?.addEventListener('click', (e) => {
+    const btn = e.target.closest('.feed-tab');
+    if (!btn) return;
+
+    const source = btn.dataset.source;
+
+    // Update active tab styles
+    document.querySelectorAll('.feed-tab').forEach((t) => {
+      t.classList.remove('bg-navy', 'text-white', 'shadow-sm');
+      t.classList.add('bg-gray-100', 'text-text-muted');
+      t.setAttribute('aria-selected', 'false');
+    });
+    btn.classList.remove('bg-gray-100', 'text-text-muted');
+    btn.classList.add('bg-navy', 'text-white', 'shadow-sm');
+    btn.setAttribute('aria-selected', 'true');
+
+    // Filter items
+    document.querySelectorAll('.feed-item').forEach((item) => {
+      if (source === 'all' || item.dataset.source === source) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+
+  // Load on page ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadFeeds);
+  } else {
+    loadFeeds();
+  }
+</script>
