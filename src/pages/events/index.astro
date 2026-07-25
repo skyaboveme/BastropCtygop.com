@@ -74,7 +74,19 @@ const pastEvents = sortedEvents.filter((e) => new Date(e.data.date) < today);
 
       <!-- Quick Links -->
       <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <a href="/events/monthly-meetings/" class="flex items-center gap-3 bg-gray-light rounded-xl p-5 hover:shadow-[var(--shadow-card-hover)] transition-all">
+        <a href="/events/boots-and-bbq-2026/" class="flex items-center gap-3 bg-gray-light rounded-xl p-5 hover:shadow-[var(--shadow-card-hover)] transition-all border border-gray-200/60">
+          <div class="w-10 h-10 rounded-lg bg-red-primary flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-text-primary text-sm">Boots & BBQ Fundraiser</h3>
+            <p class="text-xs text-text-secondary">9th Annual Fundraiser – Sept 19, 2026</p>
+          </div>
+        </a>
+
+        <a href="/events/monthly-meetings/" class="flex items-center gap-3 bg-gray-light rounded-xl p-5 hover:shadow-[var(--shadow-card-hover)] transition-all border border-gray-200/60">
           <div class="w-10 h-10 rounded-lg bg-navy flex items-center justify-center shrink-0">
             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -85,7 +97,6 @@ const pastEvents = sortedEvents.filter((e) => new Date(e.data.date) < today);
             <p class="text-xs text-text-secondary">Info about recurring monthly meetings</p>
           </div>
         </a>
-
       </div>
     </div>
   </section>
