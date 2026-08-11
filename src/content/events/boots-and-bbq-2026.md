@@ -5,14 +5,16 @@ time: "Check-in at 5:00 PM | Catered by Billy's BBQ"
 location: "Bastrop Convention & Exhibition Center"
 address: "1408 Chestnut Street, Bastrop, TX 78602"
 category: "Fundraiser"
-description: "Save the Date! The Bastrop County Republican Party invites you to the 9th Annual Boots & BBQ Fundraiser on Saturday, September 19, 2026. Join us for BBQ catered by Billy's BBQ, live and silent auctions, mystery keynote speaker, and Republican grassroots fellowship."
+description: "The Bastrop County Republican Party invites you to the 9th Annual Boots & BBQ Fundraiser on Saturday, September 19, 2026. Join us for BBQ catered by Billy's BBQ, live and silent auctions, mystery keynote speaker, and Republican grassroots fellowship."
 registration_url: "https://bastropctygop.wufoo.com/forms/m116bvtr08reo3b/"
-featured_image: "/Assets/fb_event_cover_v4.webp"
+featured_image: "/Assets/boots-bbq-2026-flyer.jpg"
 ---
+
+![9th Annual Boots & BBQ Fundraiser — September 19, 2026](/Assets/boots-bbq-2026-flyer.jpg)
 
 ## 🤠 9th Annual Boots & BBQ Fundraiser
 
-Save the date! The **Bastrop County Republican Party** invites you to our flagship annual event — the **9th Annual Boots & BBQ Fundraiser**!
+The **Bastrop County Republican Party** invites you to our flagship annual event — the **9th Annual Boots & BBQ Fundraiser**!
 
 Join fellow patriots, grassroots leaders, and conservative candidates for an unforgettable evening supporting the Republican movement in Bastrop County.
 
