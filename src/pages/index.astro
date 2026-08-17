@@ -5,17 +5,9 @@ import EventFeaturedSection from '../components/sections/EventFeaturedSection.as
 import ElectionCountdown from '../components/sections/ElectionCountdown.astro';
 import MissionSection from '../components/sections/MissionSection.astro';
 import GetInvolvedSection from '../components/sections/GetInvolvedSection.astro';
-import Card from '../components/ui/Card.astro';
-
-
 import EventCard from '../components/ui/EventCard.astro';
 import NewsletterSignup from '../components/ui/NewsletterSignup.astro';
 import { getCollection } from 'astro:content';
-
-const allPosts = await getCollection('posts');
-const latestPosts = allPosts
-  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
-  .slice(0, 3);
 
 const allEvents = await getCollection('events');
 const today = new Date();
@@ -104,31 +96,7 @@ const orgSchema = {
     </section>
   )}
 
-  <!-- Latest News -->
-  <section class="py-12 lg:py-16">
-    <div class="container">
-      <div class="flex items-center justify-between mb-8">
-        <h2 class="text-2xl lg:text-3xl font-extrabold text-text-primary">Latest News</h2>
-        <a href="/news/" class="text-sm font-medium text-navy hover:text-red-primary transition-colors inline-flex items-center gap-1">
-          View All News
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {latestPosts.map((post) => (
-          <Card
-            title={post.data.title}
-            href={`/news/${post.id}/`}
-            excerpt={post.data.excerpt}
-            date={new Date(post.data.date)}
-            category={post.data.category}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
+
 
   <!-- Quick Links / CTA Section -->
   <section class="py-12 lg:py-16 bg-gray-light">
