@@ -14,7 +14,7 @@ const {
   title,
   description = 'Our mission is to recruit and elect principled candidates, educate voters on critical issues, and hold our elected officials accountable to the Republican Platform. We are responsible for registering voters, overseeing primary elections, organizing the local party, and hosting informational meetings.',
   canonical = Astro.url.href,
-  ogImage = '/images/og-default.png',
+  ogImage = '/images/og-default.jpg',
   ogType = 'website',
   jsonLd,
 } = Astro.props;
@@ -46,7 +46,7 @@ const fullTitle = title === 'Home' ? siteName : `${title} | ${siteName}`;
   <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
   <meta property="og:url" content={canonical} />
   <meta property="og:type" content={ogType} />
-  <meta property="og:site_name" content={siteName} />
+  <meta property="og:site_name" content="Bastrop County Republican Stronghold" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />

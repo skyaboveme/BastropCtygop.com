@@ -1,0 +1,410 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const gotvSchema = {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Charge to Victory - GOTV Campaign 2026",
+  "description": "Bastrop County Republican Party's Get Out the Vote campaign. Maximize Republican voter turnout through block walking, phone banking, poll coverage, and community events.",
+  "startDate": "2026-09-19",
+  "endDate": "2026-11-03",
+  "organizer": {
+    "@type": "PoliticalParty",
+    "name": "Bastrop County Republican Party",
+    "url": "https://bastropctygop.com"
+  },
+  "location": {
+    "@type": "Place",
+    "name": "Bastrop County, Texas"
+  }
+};
+---
+
+<PageLayout 
+  title="Charge to Victory" 
+  description="Join the Bastrop County Republican Party's Charge to Victory GOTV campaign. Block walking, phone banking, poll coverage, and community events from September 19 through Election Day, November 3, 2026."
+  jsonLd={gotvSchema}
+>
+
+  <!-- Hero Section -->
+  <section class="relative bg-navy overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.05) 35px, rgba(255,255,255,0.05) 70px);"></div>
+    </div>
+    
+    <div class="container mx-auto max-w-5xl px-4 py-16 lg:py-24 text-center relative z-10">
+      <img 
+        src="/Assets/ChargetoVictoryLogo.png" 
+        alt="Charge to Victory - Get Out the Vote" 
+        class="mx-auto w-full max-w-lg mb-8 drop-shadow-2xl"
+      />
+      <p class="text-white/90 text-xl md:text-2xl font-serif max-w-2xl mx-auto leading-relaxed">
+        September 19 – November 3, 2026
+      </p>
+      <p class="text-white/70 text-lg mt-4 max-w-2xl mx-auto">
+        Maximize Republican voter turnout across Bastrop County through direct voter outreach, community events, and full poll-location coverage.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a 
+          href="https://www.signupgenius.com/go/20F0D4FA8A82DA7FFC70-65518372-gotv" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="bg-red-primary hover:bg-red-dark text-white font-extrabold text-lg px-8 py-4 rounded-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 uppercase tracking-wider"
+        >
+          ★ Volunteer Now
+        </a>
+        <a 
+          href="#timeline" 
+          class="bg-white/10 hover:bg-white/20 text-white font-bold text-lg px-8 py-4 rounded-lg transition-all border border-white/20"
+        >
+          View Timeline
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Campaign Purpose -->
+  <section class="bg-white py-16 lg:py-20">
+    <div class="container mx-auto max-w-5xl px-4">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy mb-6">
+          Our Mission
+        </h2>
+        <p class="text-text-secondary text-lg leading-relaxed">
+          Our goal is to maximize Republican voter turnout across Bastrop County by creating consistent voter contact from campaign launch through Election Day. The campaign will combine direct voter outreach, community events, and full poll-location coverage with a volunteer team of 50–75 people.
+        </p>
+      </div>
+
+      <!-- Strategy Pillars -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Block Walking -->
+        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow text-center">
+          <div class="w-16 h-16 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Block Walking</h3>
+          <p class="text-sm text-text-secondary">Neighborhood-based voter contact starting September 12 with regular weekend walks and an additional push before early voting.</p>
+          <span class="inline-block mt-3 text-xs font-bold text-red-primary uppercase tracking-wider">Coordinator Needed</span>
+        </div>
+
+        <!-- Phone Banking -->
+        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow text-center">
+          <div class="w-16 h-16 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Phone Banking</h3>
+          <p class="text-sm text-text-secondary">Centralized calling from GOTV Bastrop headquarters beginning October 19, with an expanded final push on November 2.</p>
+          <span class="inline-block mt-3 text-xs font-bold text-red-primary uppercase tracking-wider">Coordinator Needed</span>
+        </div>
+
+        <!-- Poll Coverage -->
+        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow text-center">
+          <div class="w-16 h-16 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Poll Coverage</h3>
+          <p class="text-sm text-text-secondary">Volunteers assigned to early voting and Election Day polling locations so Republican voters see an organized presence throughout voting.</p>
+          <span class="inline-block mt-3 text-xs font-bold text-red-primary uppercase tracking-wider">Coordinator Needed</span>
+        </div>
+
+        <!-- Community Events -->
+        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow text-center">
+          <div class="w-16 h-16 bg-red-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-red-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Community Events</h3>
+          <p class="text-sm text-text-secondary">Three major community events in Smithville, Elgin, and The Colony (Bastrop) to build energy, recruit volunteers, and drive voters.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Events Section -->
+  <section class="bg-gray-50 py-16 lg:py-20 border-y border-gray-100">
+    <div class="container mx-auto max-w-5xl px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy mb-4">
+          Charge to Victory Events
+        </h2>
+        <p class="text-text-secondary text-lg">Join us at one of our three community rallies across Bastrop County</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Smithville -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+          <div class="bg-navy p-4 text-center">
+            <span class="text-gold font-bold text-sm uppercase tracking-wider">October 10 • Saturday</span>
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-bold text-navy mb-1">Smithville</h3>
+            <p class="text-red-primary font-bold text-lg mb-3">4:00 – 7:00 PM</p>
+            <div class="text-sm text-text-secondary space-y-1">
+              <p class="font-semibold">Smithville VFW</p>
+              <p>557 NW Loop 230</p>
+              <p>Smithville, TX</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Elgin -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+          <div class="bg-navy p-4 text-center">
+            <span class="text-gold font-bold text-sm uppercase tracking-wider">October 11 • Sunday</span>
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-bold text-navy mb-1">Elgin</h3>
+            <p class="text-red-primary font-bold text-lg mb-3">1:00 – 3:00 PM</p>
+            <div class="text-sm text-text-secondary space-y-1">
+              <p class="font-semibold">Elgin VFW</p>
+              <p>118 Old Sayers Rd</p>
+              <p>Elgin, TX</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Colony -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+          <div class="bg-navy p-4 text-center">
+            <span class="text-gold font-bold text-sm uppercase tracking-wider">October 11 • Sunday</span>
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-bold text-navy mb-1">The Colony (Bastrop)</h3>
+            <p class="text-red-primary font-bold text-lg mb-3">5:00 – 7:00 PM</p>
+            <div class="text-sm text-text-secondary space-y-1">
+              <p class="font-semibold">The Colony Multipurpose Room</p>
+              <p>Stephen F. Austin Blvd</p>
+              <p>Bastrop, TX</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Campaign Timeline -->
+  <section id="timeline" class="bg-white py-16 lg:py-20">
+    <div class="container mx-auto max-w-5xl px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy mb-4">
+          Campaign Timeline & Action Plan
+        </h2>
+        <p class="text-text-secondary text-lg">Every step from launch to Election Day</p>
+      </div>
+
+      <!-- Phase 1: Pre-Campaign -->
+      <div class="mb-12">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-navy rounded-full flex items-center justify-center shrink-0">
+            <span class="text-white font-bold text-sm">1</span>
+          </div>
+          <h3 class="text-xl font-bold text-navy">Campaign Launch & Outreach</h3>
+        </div>
+        
+        <div class="ml-5 border-l-2 border-navy/20 pl-8 space-y-4">
+          <div class="bg-gray-50 rounded-lg p-5 border border-gray-100">
+            <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+              <span class="font-bold text-navy">Weekly GOTV Zoom</span>
+              <span class="text-xs font-bold text-white bg-navy px-3 py-1 rounded-full">Sept 13 – Nov 1</span>
+            </div>
+            <p class="text-sm text-text-secondary">Sunday volunteer/leadership coordination meeting, 7:30–8:30 p.m., to review progress and upcoming needs. Contact Jen Bezner to sign up.</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-5 border border-gray-100">
+            <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+              <span class="font-bold text-navy">Weekend Block Walks</span>
+              <span class="text-xs font-bold text-white bg-navy px-3 py-1 rounded-full">Sept 19 – Oct 24</span>
+            </div>
+            <p class="text-sm text-text-secondary">Saturday block walks, 9:00 a.m.–12:00 p.m. Sunday block walks, 5:00–7:00 p.m., as scheduled.</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-5 border border-gray-100">
+            <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+              <span class="font-bold text-navy">GOTV Marketing Launch</span>
+              <span class="text-xs font-bold text-white bg-navy px-3 py-1 rounded-full">Sept 21</span>
+            </div>
+            <p class="text-sm text-text-secondary">Begin coordinated GOTV messaging and social media outreach; maintain planned content through mid-October.</p>
+          </div>
+
+          <div class="bg-red-50 rounded-lg p-5 border border-red-200">
+            <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+              <span class="font-bold text-red-primary">⚠ Last Day to Register to Vote</span>
+              <span class="text-xs font-bold text-white bg-red-primary px-3 py-1 rounded-full">Oct 5</span>
+            </div>
+            <p class="text-sm text-text-secondary">Deadline for voter registration. Make sure everyone in your household is registered!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2: Community Events -->
+      <div class="mb-12">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-red-primary rounded-full flex items-center justify-center shrink-0">
+            <span class="text-white font-bold text-sm">2</span>
+          </div>
+          <h3 class="text-xl font-bold text-navy">Community Events & Weekday Push</h3>
+        </div>
+
+        <div class="ml-5 border-l-2 border-red-primary/20 pl-8 space-y-4">
+          <div class="bg-red-50 rounded-lg p-5 border border-red-200">
+            <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+              <span class="font-bold text-navy">Charge to Victory – Smithville</span>
+              <span class="text-xs font-bold text-white bg-red-primary px-3 py-1 rounded-full">Oct 10</span>
+            </div>
+            <p class="text-sm text-text-secondary">4:00–7:00 p.m. at Smithville VFW, 557 NW Loop 230.</p>
+          </div>
+
+          <div class="bg-red-50 rounded-lg p-5 border border-red-200">
+            <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+              <span class="font-bold text-navy">Charge to Victory – Elgin</span>
+              <span class="text-xs font-bold text-white bg-red-primary px-3 py-1 rounded-full">Oct 11</span>
+            </div>
+            <p class="text-sm text-text-secondary">1:00–3:00 p.m. at Elgin VFW, 118 Old Sayers Rd.</p>
+          </div>
+
+          <div class="bg-red-50 rounded-lg p-5 border border-red-200">
+            <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+              <span class="font-bold text-navy">Charge to Victory – The Colony (Bastrop)</span>
+              <span class="text-xs font-bold text-white bg-red-primary px-3 py-1 rounded-full">Oct 11</span>
+            </div>
+            <p class="text-sm text-text-secondary">5:00–7:00 p.m. at The Colony Multipurpose Room, Stephen F. Austin Blvd.</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-5 border border-gray-100">
+            <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+              <span class="font-bold text-navy">Weekday Block-Walk Push</span>
+              <span class="text-xs font-bold text-white bg-navy px-3 py-1 rounded-full">Oct 12–16</span>
+            </div>
+            <p class="text-sm text-text-secondary">Block walking Monday–Friday, 5:00–7:00 p.m., to build momentum immediately before early voting.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3: Early Voting & Election Day -->
+      <div class="mb-12">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center shrink-0">
+            <span class="text-navy font-bold text-sm">3</span>
+          </div>
+          <h3 class="text-xl font-bold text-navy">Early Voting & Election Day</h3>
+        </div>
+
+        <div class="ml-5 border-l-2 border-gold/40 pl-8 space-y-4">
+          <div class="bg-amber-50 rounded-lg p-5 border border-amber-200">
+            <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+              <span class="font-bold text-navy">🗳 Early Voting Begins</span>
+              <span class="text-xs font-bold text-white bg-gold text-navy px-3 py-1 rounded-full">Oct 19</span>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-5 border border-gray-100">
+            <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+              <span class="font-bold text-navy">Early Voting Week 1</span>
+              <span class="text-xs font-bold text-white bg-navy px-3 py-1 rounded-full">Oct 19–23</span>
+            </div>
+            <p class="text-sm text-text-secondary">Staff early-voting locations in scheduled shifts, 8:00 a.m.–5:00 p.m. Phone bank from GOTV headquarters, 5:00–7:00 p.m.</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-5 border border-gray-100">
+            <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+              <span class="font-bold text-navy">Early Voting Weekend</span>
+              <span class="text-xs font-bold text-white bg-navy px-3 py-1 rounded-full">Oct 24–25</span>
+            </div>
+            <p class="text-sm text-text-secondary">Maintain weekend poll coverage in scheduled shifts. Saturday 7:00 a.m.–7:00 p.m., Sunday 9:00 a.m.–3:00 p.m.</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-5 border border-gray-100">
+            <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+              <span class="font-bold text-navy">Early Voting Final Week</span>
+              <span class="text-xs font-bold text-white bg-navy px-3 py-1 rounded-full">Oct 26–30</span>
+            </div>
+            <p class="text-sm text-text-secondary">Continue full poll coverage and daily phone banking. Polls open 7:00 a.m.–7:00 p.m. Phone bank each night at Bastrop Headquarters 5:00–7:00 p.m.</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-5 border border-gray-100">
+            <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+              <span class="font-bold text-navy">Final Phone-Bank Push</span>
+              <span class="text-xs font-bold text-white bg-navy px-3 py-1 rounded-full">Nov 2</span>
+            </div>
+            <p class="text-sm text-text-secondary">Extended phone bank at GOTV headquarters, 2:00–8:00 p.m.</p>
+          </div>
+
+          <div class="bg-red-50 rounded-lg p-5 border border-red-300 shadow-sm">
+            <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+              <span class="font-bold text-red-primary text-lg">🇺🇸 ELECTION DAY</span>
+              <span class="text-xs font-bold text-white bg-red-primary px-3 py-1 rounded-full">Nov 3</span>
+            </div>
+            <p class="text-sm text-text-secondary">Cover all 15 polling locations in four shifts: 7–10 a.m., 10 a.m.–1 p.m., 1–4 p.m., and 4–7 p.m.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteer CTA -->
+  <section class="bg-navy py-16 lg:py-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute inset-0" style="background-image: repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255,255,255,0.1) 35px, rgba(255,255,255,0.1) 70px);"></div>
+    </div>
+    
+    <div class="container mx-auto max-w-4xl px-4 text-center relative z-10">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mb-4">
+        We Need 50–75 Volunteers
+      </h2>
+      <p class="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+        Every volunteer makes a difference. Whether you can walk a neighborhood, make phone calls, or staff a polling location — we need you on the team.
+      </p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 max-w-2xl mx-auto">
+        <div class="bg-white/10 rounded-lg p-4 border border-white/10">
+          <p class="text-white font-bold text-sm">Block Walkers</p>
+        </div>
+        <div class="bg-white/10 rounded-lg p-4 border border-white/10">
+          <p class="text-white font-bold text-sm">Phone/Text Callers</p>
+        </div>
+        <div class="bg-white/10 rounded-lg p-4 border border-white/10">
+          <p class="text-white font-bold text-sm">Early Voting Polls</p>
+        </div>
+        <div class="bg-white/10 rounded-lg p-4 border border-white/10">
+          <p class="text-white font-bold text-sm">Election Day Polls</p>
+        </div>
+      </div>
+
+      <a 
+        href="https://www.signupgenius.com/go/20F0D4FA8A82DA7FFC70-65518372-gotv" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 bg-red-primary hover:bg-red-dark text-white font-extrabold text-lg px-10 py-5 rounded-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 uppercase tracking-wider"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+        </svg>
+        Sign Up to Volunteer
+      </a>
+
+      <!-- Contact Info -->
+      <div class="mt-12 pt-8 border-t border-white/10">
+        <p class="text-white/60 text-sm uppercase tracking-wider mb-3">Campaign Contact</p>
+        <p class="text-white font-bold text-lg">Jen Bezner</p>
+        <div class="flex flex-wrap gap-4 justify-center mt-2">
+          <a href="mailto:Jenbezner@gmail.com" class="text-gold hover:text-white transition-colors font-medium">
+            Jenbezner@gmail.com
+          </a>
+          <a href="tel:512-680-4665" class="text-gold hover:text-white transition-colors font-medium">
+            (512) 680-4665
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</PageLayout>

@@ -6,17 +6,15 @@ import Button from '../ui/Button.astro';
   <div class="container mx-auto px-4">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
       
-      <!-- Left side: Clickable Event Cover Image -->
+      <!-- Left side: Clickable Event Flyer -->
       <div class="relative w-full max-w-xl mx-auto lg:max-w-none">
         <a 
-          href="https://bastropctygop.wufoo.com/forms/m116bvtr08reo3b/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+          href="/events/gotv-rally-2026/" 
           class="block group relative overflow-hidden rounded-xl shadow-lg border border-gray-medium/50 hover:shadow-xl transition-all duration-300"
         >
           <img 
-            src="/Assets/fb_event_cover_v4.webp" 
-            alt="9th Annual Boots & BBQ Fundraiser" 
+            src="/Assets/gotv-rally-2026-flyer.png" 
+            alt="GOP Get Out the Vote Rally — Sunday, October 4, 2026" 
             width="1440"
             height="810"
             loading="eager"
@@ -31,7 +29,7 @@ import Button from '../ui/Button.astro';
       <div class="flex flex-col justify-center max-w-lg lg:max-w-none mx-auto w-full">
         <span class="text-sm font-bold tracking-[0.15em] text-red-primary uppercase mb-3">Featured Event</span>
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-navy leading-tight mb-6">
-          9th Annual Boots & BBQ Fundraiser
+          GOP Get Out the Vote Rally
         </h2>
         
         <!-- Info Cards -->
@@ -43,7 +41,7 @@ import Button from '../ui/Button.astro';
             </svg>
             <div>
               <p class="font-bold text-text-primary text-sm sm:text-base uppercase tracking-wider">Date & Time</p>
-              <p class="text-text-secondary text-sm sm:text-base font-semibold">Saturday, September 19, 2026 | Check-in at 5:00 PM</p>
+              <p class="text-text-secondary text-sm sm:text-base font-semibold">Sunday, October 4, 2026 | 1:30 PM – 5:00 PM</p>
             </div>
           </div>
 
@@ -55,8 +53,19 @@ import Button from '../ui/Button.astro';
             </svg>
             <div>
               <p class="font-bold text-text-primary text-sm sm:text-base uppercase tracking-wider">Location</p>
-              <p class="text-text-secondary text-sm sm:text-base font-semibold">Bastrop Convention & Exhibition Center</p>
+              <p class="text-text-secondary text-sm sm:text-base font-semibold">Bastrop Convention Center</p>
               <p class="text-text-muted text-xs sm:text-sm">1408 Chestnut Street, Bastrop, Texas 78602</p>
+            </div>
+          </div>
+
+          <!-- Admission -->
+          <div class="flex items-start gap-3 bg-white p-4 rounded-lg border border-gray-medium/40 shadow-sm">
+            <svg class="w-6 h-6 text-red-primary shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
+            </svg>
+            <div>
+              <p class="font-bold text-text-primary text-sm sm:text-base uppercase tracking-wider">Admission</p>
+              <p class="text-text-secondary text-sm sm:text-base font-semibold">FREE — Open to the Public</p>
             </div>
           </div>
         </div>
@@ -64,29 +73,34 @@ import Button from '../ui/Button.astro';
         <!-- Description -->
         <div class="text-text-secondary space-y-4 mb-8 text-sm sm:text-base leading-relaxed">
           <p class="font-bold text-navy">
-            Save the Date! The Bastrop County Republican Party invites you to the 9th Annual Boots & BBQ Fundraiser!
+            Vote Like Your Country Depends On It… Because It Does!
           </p>
           <p>
-            Join us for an evening of delicious BBQ catered by Billy's BBQ, exciting live and silent auctions, a mystery keynote speaker, and great Republican grassroots fellowship.
+            Join the <strong>Bastrop County Republican Party</strong> and <strong>Lost Pines Republican Women</strong> for a rally to register voters, celebrate Republican accomplishments, and energize conservative voters for Election Day.
           </p>
           <p>
-            General Tickets and VIP Tickets are available, along with Multi-Level Sponsorship opportunities.
-          </p>
-          <p class="text-red-primary font-bold">
-            ⚠️ Ticket sales end September 12th.
+            🎵 <strong>Live Band:</strong> The Nite Shift &nbsp;|&nbsp; 🎤 <strong>Emcee:</strong> Tim Young &nbsp;|&nbsp; 🏛️ <strong>GOP Candidates</strong>
           </p>
         </div>
 
         <!-- Call to Action -->
-        <div>
+        <div class="flex flex-col sm:flex-row gap-3">
           <Button 
-            href="https://bastropctygop.wufoo.com/forms/m116bvtr08reo3b/" 
+            href="/events/gotv-rally-2026/" 
             variant="primary" 
             size="lg" 
             class="w-full sm:w-auto text-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+          >
+            ★ Event Details ★
+          </Button>
+          <Button 
+            href="https://lostpinesrw.club/2026/09/18/gop-rally-october-4/" 
+            variant="secondary" 
+            size="lg" 
+            class="w-full sm:w-auto text-center"
             external
           >
-            ★ Buy Tickets Here ★
+            Register Now
           </Button>
         </div>
       </div>

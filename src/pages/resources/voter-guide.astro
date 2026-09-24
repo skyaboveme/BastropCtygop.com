@@ -2,26 +2,28 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 
 const candidates = [
-  // Federal
+  // ═══════════════════════════════════════
+  // FEDERAL
+  // ═══════════════════════════════════════
   {
-    name: 'Ted Cruz',
+    name: 'Ken Paxton',
     office: 'U.S. Senator',
     level: 'federal',
     party: 'Republican',
-    photo: '/BCRP-Logo.webp', // fallback placeholder
-    bio: 'Fighting for Texas jobs, energy independence, border security, and our constitutional liberties in the U.S. Senate.',
-    website: 'https://www.tedcruz.org',
-    donate: 'https://www.tedcruz.org'
+    photo: '/BCRP-Logo.webp',
+    bio: 'Former Texas Attorney General running to defend conservative Texas values, border security, and constitutional liberties in the U.S. Senate.',
+    website: 'https://www.kenpaxton.com',
+    donate: 'https://www.kenpaxton.com'
   },
   {
-    name: 'Michael McCaul',
+    name: 'Chris Gober',
     office: 'U.S. Representative, District 10',
     level: 'federal',
     party: 'Republican',
     photo: '/BCRP-Logo.webp',
-    bio: 'Chairman of the House Foreign Affairs Committee, working tirelessly for national security, local law enforcement, and economic growth.',
-    website: 'https://michaelmccaul.com',
-    donate: 'https://michaelmccaul.com'
+    bio: 'Running to represent the 10th Congressional District with a focus on border security, economic growth, and defending our constitutional rights.',
+    website: 'https://www.goberforcongress.com',
+    donate: 'https://www.goberforcongress.com'
   },
   {
     name: 'Michael Cloud',
@@ -33,20 +35,167 @@ const candidates = [
     website: 'https://www.cloudforcongress.com',
     donate: 'https://www.cloudforcongress.com'
   },
-  // State
+
+  // ═══════════════════════════════════════
+  // STATE — Executive
+  // ═══════════════════════════════════════
   {
-    name: 'Lois Kolkhorst',
-    office: 'Texas State Senator, District 18',
+    name: 'Greg Abbott',
+    office: 'Governor',
     level: 'state',
     party: 'Republican',
     photo: '/BCRP-Logo.webp',
-    bio: 'A lifelong conservative advocate fighting for Texas land and water rights, property tax relief, and securing our border.',
-    website: 'https://www.loiskolkhorst.com',
-    donate: 'https://www.loiskolkhorst.com'
+    bio: 'Leading Texas with a proven record on border security, economic growth, and defending the conservative values that make Texas strong.',
+    website: 'https://www.gregabbott.com',
+    donate: 'https://www.gregabbott.com'
+  },
+  {
+    name: 'Dan Patrick',
+    office: 'Lieutenant Governor',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Presiding over the Texas Senate and championing property tax reform, school choice, and securing the Texas border.',
+    website: 'https://www.danpatrick.org',
+    donate: 'https://www.danpatrick.org'
+  },
+  {
+    name: 'Mayes Middleton',
+    office: 'Attorney General',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Fighting to uphold the Texas Constitution, protect individual liberties, and hold the federal government accountable.',
+    website: 'https://www.mayesmiddleton.com',
+    donate: 'https://www.mayesmiddleton.com'
+  },
+  {
+    name: 'Don Huffines',
+    office: 'Comptroller of Public Accounts',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Committed to fiscal accountability, transparent state finances, and ensuring every Texas tax dollar is spent responsibly.',
+    website: 'https://www.donhuffines.com',
+    donate: 'https://www.donhuffines.com'
+  },
+  {
+    name: 'Dawn Buckingham',
+    office: 'Commissioner of the General Land Office',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Managing Texas public lands, funding veteran services, and protecting the Texas coastline for future generations.',
+    website: 'https://www.dawnbuckingham.com',
+    donate: 'https://www.dawnbuckingham.com'
+  },
+  {
+    name: 'Nate Sheets',
+    office: 'Commissioner of Agriculture',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Supporting Texas farmers, ranchers, and rural communities while promoting agriculture as the backbone of the Texas economy.',
+    website: 'https://www.natesheets.com',
+    donate: 'https://www.natesheets.com'
+  },
+  {
+    name: 'Bo French',
+    office: 'Railroad Commissioner',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Protecting Texas energy independence, supporting the oil and gas industry, and ensuring safe pipeline and mining operations.',
+    website: 'https://www.bofrench.com',
+    donate: 'https://www.bofrench.com'
+  },
+
+  // ═══════════════════════════════════════
+  // STATE — Supreme Court
+  // ═══════════════════════════════════════
+  {
+    name: 'Jimmy Blacklock',
+    office: 'Chief Justice, Supreme Court',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Serving on the Texas Supreme Court with a commitment to constitutional originalism, judicial restraint, and the rule of law.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+  {
+    name: 'James P. Sullivan',
+    office: 'Justice, Supreme Court, Place 2 (Unexpired Term)',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Dedicated to upholding the Texas Constitution and applying the law as written to protect the rights of all Texans.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+  {
+    name: 'Kyle Hawkins',
+    office: 'Justice, Supreme Court, Place 7',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Bringing a strong conservative judicial philosophy to the Texas Supreme Court, grounded in the text and original meaning of the law.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+  {
+    name: 'Brett Busby',
+    office: 'Justice, Supreme Court, Place 8',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'An experienced jurist committed to applying the law fairly and faithfully to protect the constitutional rights of Texans.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+
+  // ═══════════════════════════════════════
+  // STATE — Court of Criminal Appeals
+  // ═══════════════════════════════════════
+  {
+    name: 'Thomas Smith',
+    office: 'Judge, Court of Criminal Appeals, Place 3',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Committed to protecting public safety, upholding the rights of victims, and applying criminal law with fairness and integrity.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+  {
+    name: 'Kevin Patrick Yeary',
+    office: 'Judge, Court of Criminal Appeals, Place 4',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Serving on the Court of Criminal Appeals with a commitment to justice, the rule of law, and constitutional protections.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+  {
+    name: 'John Messinger',
+    office: 'Judge, Court of Criminal Appeals, Place 9',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'A conservative jurist dedicated to ensuring the criminal justice system protects both public safety and individual rights.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+
+  // ═══════════════════════════════════════
+  // STATE — Board of Education & Legislature
+  // ═══════════════════════════════════════
+  {
+    name: 'Mica Arellano',
+    office: 'Member, State Board of Education, District 5',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Advocating for parental rights in education, strong academic standards, and keeping politics out of the classroom.',
+    website: 'https://www.co.bastrop.tx.us/',
   },
   {
     name: 'Charles Schwertner',
-    office: 'Texas State Senator, District 5',
+    office: 'State Senator, District 5',
     level: 'state',
     party: 'Republican',
     photo: '/BCRP-Logo.webp',
@@ -56,7 +205,7 @@ const candidates = [
   },
   {
     name: 'Stan Gerdes',
-    office: 'Texas State Representative, District 17',
+    office: 'State Representative, District 17',
     level: 'state',
     party: 'Republican',
     photo: '/BCRP-Logo.webp',
@@ -64,10 +213,62 @@ const candidates = [
     website: 'https://stangerdes.com',
     donate: 'https://stangerdes.com'
   },
-  // Local
+
+  // ═══════════════════════════════════════
+  // STATE — Courts of Appeals
+  // ═══════════════════════════════════════
+  {
+    name: 'Scott Brister',
+    office: 'Chief Justice, 15th Court of Appeals District',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'A seasoned jurist bringing decades of legal experience to lead the newly established 15th Court of Appeals.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+  {
+    name: 'Scott K. Field',
+    office: 'Justice, 15th Court of Appeals District, Place 2',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Committed to constitutional principles and faithful interpretation of the law on the 15th Court of Appeals.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+  {
+    name: 'April Farris',
+    office: 'Justice, 15th Court of Appeals District, Place 3',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Bringing a conservative judicial philosophy and dedication to the rule of law to the 15th Court of Appeals.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+  {
+    name: 'Cory Liu',
+    office: 'Chief Justice, 3rd Court of Appeals District',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Leading the 3rd Court of Appeals with a commitment to judicial excellence, constitutional fidelity, and efficient court administration.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+  {
+    name: 'Bryan Goertz',
+    office: 'Criminal District Attorney, Bastrop County',
+    level: 'state',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Prosecuting crime, protecting victims, and ensuring justice is served fairly and swiftly in Bastrop County.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+
+  // ═══════════════════════════════════════
+  // LOCAL — County Offices
+  // ═══════════════════════════════════════
   {
     name: 'Gregory Klaus',
-    office: 'Bastrop County Judge',
+    office: 'County Judge',
     level: 'local',
     party: 'Republican',
     photo: '/BCRP-Logo.webp',
@@ -76,18 +277,35 @@ const candidates = [
     donate: 'https://electgregoryklaus.com'
   },
   {
-    name: 'Maurice Cook',
-    office: 'Bastrop County Sheriff',
+    name: 'Clara Beckett',
+    office: 'County Commissioner, Precinct No. 2',
     level: 'local',
     party: 'Republican',
     photo: '/BCRP-Logo.webp',
-    bio: 'Protecting Bastrop County families through professional, high-fidelity law enforcement, department accountability, and community safety programs.',
-    website: 'https://www.sheriffmauricecook.com',
-    donate: 'https://www.sheriffmauricecook.com'
+    bio: 'Working to ensure responsible growth, strong infrastructure, and fiscal accountability for the families of Precinct 2.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+  {
+    name: 'David Glass',
+    office: 'County Commissioner, Precinct No. 4',
+    level: 'local',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Focused on improving rural roads, responsible land use planning, and keeping Bastrop County taxes low for Precinct 4 residents.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+  {
+    name: 'Sarah Loucks',
+    office: 'District Clerk',
+    level: 'local',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Committed to technological modernization of court records, accurate record-keeping, and serving our legal system with integrity.',
+    website: 'https://www.co.bastrop.tx.us/',
   },
   {
     name: 'Krista Bartsch',
-    office: 'Bastrop County Clerk',
+    office: 'County Clerk',
     level: 'local',
     party: 'Republican',
     photo: '/BCRP-Logo.webp',
@@ -95,14 +313,50 @@ const candidates = [
     website: 'https://www.co.bastrop.tx.us/',
   },
   {
-    name: 'Sarah Loucks',
-    office: 'Bastrop County District Clerk',
+    name: 'Brittney Ross',
+    office: 'County Treasurer',
     level: 'local',
     party: 'Republican',
     photo: '/BCRP-Logo.webp',
-    bio: 'Committed to technological modernization of court records, accurate record-keeping, and serving our legal system with integrity.',
+    bio: 'Ensuring responsible stewardship of county finances, transparent reporting, and accountability for every taxpayer dollar.',
     website: 'https://www.co.bastrop.tx.us/',
-  }
+  },
+  {
+    name: 'Cindy Allen',
+    office: 'Justice of the Peace, Precinct No. 1',
+    level: 'local',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Serving the residents of Precinct 1 with fair and impartial justice, efficient court management, and community accessibility.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+  {
+    name: 'Zachary Carter',
+    office: 'Justice of the Peace, Precinct No. 2',
+    level: 'local',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Delivering fair and efficient justice for the families and businesses of Precinct 2 in Bastrop County.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+  {
+    name: 'Krystal Moncure Stabeno',
+    office: 'Justice of the Peace, Precinct No. 3',
+    level: 'local',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Committed to accessible, fair, and prompt justice for all residents and businesses of Precinct 3.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
+  {
+    name: 'Larry Dunne',
+    office: 'Justice of the Peace, Precinct No. 4',
+    level: 'local',
+    party: 'Republican',
+    photo: '/BCRP-Logo.webp',
+    bio: 'Providing impartial justice, community-focused court services, and efficient case management for Precinct 4 residents.',
+    website: 'https://www.co.bastrop.tx.us/',
+  },
 ];
 
 const voterGuideSchema = {
