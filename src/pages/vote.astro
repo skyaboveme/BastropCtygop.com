@@ -1,0 +1,382 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const keyDates = [
+  { date: 'October 5, 2026', event: 'Last Day to Register to Vote', icon: '📋', urgent: true },
+  { date: 'October 23, 2026', event: 'Last Day to Apply for Ballot by Mail', icon: '✉️', urgent: false },
+  { date: 'Oct 19 – Oct 30, 2026', event: 'Early Voting Period', icon: '🗳️', urgent: false },
+  { date: 'November 3, 2026', event: 'Election Day', icon: '🇺🇸', urgent: true },
+];
+
+const earlyVotingLocations = [
+  {
+    name: 'Bastrop County Elections Office',
+    address: '211 Jackson St, Bastrop, TX 78602',
+    main: true,
+    fullSchedule: true,
+  },
+  {
+    name: 'Elgin ISD Performing Arts Center',
+    address: '1002 N Ave C, Elgin, TX 78621',
+    main: false,
+    fullSchedule: true,
+  },
+  {
+    name: 'Smithville Recreation Center',
+    address: '106 Burleson St, Smithville, TX 78957',
+    main: false,
+    fullSchedule: true,
+  },
+  {
+    name: 'Bastrop Community Center',
+    address: '1209 Linden St, Bastrop, TX 78602',
+    main: false,
+    fullSchedule: false,
+    note: 'Week 2 Only (Oct 26–30)',
+  },
+  {
+    name: 'Cedar Creek High School',
+    address: '9001 FM 535, Cedar Creek, TX 78612',
+    main: false,
+    fullSchedule: false,
+    note: 'Week 2 Only (Oct 26–30)',
+  },
+  {
+    name: 'McDade Community Center',
+    address: '191 Hoffman St, McDade, TX 78650',
+    main: false,
+    fullSchedule: false,
+    note: 'Week 2 Only (Oct 26–30)',
+  },
+];
+
+const earlyVotingSchedule = [
+  { days: 'Mon Oct 19 – Fri Oct 23', hours: '8:00 AM – 5:00 PM' },
+  { days: 'Sat Oct 24', hours: '7:00 AM – 7:00 PM' },
+  { days: 'Sun Oct 25', hours: '12:00 PM – 5:00 PM' },
+  { days: 'Mon Oct 26 – Fri Oct 30', hours: '7:00 AM – 7:00 PM' },
+];
+
+const electionDayLocations = [
+  { name: 'Bastrop Convention Center', address: '1209 Chestnut St, Bastrop, TX 78602' },
+  { name: 'Bastrop County Courthouse Annex', address: '211 Jackson St, Bastrop, TX 78602' },
+  { name: 'Cedar Creek High School', address: '9001 FM 535, Cedar Creek, TX 78612' },
+  { name: 'Elgin ISD Performing Arts Center', address: '1002 N Ave C, Elgin, TX 78621' },
+  { name: 'Emile Elementary', address: '400 Martin Luther King Jr Dr, Bastrop, TX 78602' },
+  { name: 'Lost Pines Art Center', address: '1204 Chestnut St, Bastrop, TX 78602' },
+  { name: 'McDade Community Center', address: '191 Hoffman St, McDade, TX 78650' },
+  { name: 'Red Rock Community Center', address: '237 FM 20, Red Rock, TX 78662' },
+  { name: 'Smithville Recreation Center', address: '106 Burleson St, Smithville, TX 78957' },
+  { name: 'Wyldwood Community Center', address: '101 Wildwood Way, Bastrop, TX 78602' },
+];
+---
+
+<PageLayout 
+  title="Vote – 2026 General Election Schedule" 
+  description="Complete 2026 General Election voting schedule for Bastrop County, TX. Find early voting locations, Election Day vote centers, hours, and key deadlines."
+>
+  <!-- Hero Banner -->
+  <section class="relative bg-navy py-16 lg:py-24 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(242,183,5,0.3),transparent_60%)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(183,36,54,0.2),transparent_50%)]"></div>
+    </div>
+    <div class="container mx-auto max-w-6xl px-4 relative z-10">
+      <div class="text-center">
+        <span class="inline-flex items-center gap-2 bg-red-primary/20 text-red-light px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider mb-6">
+          <span class="w-2 h-2 bg-red-light rounded-full animate-pulse"></span>
+          Official Voting Information
+        </span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+          2026 General Election<br/>
+          <span class="text-gold">Voting Schedule</span>
+        </h1>
+        <p class="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
+          Everything you need to know about where, when, and how to vote in Bastrop County. No excuses — make your voice heard.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="#early-voting" class="inline-flex items-center gap-2 bg-red-primary hover:bg-red-dark text-white font-bold py-3.5 px-7 rounded-lg transition-all hover:scale-105 shadow-lg shadow-red-primary/25">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+            Early Voting Info
+          </a>
+          <a href="#election-day" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold py-3.5 px-7 rounded-lg transition-all border border-white/20">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            Election Day Locations
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Dates Ticker -->
+  <section class="bg-gold py-1" id="key-dates">
+    <div class="container mx-auto max-w-6xl px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0.5">
+        {keyDates.map((item) => (
+          <div class={`flex items-center gap-3 py-4 px-5 rounded-lg ${item.urgent ? 'bg-navy text-white' : 'bg-white text-navy'}`}>
+            <span class="text-2xl">{item.icon}</span>
+            <div>
+              <p class={`text-xs font-bold uppercase tracking-wider ${item.urgent ? 'text-gold' : 'text-red-primary'}`}>
+                {item.date}
+              </p>
+              <p class={`text-sm font-semibold ${item.urgent ? 'text-white/90' : 'text-text-secondary'}`}>
+                {item.event}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-gray-50/50 py-16 lg:py-24">
+    <div class="container mx-auto max-w-6xl px-4">
+
+      <!-- Registration Alert -->
+      <div class="mb-16 bg-gradient-to-r from-red-primary to-red-dark rounded-xl p-6 md:p-8 shadow-lg shadow-red-primary/15 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-32 translate-x-32"></div>
+        <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" /></svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-white mb-1">Voter Registration Deadline: October 5, 2026</h3>
+              <p class="text-white/80 text-sm">You must be registered to vote by this date. Signed applications must be <strong class="text-white">received</strong> — not just postmarked — by the deadline.</p>
+            </div>
+          </div>
+          <a href="https://teamrv-mvp.sos.texas.gov/MVP/mvp.do" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white text-red-primary hover:bg-gray-100 font-bold py-3 px-6 rounded-lg transition-colors shrink-0 shadow-md">
+            Check Registration
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════ EARLY VOTING ═══════════════════════════ -->
+      <section id="early-voting" class="mb-20 scroll-mt-28">
+        <div class="flex items-end justify-between mb-10 flex-wrap gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-red-primary mb-2 block">October 19 – October 30</span>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy">Early Voting</h2>
+          </div>
+          <a href="https://www.bastropvotes.org/wp-content/uploads/2026/08/2026-General-Election-Voting-Schedule_-Legal-Size.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-bold text-navy hover:text-red-primary transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+            Download Official PDF
+          </a>
+        </div>
+
+        <!-- Schedule Table -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mb-10">
+          <div class="bg-navy px-6 py-4">
+            <h3 class="text-lg font-bold text-white">Early Voting Hours</h3>
+          </div>
+          <div class="divide-y divide-gray-100">
+            {earlyVotingSchedule.map((slot, i) => (
+              <div class={`flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-5 hover:bg-gray-50 transition-colors ${i === 2 ? 'bg-gold/5' : ''}`}>
+                <div class="flex items-center gap-3">
+                  <div class={`w-2 h-2 rounded-full shrink-0 ${i === 3 ? 'bg-red-primary' : 'bg-navy'}`}></div>
+                  <span class="font-semibold text-navy">{slot.days}</span>
+                  {i === 2 && <span class="text-[10px] font-bold uppercase tracking-wider text-gold bg-gold/15 px-2 py-0.5 rounded-full">Limited</span>}
+                </div>
+                <span class="text-sm font-bold text-red-primary bg-red-primary/10 px-4 py-1.5 rounded-full whitespace-nowrap self-start sm:self-auto">
+                  {slot.hours}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Early Voting Locations Grid -->
+        <h3 class="text-2xl font-serif font-bold text-navy mb-6">Early Voting Locations</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {earlyVotingLocations.map((loc) => (
+            <div class={`bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-md transition-all relative group ${loc.main ? 'border-gold ring-2 ring-gold/20 md:col-span-2 lg:col-span-1' : 'border-gray-100'}`}>
+              {loc.main && (
+                <div class="absolute top-3 right-3">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-gold bg-gold/15 px-2.5 py-1 rounded-full">Main Location</span>
+                </div>
+              )}
+              {!loc.fullSchedule && (
+                <div class="absolute top-3 right-3">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-navy bg-navy/10 px-2.5 py-1 rounded-full">{loc.note}</span>
+                </div>
+              )}
+              <div class={`h-1.5 ${loc.main ? 'bg-gold' : 'bg-navy'}`}></div>
+              <div class="p-6">
+                <div class="flex items-start gap-3 mb-4">
+                  <div class={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${loc.main ? 'bg-gold/15' : 'bg-navy/10'}`}>
+                    <svg class={`w-5 h-5 ${loc.main ? 'text-gold' : 'text-navy'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-navy leading-tight">{loc.name}</h4>
+                    <p class="text-sm text-text-secondary mt-1">{loc.address}</p>
+                  </div>
+                </div>
+                <a 
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.address)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 text-xs font-bold text-navy hover:text-red-primary transition-colors"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                  Get Directions
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════ ELECTION DAY ═══════════════════════════ -->
+      <section id="election-day" class="mb-20 scroll-mt-28">
+        <div class="mb-10">
+          <span class="text-xs font-bold uppercase tracking-widest text-red-primary mb-2 block">November 3, 2026 · 7:00 AM – 7:00 PM</span>
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy">Election Day Vote Centers</h2>
+        </div>
+
+        <!-- Vote Center Explainer -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8 mb-10 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-1.5 h-full bg-gold"></div>
+          <div class="pl-4">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-lg bg-gold/15 flex items-center justify-center">
+                <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <h3 class="text-xl font-bold text-navy">Countywide Vote Center Program</h3>
+            </div>
+            <p class="text-text-secondary leading-relaxed">
+              Bastrop County uses the <strong class="text-navy">Vote Center model</strong>. On Election Day, registered voters may vote at <strong class="text-navy">any</strong> of the 10 Vote Center locations below — you are <em>not</em> restricted to a single precinct location. Pick whichever is most convenient for you.
+            </p>
+          </div>
+        </div>
+
+        <!-- Election Day Hours Banner -->
+        <div class="bg-navy rounded-xl p-5 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span class="text-white font-bold text-lg">All Locations Open</span>
+          </div>
+          <span class="text-2xl font-bold text-gold">7:00 AM – 7:00 PM</span>
+        </div>
+
+        <!-- Election Day Locations Grid -->
+        <div class="grid md:grid-cols-2 gap-4">
+          {electionDayLocations.map((loc, i) => (
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all group">
+              <div class="flex items-stretch">
+                <div class="w-14 bg-navy flex items-center justify-center shrink-0">
+                  <span class="text-white/80 font-bold text-lg">{i + 1}</span>
+                </div>
+                <div class="p-5 flex-1 flex items-center justify-between gap-4">
+                  <div>
+                    <h4 class="font-bold text-navy leading-tight">{loc.name}</h4>
+                    <p class="text-sm text-text-secondary mt-1">{loc.address}</p>
+                  </div>
+                  <a 
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.address)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-9 h-9 rounded-lg bg-navy/5 group-hover:bg-red-primary/10 flex items-center justify-center shrink-0 transition-colors"
+                    aria-label={`Get directions to ${loc.name}`}
+                  >
+                    <svg class="w-4 h-4 text-navy group-hover:text-red-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════ BALLOT BY MAIL ═══════════════════════════ -->
+      <section id="ballot-by-mail" class="mb-20 scroll-mt-28">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy mb-8">Ballot by Mail</h2>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="font-bold text-navy text-lg mb-4 flex items-center gap-2">
+                <svg class="w-5 h-5 text-red-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                Application Deadline
+              </h3>
+              <p class="text-text-secondary leading-relaxed mb-4">
+                Your signed application to vote by mail must be <strong class="text-navy">received</strong> (not just postmarked) by <strong class="text-red-primary">October 23, 2026</strong>.
+              </p>
+              <p class="text-sm text-text-muted">
+                In Texas, you may vote by mail if you are 65 or older, disabled, will be away from your county on Election Day and during early voting, or are confined in jail.
+              </p>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-6 border border-gray-100">
+              <h4 class="font-bold text-navy mb-3">Where to Apply</h4>
+              <p class="text-sm text-text-secondary mb-4">Contact the Bastrop County Elections Office:</p>
+              <div class="space-y-2 text-sm">
+                <div class="flex items-center gap-2 text-text-secondary">
+                  <svg class="w-4 h-4 text-navy shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                  211 Jackson St, Bastrop, TX 78602
+                </div>
+                <div class="flex items-center gap-2 text-text-secondary">
+                  <svg class="w-4 h-4 text-navy shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                  <a href="tel:5125817160" class="hover:text-red-primary transition-colors font-medium">(512) 581-7160</a>
+                </div>
+                <div class="flex items-center gap-2 text-text-secondary">
+                  <svg class="w-4 h-4 text-navy shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+                  <a href="https://www.bastropvotes.org" target="_blank" rel="noopener noreferrer" class="hover:text-red-primary transition-colors font-medium">www.bastropvotes.org</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════ VOTER ID ═══════════════════════════ -->
+      <section id="voter-id" class="mb-16 scroll-mt-28">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy mb-8">Don't Forget Your ID</h2>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
+          <p class="text-text-secondary mb-6">Texas law requires one of these valid photo IDs to vote in person:</p>
+          <div class="grid sm:grid-cols-2 gap-3">
+            {[
+              'Texas Driver License (DPS)',
+              'Texas Election ID Certificate (DPS)',
+              'Texas Personal ID Card (DPS)',
+              'Texas Handgun License (DPS)',
+              'U.S. Military ID with Photo',
+              'U.S. Citizenship Certificate with Photo',
+              'U.S. Passport (Book or Card)',
+            ].map((id) => (
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-gray-50 border border-gray-100">
+                <div class="w-6 h-6 rounded-full bg-navy/10 flex items-center justify-center shrink-0">
+                  <svg class="w-3.5 h-3.5 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+                </div>
+                <span class="text-sm font-medium text-navy">{id}</span>
+              </div>
+            ))}
+          </div>
+          <div class="mt-6 p-4 bg-gold/10 border-l-4 border-gold rounded-r-lg">
+            <p class="text-sm text-text-secondary">
+              <strong class="text-navy">No ID?</strong> You may fill out a Reasonable Impediment Declaration at the polls and present an alternative form of ID such as a utility bill or bank statement.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom CTA -->
+      <div class="text-center bg-navy rounded-2xl p-8 md:p-12 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(242,183,5,0.08),transparent_70%)]"></div>
+        <div class="relative z-10">
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mb-4">Ready to Vote?</h2>
+          <p class="text-white/70 text-lg mb-8 max-w-lg mx-auto">Verify your registration, study the candidates, and show up. Your vote matters.</p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <a href="https://teamrv-mvp.sos.texas.gov/MVP/mvp.do" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-red-primary hover:bg-red-dark text-white font-bold py-3.5 px-7 rounded-lg transition-colors shadow-lg">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              Check Registration
+            </a>
+            <a href="/resources/voter-guide/" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold py-3.5 px-7 rounded-lg transition-colors border border-white/20">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+              View Voter Guide
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</PageLayout>
