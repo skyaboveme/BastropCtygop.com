@@ -1,7 +1,7 @@
 ---
 title: "Charge to Victory: Smithville Community Rally"
 date: 2026-10-10
-time: "4:00 PM – 7:00 PM"
+time: "4:00 PM – 6:00 PM"
 location: "Smithville VFW"
 address: "557 NW Loop 230, Smithville, TX 78957"
 category: "Political"
@@ -25,7 +25,7 @@ Come out to meet local candidates, connect with your precinct leaders, pick up c
 | Detail | Information |
 |--------|-------------|
 | **Date** | Saturday, October 10, 2026 |
-| **Time** | 4:00 PM – 7:00 PM |
+| **Time** | 4:00 PM – 6:00 PM |
 | **Location** | Smithville VFW |
 | **Address** | 557 NW Loop 230, Smithville, TX 78957 |
 | **Admission** | FREE — Open to the Public |
