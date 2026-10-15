@@ -3,7 +3,6 @@ import BaseLayout from './BaseLayout.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
-import DonationPopup from '../components/ui/DonationPopup.astro';
 
 interface Props {
   title: string;
@@ -21,5 +20,4 @@ const { title, description, ogImage, jsonLd, showBreadcrumbs = true } = Astro.pr
   {showBreadcrumbs && <Breadcrumbs />}
   <slot />
   <Footer slot="footer" />
-  <DonationPopup />
 </BaseLayout>
