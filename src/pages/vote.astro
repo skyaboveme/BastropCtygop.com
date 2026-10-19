@@ -8,45 +8,32 @@ const keyDates = [
   { date: 'November 3, 2026', event: 'Election Day', icon: '🇺🇸', urgent: true },
 ];
 
+// Source: https://www.bastropvotes.org/voting-schedule/
 const earlyVotingLocations = [
   {
-    name: 'Bastrop County Elections Office',
-    address: '211 Jackson St, Bastrop, TX 78602',
+    name: 'Bastrop County Courthouse Annex',
+    detail: 'Lower Level, Conference Room',
+    address: '804 Pecan St, Bastrop, TX 78602',
     main: true,
     fullSchedule: true,
   },
   {
-    name: 'Elgin ISD Performing Arts Center',
-    address: '1002 N Ave C, Elgin, TX 78621',
-    main: false,
-    fullSchedule: true,
-  },
-  {
     name: 'Smithville Recreation Center',
-    address: '106 Burleson St, Smithville, TX 78957',
+    address: '106 Royston St, Smithville, TX 78957',
     main: false,
     fullSchedule: true,
   },
   {
-    name: 'Bastrop Community Center',
-    address: '1209 Linden St, Bastrop, TX 78602',
+    name: 'Bastrop County Cedar Creek Annex',
+    address: '5785 FM 535, Cedar Creek, TX 78612',
     main: false,
-    fullSchedule: false,
-    note: 'Week 2 Only (Oct 26–30)',
+    fullSchedule: true,
   },
   {
-    name: 'Cedar Creek High School',
-    address: '9001 FM 535, Cedar Creek, TX 78612',
+    name: 'North Bastrop County Community Annex',
+    address: '702 Bull Run, Elgin, TX 78621',
     main: false,
-    fullSchedule: false,
-    note: 'Week 2 Only (Oct 26–30)',
-  },
-  {
-    name: 'McDade Community Center',
-    address: '191 Hoffman St, McDade, TX 78650',
-    main: false,
-    fullSchedule: false,
-    note: 'Week 2 Only (Oct 26–30)',
+    fullSchedule: true,
   },
 ];
 
@@ -58,16 +45,21 @@ const earlyVotingSchedule = [
 ];
 
 const electionDayLocations = [
-  { name: 'Bastrop Convention Center', address: '1209 Chestnut St, Bastrop, TX 78602' },
-  { name: 'Bastrop County Courthouse Annex', address: '211 Jackson St, Bastrop, TX 78602' },
-  { name: 'Cedar Creek High School', address: '9001 FM 535, Cedar Creek, TX 78612' },
-  { name: 'Elgin ISD Performing Arts Center', address: '1002 N Ave C, Elgin, TX 78621' },
-  { name: 'Emile Elementary', address: '400 Martin Luther King Jr Dr, Bastrop, TX 78602' },
-  { name: 'Lost Pines Art Center', address: '1204 Chestnut St, Bastrop, TX 78602' },
-  { name: 'McDade Community Center', address: '191 Hoffman St, McDade, TX 78650' },
-  { name: 'Red Rock Community Center', address: '237 FM 20, Red Rock, TX 78662' },
-  { name: 'Smithville Recreation Center', address: '106 Burleson St, Smithville, TX 78957' },
-  { name: 'Wyldwood Community Center', address: '101 Wildwood Way, Bastrop, TX 78602' },
+  { name: 'Aqua Water Supply', address: '401 Old Austin Hwy, Bastrop, TX 78602' },
+  { name: 'River Valley Christian Fellowship', address: '1224 W Hwy 71, Bastrop, TX 78602' },
+  { name: 'Bastrop County Courthouse Annex', address: '804 Pecan St, Bastrop, TX 78602' },
+  { name: 'Paige Community Center', address: '107 S Main St, Paige, TX 78659' },
+  { name: 'Bastrop County Community Center', address: '15 American Legion Dr, Bastrop, TX 78602' },
+  { name: 'Smithville Rec Center', address: '106 Royston St, Smithville, TX 78957' },
+  { name: 'Rosanky Community Center', address: '135 Main St, Rosanky, TX 78953' },
+  { name: 'Bastrop County Cedar Creek Annex', address: '5785 FM 535, Cedar Creek, TX 78612' },
+  { name: 'Cedar Creek United Methodist Church', address: '5630 FM 535, Cedar Creek, TX 78612' },
+  { name: 'Red Rock Community Center', address: '114 Red Rock Rd, Red Rock, TX 78662' },
+  { name: 'North Bastrop County Community Annex', address: '702 Bull Run, Elgin, TX 78621' },
+  { name: 'Elgin Recreation Center', address: '361 SH 95, Elgin, TX 78621' },
+  { name: 'Faith Lutheran Church', address: '230 Waco St, McDade, TX 78650' },
+  { name: 'Family Worship Center', address: '2425 FM 1704, Elgin, TX 78621' },
+  { name: 'Bastrop County ESD #2 Station 4', address: '1432 N Hwy 95, Bastrop, TX 78602' },
 ];
 ---
 
@@ -188,27 +180,24 @@ const electionDayLocations = [
 
         <!-- Early Voting Locations Grid -->
         <h3 class="text-2xl font-serif font-bold text-navy mb-6">Early Voting Locations</h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {earlyVotingLocations.map((loc) => (
-            <div class={`bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-md transition-all relative group ${loc.main ? 'border-gold ring-2 ring-gold/20 md:col-span-2 lg:col-span-1' : 'border-gray-100'}`}>
-              {loc.main && (
-                <div class="absolute top-3 right-3">
-                  <span class="text-[10px] font-bold uppercase tracking-wider text-gold bg-gold/15 px-2.5 py-1 rounded-full">Main Location</span>
-                </div>
-              )}
-              {!loc.fullSchedule && (
-                <div class="absolute top-3 right-3">
-                  <span class="text-[10px] font-bold uppercase tracking-wider text-navy bg-navy/10 px-2.5 py-1 rounded-full">{loc.note}</span>
-                </div>
-              )}
+            <div class={`bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-md transition-all relative group ${loc.main ? 'border-gold ring-2 ring-gold/20' : 'border-gray-100'}`}>
               <div class={`h-1.5 ${loc.main ? 'bg-gold' : 'bg-navy'}`}></div>
               <div class="p-6">
+                {loc.main && (
+                  <span class="inline-block mb-3 text-[10px] font-bold uppercase tracking-wider text-gold bg-gold/15 px-2.5 py-1 rounded-full">Main Location</span>
+                )}
+                {!loc.fullSchedule && (
+                  <span class="inline-block mb-3 text-[10px] font-bold uppercase tracking-wider text-navy bg-navy/10 px-2.5 py-1 rounded-full">{loc.note}</span>
+                )}
                 <div class="flex items-start gap-3 mb-4">
                   <div class={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${loc.main ? 'bg-gold/15' : 'bg-navy/10'}`}>
                     <svg class={`w-5 h-5 ${loc.main ? 'text-gold' : 'text-navy'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                   </div>
                   <div>
                     <h4 class="font-bold text-navy leading-tight">{loc.name}</h4>
+                    {loc.detail && <p class="text-xs font-semibold text-red-primary mt-1">{loc.detail}</p>}
                     <p class="text-sm text-text-secondary mt-1">{loc.address}</p>
                   </div>
                 </div>
@@ -245,7 +234,7 @@ const electionDayLocations = [
               <h3 class="text-xl font-bold text-navy">Countywide Vote Center Program</h3>
             </div>
             <p class="text-text-secondary leading-relaxed">
-              Bastrop County uses the <strong class="text-navy">Vote Center model</strong>. On Election Day, registered voters may vote at <strong class="text-navy">any</strong> of the 10 Vote Center locations below — you are <em>not</em> restricted to a single precinct location. Pick whichever is most convenient for you.
+              Bastrop County uses the <strong class="text-navy">Vote Center model</strong>. On Election Day, registered voters may vote at <strong class="text-navy">any</strong> of the {electionDayLocations.length} Vote Center locations below — you are <em>not</em> restricted to a single precinct location. Pick whichever is most convenient for you.
             </p>
           </div>
         </div>
@@ -311,11 +300,15 @@ const electionDayLocations = [
               <div class="space-y-2 text-sm">
                 <div class="flex items-center gap-2 text-text-secondary">
                   <svg class="w-4 h-4 text-navy shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                  211 Jackson St, Bastrop, TX 78602
+                  804 Pecan St, Bastrop, TX 78602
                 </div>
                 <div class="flex items-center gap-2 text-text-secondary">
                   <svg class="w-4 h-4 text-navy shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                   <a href="tel:5125817160" class="hover:text-red-primary transition-colors font-medium">(512) 581-7160</a>
+                </div>
+                <div class="flex items-center gap-2 text-text-secondary">
+                  <svg class="w-4 h-4 text-navy shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                  <a href="mailto:elections@co.bastrop.tx.us" class="hover:text-red-primary transition-colors font-medium">elections@co.bastrop.tx.us</a>
                 </div>
                 <div class="flex items-center gap-2 text-text-secondary">
                   <svg class="w-4 h-4 text-navy shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
