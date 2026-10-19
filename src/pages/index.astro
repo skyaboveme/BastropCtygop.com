@@ -58,6 +58,53 @@ const orgSchema = {
   <!-- Election Countdown -->
   <ElectionCountdown />
 
+  <!-- GOP Voter Guide Promo -->
+  <section class="py-12 lg:py-16 bg-white" id="voter-guide-promo">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center max-w-5xl mx-auto">
+        <a
+          href="https://bastropvoterguide.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          id="voter-guide-image-link"
+          class="block rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+          aria-label="Download the GOP Voter Guide at BastropVoterGuide.com"
+        >
+          <img
+            src="/images/gop-voter-guide.jpg"
+            alt="Bastrop County Republican Party GOP Voter Guide for the November 2026 election – download at BastropVoterGuide.com"
+            width="1024"
+            height="1024"
+            loading="lazy"
+            class="w-full h-auto"
+          />
+        </a>
+        <div class="text-center md:text-left">
+          <div class="inline-flex items-center gap-2 bg-red-primary/10 text-red-primary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+            <span class="w-2 h-2 bg-red-primary rounded-full animate-pulse"></span>
+            November 2026 Election
+          </div>
+          <h2 class="text-3xl lg:text-4xl font-extrabold text-navy mb-4">GOP Voter Guide</h2>
+          <p class="text-text-secondary text-lg mb-6">
+            Your trusted guide for the November 2026 election. Get the Bastrop County Republican Party's voter guide before you head to the polls.
+          </p>
+          <a
+            href="https://bastropvoterguide.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            id="voter-guide-cta"
+            class="inline-flex items-center gap-2 bg-navy hover:bg-red-primary text-white font-bold px-8 py-4 rounded-xl shadow-md transition-colors duration-300"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download Your Copy
+          </a>
+          <p class="mt-4 text-sm font-semibold text-red-primary">BastropVoterGuide.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <MissionSection />
